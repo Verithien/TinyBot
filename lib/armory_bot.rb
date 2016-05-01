@@ -1,5 +1,5 @@
 require 'discordrb'
-require 'HTTParty'
+require 'httparty'
 
 require_relative 'armory_bot/version'
 
