@@ -30,6 +30,7 @@ GEM
     netrc (0.11.0)
     opus-ruby (1.0.1)
       ffi
+    puma (3.4.0-java)
     rbnacl (3.3.0)
       ffi
     rest-client (1.8.0)
@@ -51,6 +52,7 @@ PLATFORMS
 DEPENDENCIES
   discordrb (= 2.0.4)
   httparty (= 0.13.7)
+  puma
   thread_safe (= 0.3.5)
 
 BUNDLED WITH
