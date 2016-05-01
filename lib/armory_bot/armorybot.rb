@@ -1,7 +1,7 @@
 module ArmoryBot
 	bot = Bot.new(token: 'MTY5OTgyNzQyMTI4MzYxNDgy.CfCjAg.SDlVm1DTYoQVWdaSqpCRpfHz3gM', 
 				application_id: '169952497690083328', 
-				prefix: '?')
+				prefix: '?', advanced_functionality: false)
 
 	bot.bucket(:armory, limit: 2,
 						time_span: 60,
