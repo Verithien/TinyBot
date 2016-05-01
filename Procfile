@@ -1,1 +1,1 @@
-worker: ruby armorybot.rb
+worker: ruby run
