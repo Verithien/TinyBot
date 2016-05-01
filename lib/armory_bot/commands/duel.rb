@@ -3,7 +3,7 @@ module ArmoryBot
     module Duel
       extend Discordrb::Commands::CommandContainer
 		command([:fight, :duel], bucket: :fight, rate_limit_message: 'Too much fighting! Wait a bit') do |event, username1, username2|
-		puts 'CMD: FIGHT CLUB'
+		puts 'CMD: ITS TIME TO DU DU DU DUEL'
 
 		randoclass = ["Druid", "Warrior", "Mage", "Paladin", "Death Knight", "Demon Hunter", "Priest", "Monk", "Warlock", "Rogue", "Hunter", "Shaman"]
 		Druid = ["Wrath", "Starsurge", "Starfire", "Starfall", "Moonfire", "Sunfire", "Ferocious Bite", "Rake", "Maul", "Mangle"]

@@ -3,6 +3,7 @@ module ArmoryBot
     module GearCheck
       extend Discordrb::Commands::CommandContainer
       command(:gear, bucket: :armory) do |event, *realm, char, region|
+        wh = '<http://www.wowhead.com/item='
         api_key = 'vg25atxufftra3tsx567svh9r8fh79mv'
         realm = realm.join('-')
         dataus = HTTParty.get("https://us.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=items&locale=en_US&apikey=#{api_key}", :verify => false ).parsed_response

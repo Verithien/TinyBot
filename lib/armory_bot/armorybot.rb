@@ -21,8 +21,9 @@ module ArmoryBot
 
 	bot.run :async
 
-	bot.game = 'with Blizzard API'
+	bot.game = 'on Nostalrius'
 	bot.profile.username = 'Armory Bot'
+	bot.profile.avatar = File.open('#{File.dirname(__FILE__)}/wow_icon.jpg')
 
 	bot.sync
 
