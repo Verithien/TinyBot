@@ -4,6 +4,7 @@ module ArmoryBot
       extend Discordrb::Commands::CommandContainer
       command(:info, 
                   description: 'Shows information about this bot!') do |event|
+        puts 'Calling for Info dial 411 jk'
         event.user.pm("""
         Still in what I'll call beta phase
         Gems: discordrb and httparty
