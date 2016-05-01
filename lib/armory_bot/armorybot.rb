@@ -23,7 +23,6 @@ module ArmoryBot
 
 	bot.game = 'with Blizzard API'
 	bot.profile.username = 'Armory Bot'
-	bot.profile.avatar = File.new('C:\Users\Jesus\Pictures\wow_icon.jpg')
 
 	bot.sync
 
