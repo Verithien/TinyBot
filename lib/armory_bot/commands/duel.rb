@@ -35,6 +35,7 @@ module ArmoryBot
 
 
 		break if username1 == nil
+		break if hp1 <= 0 || hp2 <= 0
 
 		coin = [username1, username2]
 		coin1 = coin.sample
@@ -238,8 +239,7 @@ module ArmoryBot
 			nil
 		end
 
-		break if hp1 <= 0 || hp2 <= 0
-
+		
 
 			event << ""
 		if hp1 <= 2
@@ -269,8 +269,7 @@ module ArmoryBot
 		end
 
 
-		break if hp1 <= 0 || hp2 <= 0
-
+		
 
 			event << ""
 		if hp2 <= 2
@@ -295,8 +294,7 @@ module ArmoryBot
 			nil
 		end
 
-		break if hp1 <= 0 || hp2 <= 0
-
+		
 			event << ""
 
 		if hp1 <= 2
@@ -326,8 +324,7 @@ module ArmoryBot
 			nil
 		end	
 
-		break if hp1 <= 0 || hp2 <= 0
-
+		
 			event << ""
 			
 		if hp2 == 2
@@ -353,8 +350,7 @@ module ArmoryBot
 			nil
 		end
 
-		break if hp1 <= 0 || hp2 <= 0
-
+		
 			event << ""
 		if hp1 == 5
 			event << "#{coin1} uses **#{heals1.sample}** on themself and heals for #{hlg4} health"
@@ -379,8 +375,7 @@ module ArmoryBot
 			nil
 		end
 
-		break if hp1 <= 0 || hp2 <= 0
-
+		
 			event << ""
 
 		if hp2 == 3
@@ -410,8 +405,7 @@ module ArmoryBot
 			nil
 		end
 
-		break if hp1 <= 0 || hp2 <= 0
-
+		
 			event << ""
 
 		if hp1 == 5
@@ -438,8 +432,7 @@ module ArmoryBot
 		end
 
 
-		break if hp1 <= 0 || hp2 <= 0
-
+		
 			event << ""
 
 		if hp2 == 3
@@ -469,8 +462,7 @@ module ArmoryBot
 			nil
 		end
 
-		break if hp1 <= 0 || hp2 <= 0
-
+		
 			event << ""
 
 		if hp1 == 5
@@ -496,8 +488,7 @@ module ArmoryBot
 			nil
 		end
 
-		break if hp1 <= 0 || hp2 <= 0
-
+		
 			event << ""
 
 		if hp2 == 3
@@ -523,8 +514,7 @@ module ArmoryBot
 			nil
 		end
 
-		break if hp1 <= 0 || hp2 <= 0
-
+		
 		event << ""
 
 		if hp1 == 5
@@ -550,60 +540,7 @@ module ArmoryBot
 			nil
 		end
 
-		break if hp1 <= 0 || hp2 <= 0
-
-			event << ""
-
-		if hp2 == 3
-			event << "#{coin2} casts **#{heals2.sample}** and heals for #{hlg2} health"
-			hp2 += hlg4
-		elsif hp2 == 1
-			event << "#{coin2} hits #{coin1} with **#{attacks2.sample}**. #{coin1} reflects the attack back for #{dmg8.abs}"
-			hp2 += dmg8
-		else
-			event << "#{coin2} retaliates with **#{attacks2.sample}**, injuring #{coin1} for #{dmg13.abs} damage"
-			hp1 += dmg13
-		end
-
-		if hp1 <= 0
-			event << ""
-			event << ""
-			event << "#{coin2} has defeated #{coin1} in a duel with #{hp2} health left." 	
-		elsif hp2 <= 0
-			event << ""
-			event << ""
-			event << "#{coin1} has defeated #{coin2} in a duel with #{hp1} health left." 	
-		else
-			nil
-		end
-
-		event << ""
-
-		if hp1 == 5
-			event << "#{coin1} uses **#{heals1.sample}** on themself and heals for #{hlg4} health"
-			hp1 += hlg2
-		elsif hp1 == 1
-			event << "#{coin1} blasts #{coin2} with **#{attacks1.sample}**. #{coin2} attempts to counter but hits themselves in the process taking #{dmg9.abs}"
-			hp2 += dmg9
-		else
-			event << "#{coin1} follows with **#{attacks1.sample}**, hitting #{coin2} for #{dmg12.abs} damage"
-			hp2 += dmg12
-		end
-
-		if hp1 <= 0
-			event << ""
-			event << ""
-			event << "#{coin2} has defeated #{coin1} in a duel with #{hp2} health left." 	
-		elsif hp2 <= 0
-			event << ""
-			event << ""
-			event << "#{coin1} has defeated #{coin2} in a duel with #{hp1} health left." 	
-		else
-			nil
-		end
-
-		break if hp1 <= 0 || hp2 <= 0
-
+		
 			event << ""
 
 		if hp2 == 3
@@ -654,8 +591,7 @@ module ArmoryBot
 			nil
 		end
 
-		break if hp1 <= 0 || hp2 <= 0
-
+		
 			event << ""
 
 		if hp2 == 3
@@ -706,8 +642,7 @@ module ArmoryBot
 			nil
 		end
 
-		break if hp1 <= 0 || hp2 <= 0
-
+		
 			event << ""
 
 		if hp2 == 3
@@ -758,8 +693,7 @@ module ArmoryBot
 			nil
 		end
 
-		break if hp1 <= 0 || hp2 <= 0
-
+		
 			event << ""
 
 		if hp2 == 3
@@ -810,8 +744,58 @@ module ArmoryBot
 			nil
 		end
 
-		break if hp1 <= 0 || hp2 <= 0
+		
+			event << ""
 
+		if hp2 == 3
+			event << "#{coin2} casts **#{heals2.sample}** and heals for #{hlg2} health"
+			hp2 += hlg4
+		elsif hp2 == 1
+			event << "#{coin2} hits #{coin1} with **#{attacks2.sample}**. #{coin1} reflects the attack back for #{dmg8.abs}"
+			hp2 += dmg8
+		else
+			event << "#{coin2} retaliates with **#{attacks2.sample}**, injuring #{coin1} for #{dmg13.abs} damage"
+			hp1 += dmg13
+		end
+
+		if hp1 <= 0
+			event << ""
+			event << ""
+			event << "#{coin2} has defeated #{coin1} in a duel with #{hp2} health left." 	
+		elsif hp2 <= 0
+			event << ""
+			event << ""
+			event << "#{coin1} has defeated #{coin2} in a duel with #{hp1} health left." 	
+		else
+			nil
+		end
+
+		event << ""
+
+		if hp1 == 5
+			event << "#{coin1} uses **#{heals1.sample}** on themself and heals for #{hlg4} health"
+			hp1 += hlg2
+		elsif hp1 == 1
+			event << "#{coin1} blasts #{coin2} with **#{attacks1.sample}**. #{coin2} attempts to counter but hits themselves in the process taking #{dmg9.abs}"
+			hp2 += dmg9
+		else
+			event << "#{coin1} follows with **#{attacks1.sample}**, hitting #{coin2} for #{dmg12.abs} damage"
+			hp2 += dmg12
+		end
+
+		if hp1 <= 0
+			event << ""
+			event << ""
+			event << "#{coin2} has defeated #{coin1} in a duel with #{hp2} health left." 	
+		elsif hp2 <= 0
+			event << ""
+			event << ""
+			event << "#{coin1} has defeated #{coin2} in a duel with #{hp1} health left." 	
+		else
+			nil
+		end
+
+		
 			event << ""
 
 		if hp2 == 3
