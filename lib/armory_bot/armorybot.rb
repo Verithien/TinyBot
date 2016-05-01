@@ -23,7 +23,7 @@ module ArmoryBot
 
 	bot.game = 'on Nostalrius'
 	bot.profile.username = 'Armory Bot'
-	bot.profile.avatar = File.open('#{File.dirname(__FILE__)}/wow_icon.jpg')
+	bot.profile.avatar = File.new('#{File.dirname(__FILE__)}/wow_icon.jpg')
 
 	bot.sync
 
