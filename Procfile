@@ -1,1 +1,1 @@
-web: run run.exe
+web: run.exe
