@@ -88,6 +88,7 @@ module ArmoryBot
         *#{minglyph1}*
         *#{minglyph2}*
         """)
+      end
     end
   end
 end
