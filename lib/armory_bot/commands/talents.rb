@@ -3,6 +3,7 @@ module ArmoryBot
     module Talents
       extend Discordrb::Commands::CommandContainer
       command(:tals, bucket: :armory) do |event, *realm, char, region|
+        puts 'TALENT CHECK IN AISLE 9'
         realm = realm.join('-')
         region = region.downcase
         dataus = HTTParty.get("https://us.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=talents&locale=en_US&apikey=vg25atxufftra3tsx567svh9r8fh79mv", :verify => false ).parsed_response
