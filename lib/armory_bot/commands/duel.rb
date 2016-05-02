@@ -192,8 +192,7 @@ module ArmoryBot
 				hlg3 = hlg.sample
 				hlg4 = hlg.sample
 
-				event << """
-			#{event.user.mention} initiated a fight between #{username11} and #{username22}
+				event << """#{event.user.mention} initiated a fight between #{username11} and #{username22}
 			**#{coin1}** rolls a **#{class1}**. **#{coin2}** rolls a **#{class2}**.
 			Coin flip decided that #{coin1} will attack first
 
@@ -217,7 +216,7 @@ module ArmoryBot
 
 
 
-			#{coin1} has defeated #{coin2} in a duel with *1* health left."""
+			#{coin1} has defeated #{coin2} in a duel with **1** health left."""
 		
 
 			end
