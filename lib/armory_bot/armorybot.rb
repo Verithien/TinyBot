@@ -7,7 +7,7 @@ module ArmoryBot
 						time_span: 60,
 						delay: 1)
 	bot.bucket(:fight, limit: 1,
-						time_span: 300,
+						time_span: 600,
 						delay: 1)
 
 	bot.include! Commands::ItemLevel
@@ -15,6 +15,7 @@ module ArmoryBot
 	bot.include! Commands::GearCheck
 	bot.include! Commands::RealmStatus
 	bot.include! Commands::Progression
+	bot.include! Commands::GuildProg
 	bot.include! Commands::Help
 	bot.include! Commands::Information
 	bot.include! Commands::Duel
