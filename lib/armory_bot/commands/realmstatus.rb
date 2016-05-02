@@ -4,6 +4,7 @@ module ArmoryBot
       extend Discordrb::Commands::CommandContainer
       command(:status, bucket: :armory) do |event, *realm, region|
         api_key = 'vg25atxufftra3tsx567svh9r8fh79mv'
+        region = region.downcase
         rstatusus = HTTParty.get("https://us.api.battle.net/wow/realm/status?locale=en_US&apikey=#{api_key}", :verify => false ).parsed_response
         rstatuseu = HTTParty.get("https://eu.api.battle.net/wow/realm/status?locale=en_GB&apikey=#{api_key}", :verify => false ).parsed_response
         realm = realm.join('-')

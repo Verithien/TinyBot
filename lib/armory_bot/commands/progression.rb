@@ -5,6 +5,7 @@ module ArmoryBot
       command(:prog, bucket: :armory) do |event, *realm, char, region|
         api_key = 'vg25atxufftra3tsx567svh9r8fh79mv'
         realm = realm.join('-')
+        region = region.downcase
         puts "PROGRESSION SEARCH"
         progus = HTTParty.get("https://us.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=progression&locale=en_US&apikey=#{api_key}", :verify => false ).parsed_response
         progeu = HTTParty.get("https://eu.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=progression&locale=en_GB&apikey=#{api_key}", :verify => false ).parsed_response

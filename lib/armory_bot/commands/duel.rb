@@ -2,9 +2,6 @@ module ArmoryBot
   	module Commands
     	module Duel
 		     extend Discordrb::Commands::CommandContainer
-				command([:fight, :duel], bucket: :fight, rate_limit_message: 'Too much fighting! Wait a bit') do |event, username1, username2|
-				puts 'CMD: ITS TIME TO DU DU DU DUEL'
-
 				randoclass = ["Druid", "Warrior", "Mage", "Paladin", "Death Knight", "Demon Hunter", "Priest", "Monk", "Warlock", "Rogue", "Hunter", "Shaman"]
 				Druid = ["Wrath", "Starsurge", "Starfire", "Starfall", "Moonfire", "Sunfire", "Ferocious Bite", "Rake", "Maul", "Mangle"]
 				Warrior = ["Collosus Smash", "Bladestorm", "Shield Slam", "Mortal Strike", "Raging Blow", "Thunder Clap", "Execute", "Slam", "Revenge", "Heroic Throw"]
@@ -31,16 +28,30 @@ module ArmoryBot
 				hunterh = ["Feign Death", "Disengage"]
 				shamanh = ["Healing Surge", "Riptide"]
 
+
+				command([:fight, :duel], bucket: :fight, rate_limit_message: 'Too much fighting! Wait a bit') do |event, username1, username2|
+				puts 'CMD: ITS TIME TO DU DU DU DUEL'
+
 				puts 'Got Class'
 
-				coin = [username1, username2]
-				coin1 = coin.sample
-				if coin1 == username1
-					coin2 = username2
+				if username1 == nil
+					username11 = event.user.mention
+					username22 = event.server.users.map(&:mention).sample
 				else
-					coin2 = username1
+					username11 = username1
+					username22 = username2
 				end
+
+				coin = [username11, username22]
+				coin1 = coin.sample
+				if coin1 == username11
+					coin2 = username22
+				else
+					coin2 = username11
+				end
+				hp1 = 20
 				class1 = randoclass.sample
+				hp2 = 20
 				class2 = randoclass.sample
 
 				if class1 == "Druid"
@@ -155,32 +166,56 @@ module ArmoryBot
 					nil
 				end
 
+				dmg1 = dmg.sample
+				dmg2 = dmg.sample
+				dmg3 = dmg.sample
+				dmg4 = dmg.sample
+				dmg5 = dmg.sample
+				dmg6 = dmg.sample
+				dmg7 = dmg.sample
+				dmg8 = dmg.sample
+				dmg9 = dmg.sample
+				dmg10 = dmg.sample
+				dmg11 = dmg.sample
+				dmg12 = dmg.sample
+				dmg13 = dmg.sample
+				dmg14 = dmg.sample
+				dmg15 = dmg.sample
+				dmg20 = dmg.sample
+				dmg21 = dmg.sample
+				dmg22 = dmg.sample
+				dmg23 = dmg.sample
+				hlg1 = hlg.sample
+				hlg2 = hlg.sample
+				hlg3 = hlg.sample
+				hlg4 = hlg.sample
+
 				event << """
-				#{event.user.mention} initiated a fight between #{username1} and #{username2}
-				**#{coin1}** rolls a **#{class1}**. **#{coin2}** rolls a **#{class2}**.
-				Coin flip decided that #{coin1} will attack first
+			#{event.user.mention} initiated a fight between #{username11} and #{username22}
+			**#{coin1}** rolls a **#{class1}**. **#{coin2}** rolls a **#{class2}**.
+			Coin flip decided that #{coin1} will attack first
 
-				#{coin1} casts **#{attacks1.sample}** on #{coin2} dealing 4 damage
+			#{coin1} casts **#{attacks1.sample}** on #{coin2} dealing 4 damage
 
-				#{coin2} recovers and attacks with #{attacks2.sample} dealing 5 damage
+			#{coin2} recovers and attacks with **#{attacks2.sample}** dealing 5 damage
 
-				#{coin1} is dazed by the attack, but manages to get **#{attacks1.sample}** off on #{coin2}. The attack barely hits, only dealing 2 damage.
+			#{coin1} is dazed by the attack, but manages to get **#{attacks1.sample}** off on #{coin2}. The attack barely hits, only dealing 2 damage.
 
-				#{coin1} tries to press his attack, however #{coin2} was prepared and hits them with **#{attacks1.sample}**, removing 4 health.
+			#{coin1} tries to press his attack, however #{coin2} was prepared and hits them with **#{attacks1.sample}**, removing 4 health.
 
-				#{coin2} casts **#{attacks1.sample}**, but #{coin1} manages to redirect it back for 6 damage.
+			#{coin2} casts **#{attacks1.sample}**, but #{coin1} manages to redirect it back for 6 damage.
 
-				#{coin2} retaliates with #{attacks2.sample}. It's a *critical hit* doing 10 damage.
+			#{coin2} retaliates with **#{attacks2.sample}**. It's a *critical hit* doing 10 damage.
 
-				#{coin1} uses #{heals1} to recover 6 health.
+			#{coin1} uses #{heals1.sample} to recover 6 health.
 
-				#{coin2} uses the opportunity to hit #{coin1} with #{attacks2.sample}, dealing 5 damage.
+			#{coin2} uses the opportunity to hit #{coin1} with **#{attacks2.sample}**, dealing 5 damage.
 
-				#{coin1} *critical hits* with **#{attacks1.sample}**, dealing 8 damage.
+			#{coin1} *critical hits* with **#{attacks1.sample}**, dealing 8 damage.
 
 
 
-				#{coin1} has defeated #{coin2} in a duel with *1* health left."""
+			#{coin1} has defeated #{coin2} in a duel with *1* health left."""
 		
 
 			end
