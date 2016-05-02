@@ -168,7 +168,7 @@ module ArmoryBot
 
 				#{coin1} tries to press his attack, however #{coin2} was prepared and hits them with #{attacks1.sample}, removing 4 health.
 
-				#{coin2} casts #{atttacks1.sample}, but #{coin1} manages to redirect it back for 6 damage.
+				#{coin2} casts #{attacks1.sample}, but #{coin1} manages to redirect it back for 6 damage.
 
 				#{coin2} retaliates with #{attacks2.sample}. It's a *critical hit* doing 10 damage.
 

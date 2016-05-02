@@ -4,7 +4,7 @@ module ArmoryBot
       extend Discordrb::Commands::CommandContainer
       command(:help) do |event|
         puts 'CMD: help'
-        event << 'Regions: US, EU'
+        event << 'Regions: us, eu'
         event << '**?status** [realm] [region]: checks realm status'
         event << '**?char** [realm] [character] [region]: Shows summary of a character in text format'
         event << '**?ilvl** [realm] [character] [region]: checks item level of a character.'
