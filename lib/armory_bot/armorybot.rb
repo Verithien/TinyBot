@@ -16,6 +16,7 @@ module ArmoryBot
 	bot.include! Commands::RealmStatus
 	bot.include! Commands::Progression
 	#bot.include! Commands::GuildProg
+	bot.include! Commands::Talents
 	bot.include! Commands::Help
 	bot.include! Commands::Information
 	bot.include! Commands::Duel
