@@ -27,6 +27,8 @@ module ArmoryBot
 				rogueh = ["Leeching Poison", "Cheat Death"]
 				hunterh = ["Feign Death", "Disengage"]
 				shamanh = ["Healing Surge", "Riptide"]
+				dmg = [ -1, -2, -3, -4, -5, -6, -7, -8, -9]
+				hlg = [ 2, 4, 6, 8, 10]
 
 
 				command([:fight, :duel], bucket: :fight, rate_limit_message: 'Too much fighting! Wait a bit') do |event, username1, username2|
