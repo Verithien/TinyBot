@@ -69,15 +69,15 @@ module ArmoryBot
         talent6 = talents["talents"].find { |r| r["tier"] == 6 }
         talentid6 = talent6["spell"]["id"]
 
-        event.user.pm("""**#{char.upcase}--#{realm.upcase}--#{region.upcase}**
+        event.user.pm("""**#{char.capitalize}--#{realm.capitalize}--#{region.upcase}**
         __***TALENTS***__
-        **#{talent0["spell"]["name"]}** - #{wh}#{talentid0}>
-        **#{talent1["spell"]["name"]}** - #{wh}#{talentid1}>
-        **#{talent2["spell"]["name"]}** - #{wh}#{talentid2}>
-        **#{talent3["spell"]["name"]}** - #{wh}#{talentid3}>
-        **#{talent4["spell"]["name"]}** - #{wh}#{talentid4}>
-        **#{talent5["spell"]["name"]}** - #{wh}#{talentid5}>
-        **#{talent6["spell"]["name"]}** - #{wh}#{talentid6}>
+        *#{talent0["spell"]["name"]}* - #{wh}#{talentid0}>
+        *#{talent1["spell"]["name"]}* - #{wh}#{talentid1}>
+        *#{talent2["spell"]["name"]}* - #{wh}#{talentid2}>
+        *#{talent3["spell"]["name"]}* - #{wh}#{talentid3}>
+        *#{talent4["spell"]["name"]}* - #{wh}#{talentid4}>
+        *#{talent5["spell"]["name"]}* - #{wh}#{talentid5}>
+        *#{talent6["spell"]["name"]}* - #{wh}#{talentid6}>
         __***GLYPHS***__
         **Major**
         *#{majglyph0}*
