@@ -160,15 +160,15 @@ module ArmoryBot
 				**#{coin1}** rolls a **#{class1}**. **#{coin2}** rolls a **#{class2}**.
 				Coin flip decided that #{coin1} will attack first
 
-				#{coin1} casts #{attacks1.sample} on #{coin2} dealing 4 damage
+				#{coin1} casts **#{attacks1.sample}** on #{coin2} dealing 4 damage
 
 				#{coin2} recovers and attacks with #{attacks2.sample} dealing 5 damage
 
-				#{coin1} is dazed by the attack, but manages to get #{attacks1.sample} off on #{coin2}. The attack barely hits, only dealing 2 damage.
+				#{coin1} is dazed by the attack, but manages to get **#{attacks1.sample}** off on #{coin2}. The attack barely hits, only dealing 2 damage.
 
-				#{coin1} tries to press his attack, however #{coin2} was prepared and hits them with #{attacks1.sample}, removing 4 health.
+				#{coin1} tries to press his attack, however #{coin2} was prepared and hits them with **#{attacks1.sample}**, removing 4 health.
 
-				#{coin2} casts #{attacks1.sample}, but #{coin1} manages to redirect it back for 6 damage.
+				#{coin2} casts **#{attacks1.sample}**, but #{coin1} manages to redirect it back for 6 damage.
 
 				#{coin2} retaliates with #{attacks2.sample}. It's a *critical hit* doing 10 damage.
 
@@ -176,11 +176,11 @@ module ArmoryBot
 
 				#{coin2} uses the opportunity to hit #{coin1} with #{attacks2.sample}, dealing 5 damage.
 
-				#{coin1} *critical hits* with #{attacks1.sample}, dealing 8 damage.
+				#{coin1} *critical hits* with **#{attacks1.sample}**, dealing 8 damage.
 
 
 
-				#{coin1} has defeated #{coin2} in a duel with #{hp1} health left."""
+				#{coin1} has defeated #{coin2} in a duel with *1* health left."""
 		
 
 			end
