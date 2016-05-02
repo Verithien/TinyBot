@@ -155,7 +155,7 @@ module ArmoryBot
 					nil
 				end
 
-				duel1 = """
+				event << """
 				#{event.user.mention} initiated a fight between #{username1} and #{username2}
 				**#{coin1}** rolls a **#{class1}**. **#{coin2}** rolls a **#{class2}**.
 				Coin flip decided that #{coin1} will attack first
@@ -181,8 +181,6 @@ module ArmoryBot
 
 
 				#{coin1} has defeated #{coin2} in a duel with #{hp1} health left."""
-
-				event << duel1
 		
 
 			end
