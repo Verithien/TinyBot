@@ -160,7 +160,7 @@ module ArmoryBot
 				**#{coin1}** rolls a **#{class1}**. **#{coin2}** rolls a **#{class2}**.
 				Coin flip decided that #{coin1} will attack first
 
-				#{coin1} casts #{attack1.sample} on #{coin2} dealing 4 damage
+				#{coin1} casts #{attacks1.sample} on #{coin2} dealing 4 damage
 
 				#{coin2} recovers and attacks with #{attacks2.sample} dealing 5 damage
 
