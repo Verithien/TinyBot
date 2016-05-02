@@ -64,7 +64,7 @@ module ArmoryBot
           charclass = cclass[data["class"]]
           charrace = crace[data["race"]] 
           chargender = cgender[data["gender"]]
-          if data2["guild"]["name"] == nil
+          if data2["guild"] == nil
             event << "**#{char.capitalize}** - **#{realm.capitalize}** - **#{region.upcase}** is a **#{chargender.capitalize}** **#{charrace}** **#{charclass}** and has **#{data["achievementPoints"]}** Achievement Points."
             event << "They have collected **#{data3["mounts"]["numCollected"]}** Mounts, and **#{data4["pets"]["numCollected"]}** Battle Pets."
           if region == "us"
