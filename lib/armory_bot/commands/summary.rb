@@ -64,9 +64,9 @@ module ArmoryBot
           charclass = cclass[data["class"]]
           charrace = crace[data["race"]] 
           chargender = cgender[data["gender"]]
-          if data2["guild"]["name"]
+          if data2["guild"]["name"] == nil
             event << "**#{char.capitalize}** - **#{realm.capitalize}** - **#{region.upcase}** is a **#{chargender.capitalize}** **#{charrace}** **#{charclass}** and has **#{data["achievementPoints"]}** Achievement Points."
-            event << "They're in the guild **#{data2["guild"]["name"]}**, have collected **#{data3["mounts"]["numCollected"]}** Mounts, and **#{data4["pets"]["numCollected"]}** Battle Pets."
+            event << "They have collected **#{data3["mounts"]["numCollected"]}** Mounts, and **#{data4["pets"]["numCollected"]}** Battle Pets."
           if region == "us"
             event << "Armory: <http://us.battle.net/wow/en/character/#{realm}/#{URI.escape(char)}/advanced>"
           elsif region == "eu"  
@@ -75,8 +75,8 @@ module ArmoryBot
             nil
           end
         else
-          event << "**#{char.capitalize}** - **#{realm.capitalize}** - **#{region.upcase}** is a **#{chargender.capitalize}** **#{charrace}** **#{charclass}** and has **#{data["achievementPoints"]}** Achievement Points."
-          event << "They have collected **#{data3["mounts"]["numCollected"]}** Mounts, and **#{data4["pets"]["numCollected"]}** Battle Pets."
+            event << "**#{char.capitalize}** - **#{realm.capitalize}** - **#{region.upcase}** is a **#{chargender.capitalize}** **#{charrace}** **#{charclass}** and has **#{data["achievementPoints"]}** Achievement Points."
+            event << "They're in the guild **#{data2["guild"]["name"]}**, have collected **#{data3["mounts"]["numCollected"]}** Mounts, and **#{data4["pets"]["numCollected"]}** Battle Pets."
           if region == "us"
             event << "Armory: <http://us.battle.net/wow/en/character/#{realm}/#{URI.escape(char)}/advanced>"
           elsif region == "eu"  
