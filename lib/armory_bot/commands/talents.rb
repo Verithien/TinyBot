@@ -7,7 +7,7 @@ module ArmoryBot
         realm = realm.join('-')
         region = region.downcase
         dataus = HTTParty.get("https://us.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=talents&locale=en_US&apikey=vg25atxufftra3tsx567svh9r8fh79mv", :verify => false ).parsed_response
-        dataeu = HTTParty.get("https://us.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=talents&locale=en_GB&apikey=vg25atxufftra3tsx567svh9r8fh79mv", :verify => false ).parsed_response
+        dataeu = HTTParty.get("https://eu.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=talents&locale=en_GB&apikey=vg25atxufftra3tsx567svh9r8fh79mv", :verify => false ).parsed_response
         if region == "us"
           data = dataus
         elsif region == "eu"
