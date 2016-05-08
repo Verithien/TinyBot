@@ -21,6 +21,7 @@ module ArmoryBot
 	bot.include! Commands::Information
 	bot.include! Commands::Duel
 	bot.include! Commands::Invite
+	bot.include! Commands::Stats
 
 	bot.run :async
 

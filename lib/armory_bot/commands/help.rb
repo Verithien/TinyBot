@@ -11,6 +11,7 @@ module ArmoryBot
         event << '**?gear** [realm] [character] [region]: Lists Armory Link, Item Level, and Gear with wowhead links. *Private message*'
         event << '**?prog** [realm] [character] [region]: Returns character progression in HFC. *Private message*'
         event << '**?tals** [realm] [character] [region]: Gets Talents & Glyphs of the character. *Private message*'
+        event << '**?stats** [realm] [character] [region]: Stats from character sheet. *Private message*'
         event << 'Example ?command Aerie Peak Chuey us'
         event << '**?info**: Gives a bit of quick info about the bot. *Private message*'
         #event << '**?duel/?fight** [@user] [@user]: Randomly assigns a class to each user, and then they duel to the death!'
