@@ -38,7 +38,7 @@ armora = armor / armor103
 armorb = armor / armor100
 armordr103 = armora * 100
 armordr100 = armorb * 100
-puts STATS BITCH
+puts "STATS BITCH"
 
         cchar = cclass[data["calcClass"]]
        
@@ -123,7 +123,7 @@ puts STATS BITCH
       event.user.pm "No info found"
     end
 
-    puts STATS COMPLETE
+    puts "STATS COMPLETE"
       end
     end
   end
