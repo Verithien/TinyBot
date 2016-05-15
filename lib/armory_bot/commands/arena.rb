@@ -41,13 +41,13 @@ module ArmoryBot
 		rbgw = rbg["seasonWon"]
 		rbgl = rbg["seasonLost"]
 
-		event.user.pm("""
-			**#{char.capitalize} - #{realm.capitalize} - #{region.upcase}**
-			**2v2:** #{arena2v2r} **Win/Loss:** #{arena2v2w}/#{arena2v2l}
-			**3v3:** #{arena3v3r} **Win/Loss:** #{arena3v3w}/#{arena3v3l}
-			**5v5:** #{arena5v5r} **Win/Loss:** #{arena5v5w}/#{arena5v5l}
-			**RBG:** #{rbgr} **Win/Loss:** #{rbgw}/#{rbgl}
-			""")
+puts "PvP"
+
+		event.user.pm("""**#{char.capitalize} - #{realm.capitalize} - #{region.upcase}**
+**2v2:** #{arena2v2r}  **Wins:** #{arena2v2w}  **Losses:** #{arena2v2l}
+**3v3:** #{arena3v3r}  **Wins:** #{arena3v3w}  **Losses:** #{arena3v3l}
+**5v5:** #{arena5v5r}  **Wins:** #{arena5v5w} **Losses:** #{arena5v5l}
+**RBG:** #{rbgr}  **Wins:** #{rbgw}  **Losses:** #{rbgl}""")
 
       end
     end
