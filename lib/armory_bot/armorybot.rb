@@ -22,6 +22,7 @@ module ArmoryBot
 	bot.include! Commands::Invite
 	bot.include! Commands::Stats
 	bot.include! Commands::PvP
+	bot.include! Commands::Moose
 
 	bot.run :async
 
