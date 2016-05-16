@@ -6,8 +6,8 @@ module ArmoryBot
         api_key = 'vg25atxufftra3tsx567svh9r8fh79mv'
         realm = realm.join('-')
         region = region.downcase
-        dataeu = HTTParty.get("https://eu.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=items&locale=en_GB&apikey=#{api_key}", :verify => false ).parsed_response
-        dataus = HTTParty.get("https://us.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=items&locale=en_US&apikey=#{api_key}", :verify => false ).parsed_response
+        dataeu = HTTParty.get("https://eu.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=items&locale=en_GB&apikey=#{@@api_key}", :verify => false ).parsed_response
+        dataus = HTTParty.get("https://us.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=items&locale=en_US&apikey=#{@@api_key}", :verify => false ).parsed_response
           if region == "us"
               rdata = dataus
           elsif region == "eu"
