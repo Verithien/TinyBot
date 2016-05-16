@@ -10,7 +10,6 @@ module ArmoryBot
 						time_span: 600,
 						delay: 1)
 
-	@@api_key = 'vg25atxufftra3tsx567svh9r8fh79mv'
 
 	bot.include! Commands::ItemLevel
 	bot.include! Commands::Summary
