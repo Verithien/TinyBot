@@ -3,11 +3,10 @@ module ArmoryBot
     module Moose
       extend Discordrb::Commands::CommandContainer
       command(:moose, bucket: :armory) do |event, *realm, char, region|
-        api_key = 'vg25atxufftra3tsx567svh9r8fh79mv'
         realm = realm.join('-')
         region = region.downcase
-        mooseus = HTTParty.get("https://us.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=mounts&locale=en_US&apikey=#{api_key}", :verify => false ).parsed_response
-        mooseeu = HTTParty.get("https://eu.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=mounts&locale=en_GB&apikey=#{api_key}", :verify => false ).parsed_response
+        mooseus = HTTParty.get("https://us.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=mounts&locale=en_US&apikey=#{@@api_key}", :verify => false ).parsed_response
+        mooseeu = HTTParty.get("https://eu.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=mounts&locale=en_GB&apikey=#{@@api_key}", :verify => false ).parsed_response
         realm1 = realm.downcase
           if region == "us"
             moose = mooseus
