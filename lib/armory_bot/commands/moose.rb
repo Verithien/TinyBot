@@ -19,7 +19,7 @@ module ArmoryBot
 
         mooses = moose["mounts"]["collected"].find { |r| r["name"] == "Grove Warden" }
         puts "MOOSE CHECK"
-        mooses ? "#{char.capitalize} has the **Grove Warden** mount from **Archimonde**" : "#{char.capitalize} does not have the moose yet :("
+        mooses ? "**#{char.capitalize}** has the **Grove Warden** mount from **Archimonde**" : "**#{char.capitalize}** does not have the moose yet :("
       end
     end
   end
