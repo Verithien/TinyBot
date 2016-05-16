@@ -18,7 +18,6 @@ module ArmoryBot
 	#bot.include! Commands::GuildProg
 	bot.include! Commands::Talents
 	bot.include! Commands::Help
-	bot.include! Commands::Information
 	#bot.include! Commands::Duel
 	bot.include! Commands::Invite
 	bot.include! Commands::Stats
@@ -26,7 +25,7 @@ module ArmoryBot
 
 	bot.run :async
 
-	bot.game = 'on Nostalrius'
+	bot.game = 'on the Legion Beta'
 	bot.profile.username = 'Armory Bot'
 	bot.profile.avatar = File.new('/app/lib/armory_bot/wow_icon.jpg')
 
