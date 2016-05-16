@@ -3,7 +3,7 @@ module ArmoryBot
 				application_id: '169952497690083328', 
 				prefix: '?', advanced_functionality: false)
 
-	bot.bucket(:armory, limit: 2,
+	bot.bucket(:armory, limit: 4,
 						time_span: 60,
 						delay: 1)
 	bot.bucket(:fight, limit: 1,
@@ -19,7 +19,7 @@ module ArmoryBot
 	bot.include! Commands::Talents
 	bot.include! Commands::Help
 	bot.include! Commands::Information
-	bot.include! Commands::Duel
+	#bot.include! Commands::Duel
 	bot.include! Commands::Invite
 	bot.include! Commands::Stats
 	bot.include! Commands::PvP
