@@ -24,10 +24,11 @@ module ArmoryBot
 	bot.include! Commands::Stats
 	bot.include! Commands::PvP
 	bot.include! Commands::Moose
+	bot.include! Commands::ServerList
 
 	bot.run :async
 
-	bot.game = 'on the Legion Beta'
+	bot.game = 'Half Life 3'
 	bot.profile.username = 'Armory Bot'
 	bot.profile.avatar = File.new('/app/lib/armory_bot/wow_icon.jpg')
 
