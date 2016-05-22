@@ -11,8 +11,12 @@ module ArmoryBot
           realm = realm.split(" ")
           realm = realm.join("-")
         end
-        guild = guild.split(" ")
-        guild = guild.join("+")
+        if guild.include? " "
+          guild = guild.split(" ")
+          guild = guild.join("+")
+        else
+          guild = guild
+        end
 
         prog = HTTParty.get("http://www.wowprogress.com/guild/#{region.downcase}/#{realm}/#{guild}/json_rank", :verify => false ).parsed_response
 
