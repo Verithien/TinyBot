@@ -7,10 +7,13 @@ module ArmoryBot
         if realm.include? "'"
           realm = realm.split("'")
           realm = realm.join("-")
-        else
+        elsif realm.inlcude? " "
           realm = realm.split(" ")
           realm = realm.join("-")
+        else
+          realm = realm
         end
+        
         if guild.include? " "
           guild = guild.split(" ")
           guild = guild.join("+")
