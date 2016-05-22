@@ -31,7 +31,7 @@ module ArmoryBot
 	bot.game = 'Half Life 3'
 	bot.profile.username = 'Armory Bot'
 	bot.profile.avatar = File.new('/app/lib/armory_bot/wow_icon.jpg')
-	bot.servers
+	puts bot.servers
 
 	bot.sync
 
