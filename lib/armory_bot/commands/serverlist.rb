@@ -4,7 +4,7 @@ module ArmoryBot
       extend Discordrb::Commands::CommandContainer
       command(:serverlist) do |event|
         if event.user.id == 100311929821626368
-          event.respond "TEST WORKED"
+          event << bot.servers
         else
           nil
         end
