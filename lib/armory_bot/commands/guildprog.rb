@@ -7,13 +7,13 @@ module ArmoryBot
         if realm.include? "'"
           realm = realm.split("'")
           realm = realm.join("-")
-        elsif realm.inlcude? " "
+        elsif realm.include? " "
           realm = realm.split(" ")
           realm = realm.join("-")
         else
           realm = realm
         end
-        
+
         if guild.include? " "
           guild = guild.split(" ")
           guild = guild.join("+")
@@ -35,6 +35,8 @@ module ArmoryBot
         progwor1 = prog.split(',')
         progwor2 = progwor1.at(3)
         world_rank = progwor2.split(':')
+
+        puts "Getting Progression"
 
     event.respond("""**#{guild.capitalize} - #{realm.capitalize} - #{region.upcase}**
 **Server Rank:** #{server_rank}
