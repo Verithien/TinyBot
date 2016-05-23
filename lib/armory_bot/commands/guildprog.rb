@@ -26,15 +26,18 @@ module ArmoryBot
         progsrv1 = prog.split(',')
         progsrv2 = progsrv1.at(3)
         progsrv3 = progsrv2.split(':')
-        server_rank = progsrv3.delete!("}")
+        progsrv4 = progsrv3.at(1)
+        server_rank = progsrv4.delete!("}")
 
         progreg1 = prog.split(',')
         progreg2 = progreg1.at(2)
-        region_rank = progreg2.split(':')
+        progreg3 = progreg2.split(':')
+        region_rank = progreg3.at(1)
 
         progwor1 = prog.split(',')
-        progwor2 = progwor1.at(3)
-        world_rank = progwor2.split(':')
+        progwor2 = progwor1.at(1)
+        progwor3 = progwor2.split(':')
+        world_rank = progwor3.at(1)
 
         puts "Getting Progression"
 
