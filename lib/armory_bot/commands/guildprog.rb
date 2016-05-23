@@ -18,7 +18,7 @@ module ArmoryBot
           guild = guild.split(' ')
           guild = guild.join('+')
         else
-          guild = guild
+          guild = guild.delete!('"')
         end
 
         prog = HTTParty.get("http://www.wowprogress.com/guild/#{region.downcase}/#{realm}/#{guild}/json_rank", :verify => false ).parsed_response
