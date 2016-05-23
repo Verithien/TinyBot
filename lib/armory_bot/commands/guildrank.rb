@@ -13,6 +13,9 @@ module ArmoryBot
         realm = info.at(0)
         guild = info.at(1)
         
+        puts guild
+        puts realm
+        
         if realm.include? "'"
           realm1 = realm.split("'")
           realm1 = realm1.join('-')
