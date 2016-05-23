@@ -13,9 +13,6 @@ module ArmoryBot
         realm = info.at(0)
         guild = info.at(1)
         
-        puts guild
-        puts realm
-        
         if realm.include? "'"
           realm1 = realm.split("'")
           realm1 = realm1.join('-')
@@ -51,7 +48,7 @@ module ArmoryBot
         progwor3 = progwor2.split(':')
         world_rank = progwor3.at(1)
 
-        puts "Getting Progression"
+        puts "Getting Guild Ranking"
 
     event.respond("""**#{guild.upcase} - #{realm.upcase} - #{region.upcase}**
 **Server Rank:** #{server_rank}
