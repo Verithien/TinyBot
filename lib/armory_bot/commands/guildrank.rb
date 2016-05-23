@@ -4,7 +4,7 @@ module ArmoryBot
       extend Discordrb::Commands::CommandContainer
       command(:guildrank, bucket: :armory) do |event, *info, region|
 
-        if info.include?(1)
+        if info.length >= 1
           info = info.join(' ')
         else
           info = info.first
