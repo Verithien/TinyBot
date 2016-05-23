@@ -4,29 +4,33 @@ module ArmoryBot
       extend Discordrb::Commands::CommandContainer
       command(:guildrank, bucket: :armory) do |event, *info, region|
 
-        info = info.join(' ')
+        if info.include? " "
+          info = info.join(' ')
+        else
+          info = info.first
+        end
         info = info.split('-')
         realm = info.at(0)
         guild = info.at(1)
         
         if realm.include? "'"
-          realm = realm.split("'")
-          realm = realm.join('-')
+          realm1 = realm.split("'")
+          realm1 = realm1.join('-')
         elsif realm.include? " "
-          realm = realm.split(' ')
-          realm = realm.join('-')
+          realm1 = realm.split(' ')
+          realm1 = realm1.join('-')
         else
-          realm = realm.join('-')
+          realm1 = realm
         end
 
         if guild.include? " "
-          guild = guild.split(' ')
-          guild = guild.join('+')
+          guild1 = guild.split(' ')
+          guild1 = guild1.join('+')
         else
-          guild = guild.delete!('"')
+          guild1 = guild
         end
 
-        prog = HTTParty.get("http://www.wowprogress.com/guild/#{region.downcase}/#{realm}/#{guild}/json_rank", :verify => false ).parsed_response
+        prog = HTTParty.get("http://www.wowprogress.com/guild/#{region.downcase}/#{realm1}/#{guild1}/json_rank", :verify => false ).parsed_response
 
         progsrv1 = prog.split(',')
         progsrv2 = progsrv1.at(3)
