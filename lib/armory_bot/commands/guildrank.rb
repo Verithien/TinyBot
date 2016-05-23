@@ -1,9 +1,10 @@
 module ArmoryBot
   module Commands
-    module GuildProg
+    module GuildRank
       extend Discordrb::Commands::CommandContainer
-      command(:guildprog, bucket: :armory) do |event, *info, region|
+      command(:guildrank, bucket: :armory) do |event, *info, region|
 
+        info = info.join(' ')
         info = info.split('-')
         realm = info.at(0)
         guild = info.at(1)
