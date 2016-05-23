@@ -48,7 +48,7 @@ puts "PvP"
 **3v3 Rating:** #{arena3v3r}  **Wins:** #{arena3v3w}  **Losses:** #{arena3v3l}
 **5v5 Rating:** #{arena5v5r}  **Wins:** #{arena5v5w} **Losses:** #{arena5v5l}
 **RBG Rating:** #{rbgr}  **Wins:** #{rbgw}  **Losses:** #{rbgl}""")
-
+    event.bot.game = 'Hello Kitty'
       end
     end
   end
