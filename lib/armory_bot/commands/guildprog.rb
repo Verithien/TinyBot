@@ -5,8 +5,8 @@ module ArmoryBot
       command(:guildprog, bucket: :armory) do |event, *info, region|
 
         info = info.split('-')
-        realm = info1.at(0)
-        guild = info1.at(1)
+        realm = info.at(0)
+        guild = info.at(1)
         
         if realm.include? "'"
           realm = realm.split("'")
