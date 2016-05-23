@@ -11,7 +11,7 @@ module ArmoryBot
           realm = realm.split(" ")
           realm = realm.join("-")
         else
-          realm = realm
+          realm = realm.downcase
         end
 
         if guild.include? " "
