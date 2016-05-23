@@ -23,7 +23,7 @@ module ArmoryBot
           realm1 = realm
         end
 
-        if guild.match(/\s/)
+        if guild.include?(" ")
           guild1 = guild.split(' ')
           guild1 = guild1.join('+')
         else
