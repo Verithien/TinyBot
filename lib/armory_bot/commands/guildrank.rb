@@ -53,10 +53,11 @@ module ArmoryBot
 
         puts "Getting Progression"
 
-    event.respond("""**#{guild.capitalize} - #{realm.capitalize} - #{region.upcase}**
+    event.respond("""**#{guild.upcase} - #{realm.upcase} - #{region.upcase}**
 **Server Rank:** #{server_rank}
 **Region Rank:** #{region_rank}
-**World Rank:** #{world_rank}""")
+**World Rank:** #{world_rank}
+<http://www.wowprogress.com/guild/#{region.downcase}/#{realm1}/#{guild1}>""")
 
 
       end
