@@ -16,6 +16,9 @@ module ArmoryBot
               event.respond "Sorry #{event.user.name}, please insert your region US or EU(?help for more info)"
           end
         event.respond "#{char.capitalize} - #{realm.capitalize} - #{region.upcase} has an average ilvl of **#{rdata["items"]["averageItemLevel"]}.** Equipped: **#{rdata["items"]["averageItemLevelEquipped"]}.**"
+      
+      event.bot.game = 'with Bliz API'
+      nil
       end
     end
   end
