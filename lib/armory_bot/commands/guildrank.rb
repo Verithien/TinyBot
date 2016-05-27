@@ -1,4 +1,4 @@
-odule ArmoryBot
+module ArmoryBot
   module Commands
     module GuildRank
       extend Discordrb::Commands::CommandContainer
