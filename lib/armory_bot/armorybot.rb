@@ -30,10 +30,8 @@ module ArmoryBot
 
 	bot.run :async
 
-	bot.game = 'Overwatch'
 	bot.profile.username = 'Armory Bot'
 	bot.profile.avatar = File.new('/app/lib/armory_bot/wow_icon.jpg')
-	puts bot.servers.map{|k,v| [k, v.name]}.to_h
 	bot.sync
 
 end
