@@ -27,6 +27,7 @@ module ArmoryBot
 	bot.include! Commands::ServerList
 	bot.include! Commands::Game
 	bot.include! Commands::Glory
+	bot.include! Commands::Evaluation
 
 	bot.run :async
 
