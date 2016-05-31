@@ -3,7 +3,9 @@ module ArmoryBot
     module Owtest
       extend Discordrb::Commands::CommandContainer
       command(:owtest, bucket: :armory) do |event|
-        break unless event.user.id == 100311929821626368 # Replace number with your ID
+
+        break unless event.user.id == 100311929821626368
+        
         page = HTTParty.get('https://masteroverwatch.com/profile/pc/us/Chuey-1652', :verify => false).parsed_response
 
         parse_page = Nokogiri::HTML(page)

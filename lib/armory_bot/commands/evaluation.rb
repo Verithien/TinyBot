@@ -3,7 +3,7 @@ module ArmoryBot
     module Evaluation
       extend Discordrb::Commands::CommandContainer
       command(:eval, bucket: :armory) do |event, *code|
-        break unless event.user.id == 100311929821626368 # Replace number with your ID
+        break unless event.user.id == 100311929821626368
 
         begin
           eval code.join(' ')

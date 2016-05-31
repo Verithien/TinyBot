@@ -7,7 +7,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    discordrb (2.0.4)
+    discordrb (2.1.2)
       activesupport
       opus-ruby
       rbnacl
@@ -16,31 +16,44 @@ GEM
     domain_name (0.5.20160310)
       unf (>= 0.0.5, < 1.0.0)
     event_emitter (0.2.5)
-    ffi (1.9.10-java)
+    ffi (1.9.10-x64-mingw32)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
     httparty (0.13.7)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
     i18n (0.7.0)
+    json (1.8.3)
     json (1.8.3-java)
-    mime-types (2.99.1)
-    minitest (5.8.4)
+    mime-types (2.99.2)
+    mini_portile2 (2.0.0)
+    minitest (5.9.0)
     multi_xml (0.5.5)
     netrc (0.11.0)
+    nokogiri (1.6.7.2-java)
+    nokogiri (1.6.7.2-x64-mingw32)
+      mini_portile2 (~> 2.0.0.rc2)
     opus-ruby (1.0.1)
       ffi
-    puma (3.4.0-java)
-    rbnacl (3.3.0)
+    rbnacl (3.4.0)
       ffi
     rest-client (1.8.0)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
+    rest-client (1.8.0-x64-mingw32)
+      ffi (~> 1.9)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
+    thread_safe (0.3.5)
     thread_safe (0.3.5-java)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    unf (0.1.4)
+      unf_ext
     unf (0.1.4-java)
+    unf_ext (0.0.7.2-x64-mingw32)
     websocket (1.2.3)
     websocket-client-simple (0.3.0)
       event_emitter
@@ -48,12 +61,13 @@ GEM
 
 PLATFORMS
   java
+  x64-mingw32
 
 DEPENDENCIES
-  discordrb (= 2.0.4)
+  discordrb (= 2.1.2)
   httparty (= 0.13.7)
-  puma
+  nokogiri (= 1.6.7.2)
   thread_safe (= 0.3.5)
 
 BUNDLED WITH
-   1.10.6
+   1.12.5
