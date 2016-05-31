@@ -5,8 +5,8 @@ module ArmoryBot
       command(:owtest, bucket: :armory) do |event|
 
         break unless event.user.id == 100311929821626368
-        
-        page = HTTParty.get('https://masteroverwatch.com/profile/pc/us/Chuey-1652', :verify => false).parsed_response
+
+        page = HTTParty.get('https://masteroverwatch.com/profile/pc/us/Chuey-1652')
 
         parse_page = Nokogiri::HTML(page)
 
