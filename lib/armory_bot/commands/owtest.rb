@@ -21,7 +21,7 @@ module ArmoryBot
           stats.push(post_name)
         end
 
-        event << "#{stats.ljust}"
+        event << stats.join(' ')
 
       end
     end
