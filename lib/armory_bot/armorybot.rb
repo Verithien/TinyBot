@@ -9,6 +9,9 @@ module ArmoryBot
 	bot.bucket(:fight, limit: 1,
 						time_span: 600,
 						delay: 1)
+	bot.bucket(:dbupdate, limit: 1,
+						time_span: 86400,
+						delay: 1)
 
 
 	bot.include! Commands::ItemLevel
@@ -29,6 +32,8 @@ module ArmoryBot
 	bot.include! Commands::Glory
 	bot.include! Commands::Evaluation
 	bot.include! Commands::Owtest
+	bot.include! Commands::Register
+	bot.include! Commands::Update
 
 	bot.run :async
 
