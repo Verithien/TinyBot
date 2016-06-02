@@ -11,5 +11,6 @@ Dir["#{File.dirname(__FILE__)}/armory_bot/commands/*.rb"].each { |file| require 
 Dir["#{File.dirname(__FILE__)}/armory_bot/events/*.rb"].each { |file| require file }
 Dir["#{File.dirname(__FILE__)}/armory_bot/storage/*.rb"].each { |file| require file }
 
+require_relative 'armory_bot/storage/bnetbot'
 
 require_relative 'armory_bot/armorybot'
