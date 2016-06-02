@@ -32,8 +32,8 @@ module ArmoryBot
 	bot.include! Commands::Glory
 	bot.include! Commands::Evaluation
 	bot.include! Commands::Owtest
-	bot.include! Commands::Register
-	bot.include! Commands::Update
+	#bot.include! Commands::Register
+	#bot.include! Commands::Update
 
 	bot.run :async
 
