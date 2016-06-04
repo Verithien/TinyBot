@@ -4,8 +4,7 @@ module ArmoryBot
       extend Discordrb::Commands::CommandContainer
       command(:servers) do |event|
         break unless event.user.id == 100311929821626368
-        list = event.bot.servers.count
-        event << list.join(' ')
+        event.bot.servers.count.join(' ')
       end
     end
   end
