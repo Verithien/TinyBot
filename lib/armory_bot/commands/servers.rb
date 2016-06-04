@@ -7,3 +7,4 @@ module ArmoryBot
     end
   end
 end
+end
