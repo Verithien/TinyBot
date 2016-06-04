@@ -34,6 +34,7 @@ module ArmoryBot
 	bot.include! Commands::Owtest
 	#bot.include! Commands::Register
 	#bot.include! Commands::Update
+	bot.include! Commands::Donate
 
 	bot.run :async
 
