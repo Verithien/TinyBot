@@ -4,7 +4,7 @@ module ArmoryBot
       extend Discordrb::Commands::CommandContainer
       command(:donate) do |event|
         event << 'Patreon: <https://www.patreon.com/blizzardbot>'
-        event << 'PayPal: <http://bit.ly/1Xyrzyr>'
+        event << 'PayPal: <http://bit.ly/1RTGoox>'
       end
     end
   end
