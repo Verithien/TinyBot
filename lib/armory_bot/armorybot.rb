@@ -40,6 +40,7 @@ module ArmoryBot
 
 	bot.profile.username = 'Armory Bot'
 	bot.profile.avatar = File.new('/app/lib/armory_bot/wow_icon.jpg')
+	puts bot.servers.count
 	bot.sync
 
 end
