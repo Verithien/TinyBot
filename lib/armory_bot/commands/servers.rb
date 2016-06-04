@@ -6,5 +6,5 @@ module ArmoryBot
       end
     end
   end
-end
+        event.bot.servers.count
 end
