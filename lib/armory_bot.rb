@@ -1,7 +1,6 @@
 require 'discordrb'
 require 'httparty'
 require 'nokogiri'
-require 'sqlite3'
 
 require_relative 'armory_bot/version'
 
