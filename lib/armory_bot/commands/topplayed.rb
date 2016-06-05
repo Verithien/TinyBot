@@ -39,11 +39,13 @@ module ArmoryBot
 
         stats = []
         playt = []
+        pnf = []
 
         puts "So far so good"
 
         topplayed = parse_page.css('.bg-crystal-dark').css('.content-box').css('.content-box').css('.row').css('.row').css('.progress-category').css('.progress-2').css('.title')
         timeplayed = parse_page.css('.bg-crystal-dark').css('.content-box').css('.content-box').css('.row').css('.row').css('.progress-category').css('.progress-2').css('.description')
+        noacc = parse_page.css('.undefined').css('.page-wrapper').css('.row').css('.u-align-center')
 
         topplayed.map do |a|
           post_name = a.text
@@ -55,6 +57,12 @@ module ArmoryBot
           playt.push(post_name)
         end
 
+        noacc.map do |a|
+          post_name = a.text
+          pnf.push(post_name)
+        end
+
+
         one = stats[0]
         two = stats[1]
         three = stats[2]
@@ -63,6 +71,8 @@ module ArmoryBot
         twot = playt[1]
         threet = playt[2]
 
+        page_not_found = pnf[0]
+
         if platform == "pc"
           name = account.first
         else
@@ -70,11 +80,15 @@ module ArmoryBot
           name = name.join(' ')
         end
 
-        event << "**#{event.user.mention} - #{name.capitalize} - Top Played**"
-        event << "**#1:** #{one} - #{onet}" 
-        event << "**#2:** #{two} - #{twot}"
-        event << "**#3:** #{three} - #{threet}"
-        
+        if page_not_found = "Page Not Found"
+          event << "Sorry, either no character was found or your account is case sensitive"
+        else
+          event << "**#{event.user.mention} - #{name.capitalize} - Top Played**"
+          event << "**#1:** #{one} - #{onet}" 
+          event << "**#2:** #{two} - #{twot}"
+          event << "**#3:** #{three} - #{threet}"
+        end
+
       end
     end
   end
