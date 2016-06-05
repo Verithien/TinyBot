@@ -8,6 +8,8 @@ module ArmoryBot
 
         platform = platform.downcase
 
+        account = account.join(' ')
+
         if platform = "pc"
           account = account.split('#')
           account = account.join('-')
