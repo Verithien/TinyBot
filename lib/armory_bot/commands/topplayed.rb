@@ -80,7 +80,7 @@ module ArmoryBot
           name = name.join(' ')
         end
 
-        if page_not_found = "Page Not Found"
+        if page_not_found == "Page Not Found"
           event << "Sorry, either no character was found or your account is case sensitive"
         else
           event << "**#{event.user.mention} - #{name.capitalize} - Top Played**"
