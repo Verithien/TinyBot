@@ -16,7 +16,7 @@ module ArmoryBot
                 acc = account.map!(&:capitalize)
                 acc = acc.join('%20')
             else
-                acc = account.capitalize
+                acc = account.first
             end
         else
           acc = account
