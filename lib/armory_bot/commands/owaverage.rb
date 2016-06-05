@@ -60,7 +60,7 @@ module ArmoryBot
         solokills = stats[7]
 
         if platform == "pc"
-          name = account
+          name = account.first
         else
           name = acc.split('%20')
           name = name.join(' ')
