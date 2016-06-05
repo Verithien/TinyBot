@@ -8,6 +8,8 @@ module ArmoryBot
 
         region = region.downcase
 
+        account = account.split(' ')
+        account = account.map!(&:capitalize)
         account = account.join('%20')
 
         if platform == "pc"
