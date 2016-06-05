@@ -61,7 +61,7 @@ module ArmoryBot
 
         onet = playt[0]
         twot = playt[1]
-        threet = playt[0]
+        threet = playt[2]
 
         if platform == "pc"
           name = account.first
