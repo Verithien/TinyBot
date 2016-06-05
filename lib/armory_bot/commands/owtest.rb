@@ -19,10 +19,10 @@ module ArmoryBot
         parse_page.css('.data-stats').css('.stats-list').css('.row').css('.stats-list-box').map do |a|
           post_name = a.text
           stats.push(post_name)
+          event << "#{stats.join(' ')}"
         end
 
-        event << stats.join(' ')
-
+        
       end
     end
   end
