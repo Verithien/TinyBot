@@ -6,7 +6,7 @@ module ArmoryBot
 
         break unless event.user.id == 100311929821626368
 
-        page = HTTParty.get('https://masteroverwatch.com/profile/pc/us/Chuey-1652')
+        page = HTTParty.get('https://masteroverwatch.com/profile/pc/us/Chuey-1652', :verify => false ).parsed_response
 
         parse_page = Nokogiri::HTML(page)
 
@@ -19,9 +19,9 @@ module ArmoryBot
         parse_page.css('.data-stats').css('.stats-list').css('.row').css('.stats-list-box').map do |a|
           post_name = a.text
           stats.push(post_name)
-          event << "#{stats.join(' ')}"
         end
 
+        event << "#{stats.join(' ')}"
         
       end
     end

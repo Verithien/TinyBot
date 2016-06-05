@@ -35,6 +35,7 @@ module ArmoryBot
 	#bot.include! Commands::Register
 	#bot.include! Commands::Update
 	bot.include! Commands::Donate
+	bot.include! Commands::Servers
 
 	bot.run :async
 
