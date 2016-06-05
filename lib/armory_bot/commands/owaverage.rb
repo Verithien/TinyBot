@@ -9,7 +9,8 @@ module ArmoryBot
         region = region.downcase
 
         if platform == "pc"
-          acc = account.split('#')
+          acc = account.first
+          acc = acc.split('#')
           acc = acc.join('-')
         elsif platform == "xbl"
             if account.count >= 2
