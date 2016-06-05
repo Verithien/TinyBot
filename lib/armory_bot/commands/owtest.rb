@@ -20,8 +20,8 @@ module ArmoryBot
           post_name = a.text
           stats.push(post_name)
         end
-
-        event << "#{stats.squeeze(" ")}"
+        yay = stats.join(' ')
+        event << "#{yay.squeeze(" ")}"
         
       end
     end
