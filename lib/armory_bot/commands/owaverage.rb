@@ -11,13 +11,13 @@ module ArmoryBot
         acc = account.join(' ')
 
         if platform == "pc"
-          acc = account.split('#')
-          acc = account.join('-')
+          acc = acc.split('#')
+          acc = acc.join('-')
         elsif platform == "xbl"
-          acc = account.split(' ')
-          acc = account.join('%20')
+          acc = acc.split(' ')
+          acc = acc.join('%20')
         else
-          acc = account.downcase
+          acc = acc.downcase
         end
 
 
