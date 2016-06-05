@@ -45,7 +45,7 @@ module ArmoryBot
         objtime = stats[6]
         solokills = stats[7]
 
-        event << "**#{account}**"
+        event << "**#{account}** - Average Stats"
         event << "**Eliminations:**   #{elim}"
         event << "**Damage Done:**    #{dmg}"
         event << "**Deaths:**         #{deaths}"
