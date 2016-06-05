@@ -21,7 +21,7 @@ module ArmoryBot
           stats.push(post_name)
         end
 
-        event << "#{stats.join(' ')}"
+        event << "#{stats.squeeze(" ")}"
         
       end
     end
