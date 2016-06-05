@@ -2,11 +2,24 @@ module ArmoryBot
   module Commands
     module Owtest
       extend Discordrb::Commands::CommandContainer
-      command(:owtest, bucket: :armory) do |event|
+      command(:owtest, bucket: :armory, min_args: 3) do |event, *account, region, platform|
 
         break unless event.user.id == 100311929821626368
 
-        page = HTTParty.get('https://masteroverwatch.com/profile/pc/us/Chuey-1652', :verify => false ).parsed_response
+        platform = platform.downcase
+
+        if platform = "pc"
+          account = account.split('#')
+          account = account.join('-')
+        elsif platform = "xbl"
+          account = account.split(' ')
+          account = account.join('%20')
+        else
+          account = account.downcase
+        end
+
+
+        page = HTTParty.get("https://masteroverwatch.com/profile/#{platform}/#{region}/#{account}", :verify => false ).parsed_response
 
         parse_page = Nokogiri::HTML(page)
 
