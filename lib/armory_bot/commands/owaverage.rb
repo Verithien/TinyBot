@@ -8,20 +8,20 @@ module ArmoryBot
 
         platform = platform.downcase
 
-        account = account.join(' ')
+        acc = account.join(' ')
 
         if platform == "pc"
-          account = account.split('#')
-          account = account.join('-')
+          acc = account.split('#')
+          acc = account.join('-')
         elsif platform == "xbl"
-          account = account.split(' ')
-          account = account.join('%20')
+          acc = account.split(' ')
+          acc = account.join('%20')
         else
-          account = account.downcase
+          acc = account.downcase
         end
 
 
-        page = HTTParty.get("https://playoverwatch.com/en-us/career/#{platform}/#{region}/#{account}", :verify => false ).parsed_response
+        page = HTTParty.get("https://playoverwatch.com/en-us/career/#{platform}/#{region}/#{acc}", :verify => false ).parsed_response
 
         parse_page = Nokogiri::HTML(page)
 
@@ -45,14 +45,15 @@ module ArmoryBot
         objtime = stats[6]
         solokills = stats[7]
 
-        event << "**Eliminations:** #{elim}"
-        event << "**Damage Done:** #{dmg}"
-        event << "**Deaths:** #{deaths}"
-        event << "**Final Blows:** #{final}"
-        event << "**Healing Done:** #{healing}"
-        event << "**Objective Kills:** #{objkills}"
+        event << "**#{account}**"
+        event << "**Eliminations:**   #{elim}"
+        event << "**Damage Done:**    #{dmg}"
+        event << "**Deaths:**         #{deaths}"
+        event << "**Final Blows:**    #{final}"
+        event << "**Healing Done:**   #{healing}"
+        event << "**Objective Kills:**#{objkills}"
         event << "**Objective Time:** #{objtime}"
-        event << "**Solo Kills:** #{solokills}"
+        event << "**Solo Kills:**     #{solokills}"
         
       end
     end
