@@ -14,16 +14,20 @@ module ArmoryBot
           acc = account.split('#')
           acc = acc.join('-')
         elsif platform == "xbl"
-          acc = account.split('%20')
-          acc = acc.map!(&:capitalize)
-          acc = acc.join('%20')
+            if account.count >= 2
+                acc = account.map!(&:capitalize)
+                acc = acc.join('%20')
+            else
+                acc = account.capitalize
+            end
         else
           acc = account
         end
 
-
         pc = HTTParty.get("https://playoverwatch.com/en-us/career/#{platform}/#{region}/#{acc}", :verify => false ).parsed_response
         console = HTTParty.get("https://playoverwatch.com/en-us/career/#{platform}/#{acc}", :verify => false ).parsed_response
+
+        puts "https://playoverwatch.com/en-us/career/#{platform}/#{acc}"
 
         if platform == "pc"
           page = pc
