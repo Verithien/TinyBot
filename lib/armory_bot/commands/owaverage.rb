@@ -58,7 +58,7 @@ module ArmoryBot
         objtime = stats[6]
         solokills = stats[7]
 
-        noar = account.split('%20')
+        noar = acc.split('%20')
         noar = noar.join(' ')
 
         event << "#{event.user.mention} - **#{noar.capitalize} - Average Stats**"
