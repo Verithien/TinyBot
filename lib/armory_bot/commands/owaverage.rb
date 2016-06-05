@@ -47,15 +47,15 @@ module ArmoryBot
 
         noar = account.join('')
 
-        event << "**#{noar}** - Average Stats"
-        event << "**Eliminations:**   #{elim}"
-        event << "**Damage Done:**    #{dmg}"
-        event << "**Deaths:**         #{deaths}"
-        event << "**Final Blows:**    #{final}"
-        event << "**Healing Done:**   #{healing}"
-        event << "**Objective Kills:**#{objkills}"
-        event << "**Objective Time:** #{objtime}"
-        event << "**Solo Kills:**     #{solokills}"
+        event << "#{event.user.mention} - **#{noar} - Average Stats**"
+        event << "**Eliminations:**        #{elim}"
+        event << "**Damage Done:**        #{dmg}"
+        event << "**Deaths:**       #{deaths}"
+        event << "**Final Blows:**        #{final}"
+        event << "**Healing Done:**       #{healing}"
+        event << "**Objective Kills:**        #{objkills}"
+        event << "**Objective Time:**       #{objtime}"
+        event << "**Solo Kills:**         #{solokills}"
         
       end
     end
