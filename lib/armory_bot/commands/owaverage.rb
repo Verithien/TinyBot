@@ -14,7 +14,7 @@ module ArmoryBot
           acc = account.split('#')
           acc = acc.join('-')
         else
-          nil
+          acc = account
         end
 
 
