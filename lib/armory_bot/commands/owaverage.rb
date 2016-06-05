@@ -18,11 +18,11 @@ module ArmoryBot
         end
 
 
-        pc = HTTParty.get("https://playoverwatch.com/en-us/career/#{platform}/#{region}/#{URI.escape(acc)}", :verify => false ).parsed_response
-        console = HTTParty.get("https://playoverwatch.com/en-us/career/#{platform}/#{URI.escape(acc)}", :verify => false ).parsed_response
+        pc = HTTParty.get("https://playoverwatch.com/en-us/career/#{platform}/#{region}/#{acc}", :verify => false ).parsed_response
+        console = HTTParty.get("https://playoverwatch.com/en-us/career/#{platform}/#{acc}", :verify => false ).parsed_response
 
-        puts pc
-        puts console
+        puts "https://playoverwatch.com/en-us/career/#{platform}/#{region}/#{acc}"
+        puts "https://playoverwatch.com/en-us/career/#{platform}/#{acc}"
 
         if platform == "pc"
           page = pc
