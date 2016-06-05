@@ -4,8 +4,6 @@ module ArmoryBot
       extend Discordrb::Commands::CommandContainer
       command(:owavg, bucket: :armory, min_args: 3) do |event, *account, region, platform|
 
-        break unless event.user.id == 100311929821626368
-
         platform = platform.downcase
 
         acc = account.join(' ')
@@ -21,7 +19,17 @@ module ArmoryBot
         end
 
 
-        page = HTTParty.get("https://playoverwatch.com/en-us/career/#{platform}/#{region}/#{acc}", :verify => false ).parsed_response
+        pc = HTTParty.get("https://playoverwatch.com/en-us/career/#{platform}/#{region}/#{acc}", :verify => false ).parsed_response
+        console = HTTParty.get("https://playoverwatch.com/en-us/career/#{platform}/#{acc}", :verify => false ).parsed_response
+
+        if platform == "pc"
+          page = pc
+        elsif platform == "xbl" || "psn"
+          page = console
+        else
+          nil
+        end
+
 
         parse_page = Nokogiri::HTML(page)
 
@@ -48,14 +56,14 @@ module ArmoryBot
         noar = account.join('')
 
         event << "#{event.user.mention} - **#{noar} - Average Stats**"
-        event << "**Eliminations:**        #{elim}"
-        event << "**Damage Done:**        #{dmg}"
-        event << "**Deaths:**       #{deaths}"
-        event << "**Final Blows:**        #{final}"
-        event << "**Healing Done:**       #{healing}"
-        event << "**Objective Kills:**        #{objkills}"
-        event << "**Objective Time:**       #{objtime}"
-        event << "**Solo Kills:**         #{solokills}"
+        event << "**Eliminations:**   #{elim}"
+        event << "**Damage Done:**    #{dmg}"
+        event << "**Deaths:**   #{deaths}"
+        event << "**Final Blows:**    #{final}"
+        event << "**Healing Done:**   #{healing}"
+        event << "**Objective Kills:**    #{objkills}"
+        event << "**Objective Time:**   #{objtime}"
+        event << "**Solo Kills:**   #{solokills}"
         
       end
     end
