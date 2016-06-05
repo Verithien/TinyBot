@@ -43,7 +43,7 @@ module ArmoryBot
 
         puts "So far so good"
 
-        topplayed = parse_page.css('.bg-crystal-dark').css('.content-box').css('.row').css('.row').css('.card-heading')
+        topplayed = parse_page.css('.bg-crystal-dark').css('.content-box').css('.content-box').css('.row').css('.row').css('.progress-category').css('.progress-2').css('.title')
 
         topplayed.map do |a|
           post_name = a.text
