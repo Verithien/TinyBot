@@ -65,7 +65,7 @@ module ArmoryBot
           name = name.join(' ')
         end
 
-        event << "#{event.user.mention} - **#{noar.capitalize} - Average Stats**"
+        event << "#{event.user.mention} - **#{name.capitalize} - Average Stats**"
         event << "**Eliminations:**   #{elim}"
         event << "**Damage Done:**    #{dmg}"
         event << "**Deaths:**   #{deaths}"
