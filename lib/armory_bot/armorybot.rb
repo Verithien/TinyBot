@@ -31,7 +31,7 @@ module ArmoryBot
 	bot.include! Commands::Game
 	bot.include! Commands::Glory
 	bot.include! Commands::Evaluation
-	bot.include! Commands::Owtest
+	bot.include! Commands::OWAverage
 	#bot.include! Commands::Register
 	#bot.include! Commands::Update
 	bot.include! Commands::Donate
