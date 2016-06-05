@@ -12,7 +12,6 @@ module ArmoryBot
           acc = acc.split('#')
           acc = acc.join('-')
         elsif platform == "xbl"
-          acc = acc.split(' ')
           acc = acc.join('%20')
         else
           acc = acc.downcase
