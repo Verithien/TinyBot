@@ -71,6 +71,10 @@ module ArmoryBot
         twot = playt[22]
         threet = playt[23]
 
+        perc1 = playt[42]
+        perc2 = playt[43]
+        perc3 = playt[44]
+
         page_not_found = pnf[0]
 
         if platform == "pc"
@@ -83,10 +87,10 @@ module ArmoryBot
         if page_not_found == "Page Not Found"
           event << "Sorry, either no character was found or your account is case sensitive"
         else
-          event << "**#{event.user.mention} - #{name.capitalize} - Games Won**"
-          event << "**#1:** #{one} - #{onet}" 
-          event << "**#2:** #{two} - #{twot}"
-          event << "**#3:** #{three} - #{threet}"
+          event << "**#{event.user.mention} - #{name.capitalize} - Games Won/Win Percentage**"
+          event << "**#1:** #{one} - #{onet} / #{perc1}" 
+          event << "**#2:** #{two} - #{twot} / #{perc2}"
+          event << "**#3:** #{three} - #{threet} / #{perc3}"
         end
 
       end
