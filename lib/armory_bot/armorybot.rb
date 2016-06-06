@@ -31,12 +31,13 @@ module ArmoryBot
 	bot.include! Commands::Game
 	bot.include! Commands::Glory
 	bot.include! Commands::Evaluation
-	bot.include! Commands::OWAverage
+	bot.include! Commands::OAverage
 	#bot.include! Commands::Register
 	#bot.include! Commands::Update
 	bot.include! Commands::Donate
 	bot.include! Commands::Servers
 	bot.include! Commands::TopPlayed
+	bot.include! Commands::Wins
 
 	bot.run :async
 

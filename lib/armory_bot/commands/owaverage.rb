@@ -1,8 +1,8 @@
 module ArmoryBot
   module Commands
-    module OWAverage
+    module OAverage
       extend Discordrb::Commands::CommandContainer
-      command(:owavg, bucket: :armory) do |event, *account, region, platform|
+      command(:oavg, bucket: :armory) do |event, *account, region, platform|
 
         platform = platform.downcase
 
