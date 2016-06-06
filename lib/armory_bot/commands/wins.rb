@@ -88,9 +88,9 @@ module ArmoryBot
           event << "Sorry, either no character was found or your account is case sensitive"
         else
           event << "**#{event.user.mention} - #{name.capitalize} - Games Won/Win Percentage**"
-          event << "**#1:** #{one} - #{onet} / #{perc1}" 
-          event << "**#2:** #{two} - #{twot} / #{perc2}"
-          event << "**#3:** #{three} - #{threet} / #{perc3}"
+          event << "#1: **#{one}** - **#{onet}** - **#{perc1}**" 
+          event << "#2: **#{two}** - **#{twot}** - **#{perc2}**"
+          event << "#3: **#{three}** - **#{threet}** - **#{perc3}**"
         end
 
       end
