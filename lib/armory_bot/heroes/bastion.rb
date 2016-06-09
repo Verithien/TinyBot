@@ -18,7 +18,7 @@ module ArmoryBot
           acc = acc.downcase
         end
 
-        data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/bastion/", :verify => false ).parsed_response
+        data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/Bastion/", :verify => false ).parsed_response
 
         if platform == "pc"
           name = account.first
@@ -71,7 +71,7 @@ module ArmoryBot
           event << "**Objective Time:** #{objtm} - **Objective Kills:** #{objkm}"
           event << "Average Stats"
           event << "**Recon Kills:** #{reconavg} - **Sentry Kills:** #{sentryavg} - **Eliminations:** #{elimsavg}"
-          event << "**Damage Done:** #{dmgavg} - **Deaths:** #{deathsavg} - **"
+          event << "**Damage Done:** #{dmgavg} - **Deaths:** #{deathsavg} - **Objective Kills:** #{objkavg}"
           event << "yes"
         end
 
