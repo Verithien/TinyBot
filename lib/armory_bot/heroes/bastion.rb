@@ -2,7 +2,7 @@ module ArmoryBot
   module Commands
     module Bastion
       extend Discordrb::Commands::CommandContainer
-      command(:bastion, bucket: :armory, min_args: 4) do |event, *account, region, platform|
+      command(:bastion, bucket: :armory, min_args: 3) do |event, *account, region, platform|
 
         platform = platform.downcase
 
