@@ -59,18 +59,16 @@ module ArmoryBot
 
           event << "**#{event.user.mention} - #{name.capitalize} - Bastion**"
           event << "**Total Stats**"
-          event << "**Recon Kills:** #{recon} - **Sentry Kills:** #{sentry} - **Eliminations:** #{elims}"
-          event << "**Final Blows:** #{kbs} - **Damage Done:** #{dmg} - **Weapon Accuracy:** #{wacc}"
-          event << "**Games Played:** #{gplayed} - **Games Won:** #{gwon} - **Win Percentage:** #{winperc}"
+          event << "**Recon Kills:** #{recon} - **Sentry Kills:** #{sentry} - **Eliminations:** #{elims} **-** **Final Blows:** #{kbs}"
+          event << "**Damage Done:** #{dmg} **-** **Games Played:** #{gplayed} - **Games Won:** #{gwon} - **Win Percentage:** #{winperc}"
+          event << ""
           event << "**Most in Game**"
-          event << "**Recon Kills:** #{reconm} - **Sentry Kills:** #{sentrym} - **Eliminations:** #{elimsm}"
-          event << "**Damage Done:** #{dmgm} - **Weapon Accuracy:** #{waccm} - **Kill Streaks:** #{ksm}"
-          event << "**Objective Time:** #{objtm} - **Objective Kills:** #{objkm}"
-          event << "Average Stats"
+          event << "**Recon Kills:** #{reconm} - **Sentry Kills:** #{sentrym} - **Eliminations:** #{elimsm} **-** **Damage Done:** #{dmgm}"
+          event << "**Kill Streaks:** #{ksm} **-** **Objective Time:** #{objtm} - **Objective Kills:** #{objkm}"
+          event << ""
+          event << "**Average Stats**"
           event << "**Recon Kills:** #{reconavg} - **Sentry Kills:** #{sentryavg} - **Eliminations:** #{elimsavg}"
           event << "**Damage Done:** #{dmgavg} - **Deaths:** #{deathsavg} - **Objective Kills:** #{objkavg}"
-          event << "yes"
-
 
         
       end
