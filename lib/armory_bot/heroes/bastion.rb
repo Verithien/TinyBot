@@ -57,9 +57,6 @@ module ArmoryBot
         gwon = data[53]["GamesWon"]
         winperc = data[56]["WinPercentage"]
 
-        if data["statusCode"] == 500
-          event << "Sorry, either no account was found or your account is case sensitive"
-        else
           event << "**#{event.user.mention} - #{name.capitalize} - Bastion**"
           event << "**Total Stats"
           event << "**Recon Kills:** #{recon} - **Sentry Kills:** #{sentry} - **Eliminations:** #{elims}"
@@ -73,7 +70,6 @@ module ArmoryBot
           event << "**Recon Kills:** #{reconavg} - **Sentry Kills:** #{sentryavg} - **Eliminations:** #{elimsavg}"
           event << "**Damage Done:** #{dmgavg} - **Deaths:** #{deathsavg} - **Objective Kills:** #{objkavg}"
           event << "yes"
-        end
 
 
         
