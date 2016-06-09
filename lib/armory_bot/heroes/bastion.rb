@@ -70,7 +70,7 @@ module ArmoryBot
           event << "**Recon Kills:** #{reconavg} - **Sentry Kills:** #{sentryavg} - **Eliminations:** #{elimsavg}"
           event << "**Damage Done:** #{dmgavg} - **Deaths:** #{deathsavg} - **Objective Kills:** #{objkavg}"
           event << ""
-          event << "**Medals"
+          event << "**Medals**"
           event << "**Gold:** #{gmedals} **-** **Silver:** #{smedals} **-** **Bronze:** #{bmedals}"
 
         
