@@ -38,6 +38,7 @@ module ArmoryBot
 	bot.include! Commands::Servers
 	bot.include! Commands::TopPlayed
 	bot.include! Commands::Wins
+	bot.include! Commands::Hero
 
 	bot.run :async
 

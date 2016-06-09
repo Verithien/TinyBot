@@ -66,6 +66,9 @@ module ArmoryBot
           name = name.join(' ')
         end
 
+        if page_not_found == "Page Not Found"
+          event << "Sorry, either no account was found or your account is case sensitive"
+        else
         event << "#{event.user.mention} - **#{name.capitalize} - Average Stats**"
         event << "**Eliminations:**   #{elim}"
         event << "**Damage Done:**    #{dmg}"
@@ -75,6 +78,7 @@ module ArmoryBot
         event << "**Objective Kills:**    #{objkills}"
         event << "**Objective Time:**   #{objtime}"
         event << "**Solo Kills:**   #{solokills}"
+      end
         
       end
     end
