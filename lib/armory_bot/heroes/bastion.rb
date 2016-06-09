@@ -58,7 +58,7 @@ module ArmoryBot
         winperc = data[56]["WinPercentage"]
 
           event << "**#{event.user.mention} - #{name.capitalize} - Bastion**"
-          event << "**Total Stats"
+          event << "**Total Stats**"
           event << "**Recon Kills:** #{recon} - **Sentry Kills:** #{sentry} - **Eliminations:** #{elims}"
           event << "**Final Blows:** #{kbs} - **Damage Done:** #{dmg} - **Weapon Accuracy:** #{wacc}"
           event << "**Games Played:** #{gplayed} - **Games Won:** #{gwon} - **Win Percentage:** #{winperc}"
