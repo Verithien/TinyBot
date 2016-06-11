@@ -86,7 +86,7 @@ module ArmoryBot
         else
           event.respond"""```ruby
 **#{event.user.mention} - #{name.capitalize} - Level #{profile["data"]["level"]}**
-**Games Won:** #{profile["data"]["game"]["wins"]} - **Lost:** #{profile["data"]["game"]["lost"]} - **Win %** #{profile["data"]["game"]["win_percentage"]}
+**Games Won:** #{profile["data"]["games"]["wins"]} - **Lost:** #{profile["data"]["games"]["lost"]} - **Win %** #{profile["data"]["games"]["win_percentage"]}
 #1: **#{one}** - **#{onet}**
 #2: **#{two}** - **#{twot}**
 #3: **#{three}** - **#{threet}**```"""
