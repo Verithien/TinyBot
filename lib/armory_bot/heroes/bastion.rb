@@ -3,6 +3,7 @@ module ArmoryBot
     module Bastion
       extend Discordrb::Commands::CommandContainer
       command(:bastion, bucket: :armory, min_args: 3) do |event, *account, region, platform|
+        break unless event.user.id == 100311929821626368
 
         platform = platform.downcase
 

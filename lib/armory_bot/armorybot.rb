@@ -12,7 +12,9 @@ module ArmoryBot
 	bot.bucket(:dbupdate, limit: 1,
 						time_span: 86400,
 						delay: 1)
-
+	bot.bucket(:overwatch, limit: 1,
+						time_span: 600,
+						delay: 1)
 
 	bot.include! Commands::ItemLevel
 	bot.include! Commands::Summary
@@ -37,7 +39,7 @@ module ArmoryBot
 	bot.include! Commands::Donate
 	bot.include! Commands::Servers
 	bot.include! Commands::TopPlayed
-	bot.include! Commands::Wins
+	bot.include! Commands::Overwatch
 	bot.include! Commands::Bastion
 
 	bot.run :async

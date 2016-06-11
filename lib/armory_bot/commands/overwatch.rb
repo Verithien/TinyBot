@@ -1,8 +1,8 @@
 module ArmoryBot
   module Commands
-    module Wins
+    module Overwatch
       extend Discordrb::Commands::CommandContainer
-      command(:wins, bucket: :armory) do |event, *account, region, platform|
+      command(:overwatch, bucket: :overwatch) do |event, *account, region, platform|
 
         platform = platform.downcase
 
@@ -25,6 +25,7 @@ module ArmoryBot
 
         pc = HTTParty.get("https://playoverwatch.com/en-us/career/#{platform}/#{region}/#{acc}", :verify => false ).parsed_response
         console = HTTParty.get("https://playoverwatch.com/en-us/career/#{platform}/#{acc}", :verify => false ).parsed_response
+        profile = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/profile", :verify => false).parsed_response
 
         if platform == "pc"
           page = pc
@@ -83,10 +84,12 @@ module ArmoryBot
         if page_not_found == "Page Not Found"
           event << "Sorry, either no account was found or your account is case sensitive"
         else
-          event << "**#{event.user.mention} - #{name.capitalize} - Games Won**"
-          event << "#1: **#{one}** - **#{onet}**" 
-          event << "#2: **#{two}** - **#{twot}**"
-          event << "#3: **#{three}** - **#{threet}**"
+          event.respond"""```ruby
+**#{event.user.mention} - #{name.capitalize} - Level #{profile["data"]["level"]}**
+**Games Won:** #{profile["data"]["game"]["wins"]} - **Lost:** #{profile["data"]["game"]["lost"]} - **Win %** #{profile["data"]["game"]["win_percentage"]}
+#1: **#{one}** - **#{onet}**
+#2: **#{two}** - **#{twot}**
+#3: **#{three}** - **#{threet}**```"""
         end
 
       end
