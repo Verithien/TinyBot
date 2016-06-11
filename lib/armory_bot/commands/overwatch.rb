@@ -75,7 +75,7 @@ module ArmoryBot
         page_not_found = pnf[0]
 
         if platform == "pc"
-          name = account.first
+          name = acc
         else
           name = acc.split('%20')
           name = name.join(' ')
@@ -86,7 +86,7 @@ module ArmoryBot
         else
           event.respond"""```ruby
 #{name.capitalize} - Level #{profile["data"]["level"]}
-Games Won: #{profile["data"]["games"]["wins"]} | Lost: #{profile["data"]["games"]["lost"]} | Win % #{profile["data"]["games"]["win_percentage"]}
+Games Won: #{profile["data"]["games"]["wins"]} | Lost: #{profile["data"]["games"]["lost"]} | Win Percentage #{profile["data"]["games"]["win_percentage"]}%
 1: #{one} - #{onet}
 2: #{two} - #{twot}
 3: #{three} - #{threet}```"""
