@@ -58,7 +58,7 @@ module ArmoryBot
           top_won.push(post_name)
         end
 
-        wins.map do |a|
+        herowins.map do |a|
           post_name = a.text
           hero_wins.push(post_name)
         end
