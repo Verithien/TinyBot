@@ -13,7 +13,7 @@ module ArmoryBot
 						time_span: 86400,
 						delay: 1)
 	bot.bucket(:overwatch, limit: 1,
-						time_span: 600,
+						time_span: 300,
 						delay: 1)
 
 	bot.include! Commands::ItemLevel
