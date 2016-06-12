@@ -38,7 +38,6 @@ module ArmoryBot
 	#bot.include! Commands::Update
 	bot.include! Commands::Donate
 	bot.include! Commands::Servers
-	bot.include! Commands::TopPlayed
 	bot.include! Commands::Overwatch
 	bot.include! Commands::Bastion
 
