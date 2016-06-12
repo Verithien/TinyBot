@@ -63,7 +63,6 @@ module ArmoryBot
           pnf.push(post_name)
         end
 
-
         one = won[21]
         two = won[22]
         three = won[23]
@@ -87,9 +86,9 @@ module ArmoryBot
           event.respond"""```ruby
 #{name.capitalize} - Level #{profile["data"]["level"]}
 Games Won: #{profile["data"]["games"]["wins"]} | Lost: #{profile["data"]["games"]["lost"]} | Win Percentage #{profile["data"]["games"]["win_percentage"]}%
-1: #{URI.escape(one)} - #{onet}
-2: #{URI.escape(two)} - #{twot}
-3: #{URI.escape(three)} - #{threet}
+1: #{one} - #{onet}
+2: #{two} - #{twot}
+3: #{three} - #{threet}
 -------------------------------
 
 ```"""
