@@ -109,14 +109,10 @@ module ArmoryBot
           event.respond"""```ruby
 #{name.capitalize} - Level #{profile["data"]["level"]}
 Games Won: #{profile["data"]["games"]["wins"]} | Lost: #{profile["data"]["games"]["lost"]} | Win Percentage #{profile["data"]["games"]["win_percentage"]}%
-1: #{one} - #{win_one}
-2: #{two} - #{win_two}
-3: #{three} - #{win_three}
--------------------------------
-Most Played:
-1: #{top_one} - #{time_one}
-2: #{top_two} - #{time_two}
-3: #{top_three} - #{time_three}```"""
+1: #{one} - #{win_one} || 1: #{top_one} - #{time_one}
+2: #{two} - #{win_two} || 2: #{top_two} - #{time_two}
+3: #{three} - #{win_three} || 3: #{top_three} - #{time_three}
+-------------------------------```"""
         end
 
       end
