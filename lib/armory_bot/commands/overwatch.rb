@@ -89,9 +89,7 @@ Games Won: #{profile["data"]["games"]["wins"]} | Lost: #{profile["data"]["games"
 1: #{one} - #{onet}
 2: #{two} - #{twot}
 3: #{three} - #{threet}
--------------------------------
-
-```"""
+-------------------------------```"""
         end
 
       end
