@@ -112,7 +112,8 @@ Games Won: #{profile["data"]["games"]["wins"]} | Lost: #{profile["data"]["games"
 1: #{one} - #{win_one} || 1: #{top_one} - #{time_one}
 2: #{two} - #{win_two} || 2: #{top_two} - #{time_two}
 3: #{three} - #{win_three} || 3: #{top_three} - #{time_three}
--------------------------------```"""
+-------------------------------
+```"""
         end
 
       end
