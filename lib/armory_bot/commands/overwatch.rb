@@ -38,24 +38,24 @@ module ArmoryBot
 
         parse_page = Nokogiri::HTML(page)
 
-        stats = []
-        playt = []
+        won = []
+        mwins = []
         pnf = []
 
         puts "So far so good"
 
-        topplayed = parse_page.css('.bg-crystal-dark').css('.content-box').css('.content-box').css('.row').css('.row').css('.progress-category').css('.progress-2').css('.title')
-        timeplayed = parse_page.css('.bg-crystal-dark').css('.content-box').css('.content-box').css('.row').css('.row').css('.progress-category').css('.progress-2').css('.description')
+        topwon = parse_page.css('.bg-crystal-dark').css('.content-box').css('.content-box').css('.row').css('.row').css('.progress-category').css('.progress-2').css('.title')
+        wins = parse_page.css('.bg-crystal-dark').css('.content-box').css('.content-box').css('.row').css('.row').css('.progress-category').css('.progress-2').css('.description')
         noacc = parse_page.css('.undefined').css('.page-wrapper').css('.row').css('.u-align-center')
 
-        topplayed.map do |a|
+        topwon.map do |a|
           post_name = a.text
-          stats.push(post_name)
+          won.push(post_name)
         end
 
-        timeplayed.map do |a|
+        wins.map do |a|
           post_name = a.text
-          playt.push(post_name)
+          mwins.push(post_name)
         end
 
         noacc.map do |a|
@@ -64,13 +64,13 @@ module ArmoryBot
         end
 
 
-        one = stats[21]
-        two = stats[22]
-        three = stats[23]
+        one = won[21]
+        two = won[22]
+        three = won[23]
 
-        onet = playt[21]
-        twot = playt[22]
-        threet = playt[23]
+        onet = mwins[21]
+        twot = mwins[22]
+        threet = mwins[23]
 
         page_not_found = pnf[0]
 
@@ -87,9 +87,12 @@ module ArmoryBot
           event.respond"""```ruby
 #{name.capitalize} - Level #{profile["data"]["level"]}
 Games Won: #{profile["data"]["games"]["wins"]} | Lost: #{profile["data"]["games"]["lost"]} | Win Percentage #{profile["data"]["games"]["win_percentage"]}%
-1: #{one} - #{onet}
-2: #{two} - #{twot}
-3: #{three} - #{threet}```"""
+1: #{URI.escape(one)} - #{onet}
+2: #{URI.escape(two)} - #{twot}
+3: #{URI.escape(three)} - #{threet}
+-------------------------------
+
+```"""
         end
 
       end
