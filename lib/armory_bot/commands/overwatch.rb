@@ -50,12 +50,22 @@ module ArmoryBot
         noacc = parse_page.css('.undefined').css('.page-wrapper').css('.row').css('.u-align-center')
         averagestats = parse_page.css('.bg-crystal-dark').css('.content-box').css('.row').css('.row').css('.card-heading')
 
-        topwon.map do |a|
+        heroname.map do |a|
           post_name = a.text
           hero_name.push(post_name)
         end
 
-        herowins.map do |a|
+        herostats.map do |a|
+          post_name = a.text
+          hero_stats.push(post_name)
+        end
+
+        averagestats.map do |a|
+          post_name = a.text
+          average_stats.push(post_name)
+        end
+
+        herostats.map do |a|
           post_name = a.text
           hero_stats.push(post_name)
         end
