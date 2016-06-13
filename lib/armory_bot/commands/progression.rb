@@ -3,12 +3,18 @@ module ArmoryBot
     module Progression
       extend Discordrb::Commands::CommandContainer
       command(:prog, bucket: :armory) do |event, *realm, char, region|
+
         api_key = 'vg25atxufftra3tsx567svh9r8fh79mv'
+
         realm = realm.join('-')
+
         region = region.downcase
+
         puts "PROGRESSION SEARCH"
+
         progus = HTTParty.get("https://us.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=progression&locale=en_US&apikey=#{api_key}", :verify => false ).parsed_response
         progeu = HTTParty.get("https://eu.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=progression&locale=en_GB&apikey=#{api_key}", :verify => false ).parsed_response
+        
         if region == "us"
           prog = progus
         elsif region == "eu"
@@ -16,6 +22,7 @@ module ArmoryBot
         else
           event.respond "Sorry #{event.user.name}, please insert the region US or EU(?help for more info)"
         end
+        
         mychar = prog["progression"]["raids"].find { |r| r["name"] == "Hellfire Citadel" }
         hellass = mychar["bosses"].find { |r| r["name"] == "Hellfire Assault"}
         iron = mychar["bosses"].find { |r| r["name"] == "Iron Reaver" }
@@ -30,6 +37,7 @@ module ArmoryBot
         xhul = mychar["bosses"].find { |r| r["name"] == "Xhul'horac" }
         mann = mychar["bosses"].find { |r| r["name"] == "Mannoroth" }
         archi = mychar["bosses"].find { |r| r["name"] == "Archimonde" }
+        
         event.user.pm("""**#{char.capitalize} - #{realm.capitalize} - #{region.upcase} - Hellfire Citadel Progression**
         **Hellfire Assault**
         LFR: **#{hellass["lfrKills"]}**, Normal: **#{hellass["normalKills"]}**, Heroic: **#{hellass["heroicKills"]}**, Mythic: **#{hellass["mythicKills"]}**

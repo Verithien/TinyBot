@@ -3,14 +3,19 @@ module ArmoryBot
     module GearCheck
       extend Discordrb::Commands::CommandContainer
       command(:gear, bucket: :armory) do |event, *realm, char, region|
+
         wh = '<http://www.wowhead.com/item='
+
         api_key = 'vg25atxufftra3tsx567svh9r8fh79mv'
+
         realm = realm.join('-')
+
         region = region.downcase
+
         dataus = HTTParty.get("https://us.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=items&locale=en_US&apikey=#{api_key}", :verify => false ).parsed_response
         dataeu = HTTParty.get("https://eu.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=items&locale=en_GB&apikey=#{api_key}", :verify => false ).parsed_response
 
-          if region == "us"
+        if region == "us"
           data = dataus
         elsif region == "eu"
           data = dataeu
@@ -18,7 +23,7 @@ module ArmoryBot
           event.respond "Sorry #{event.user.name}, please insert your region US or EU(?help for more info)"
         end
 
-          puts 'CMD: Gear Search'
+        puts 'CMD: Gear Search'
 
         offh = if data["items"]["offHand"] == nil
           "No Off Hand Equipped"
@@ -26,7 +31,7 @@ module ArmoryBot
           "#{data["items"]["offHand"]["itemLevel"]} #{data["items"]["offHand"]["name"]}: #{wh}#{data["items"]["offHand"]["id"]}>"
         end
         
-          if region == "us"
+        if region == "us"
             event.user.pm("""
 **#{char.capitalize} - #{realm.capitalize} - #{region.upcase}**
 Armory: <http://us.battle.net/wow/en/character/#{realm}/#{URI.escape(char)}/advanced>
@@ -71,6 +76,7 @@ Average Item Level: **#{data["items"]["averageItemLevel"]}**. Equipped Item Leve
           else
             nil
           end
+          
       end
     end
   end

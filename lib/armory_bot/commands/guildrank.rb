@@ -9,8 +9,11 @@ module ArmoryBot
         else
           info = info.first
         end
+
         info = info.split('-')
+
         realm = info.at(0)
+        
         guild = info.at(1)
         
         if realm.include? "'"

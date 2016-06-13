@@ -2,7 +2,7 @@ module ArmoryBot
   module Commands
     module Overwatch
       extend Discordrb::Commands::CommandContainer
-      command(:overwatch, bucket: :overwatch) do |event, *account, region, platform|
+        command(:overwatch, bucket: :overwatch) do |event, *account, region, platform|
 
         platform = platform.downcase
 
@@ -131,7 +131,6 @@ Objective Time: #{objtime}
 Solo Kills: #{solokills}
 ```"""
         end
-
       end
     end
   end

@@ -3,12 +3,17 @@ module ArmoryBot
     module Stats
       extend Discordrb::Commands::CommandContainer
      command(:stats, bucket: :armory) do |event, *realm, char, region|
-      realm = realm.join('-')
-      api_key = 'vg25atxufftra3tsx567svh9r8fh79mv'
-statsus = HTTParty.get("https://us.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=stats&locale=en_US&apikey=#{api_key}", :verify => false ).parsed_response
-talentsus = HTTParty.get("https://us.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=talents&locale=en_US&apikey=#{api_key}", :verify => false ).parsed_response
-statseu = HTTParty.get("https://eu.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=stats&locale=en_GB&apikey=#{api_key}", :verify => false ).parsed_response
-talentseu = HTTParty.get("https://eu.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=talents&locale=en_GB&apikey=#{api_key}", :verify => false ).parsed_response
+
+        realm = realm.join('-')
+
+        api_key = 'vg25atxufftra3tsx567svh9r8fh79mv'
+
+        statsus = HTTParty.get("https://us.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=stats&locale=en_US&apikey=#{api_key}", :verify => false ).parsed_response
+        talentsus = HTTParty.get("https://us.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=talents&locale=en_US&apikey=#{api_key}", :verify => false ).parsed_response
+        
+        statseu = HTTParty.get("https://eu.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=stats&locale=en_GB&apikey=#{api_key}", :verify => false ).parsed_response
+        talentseu = HTTParty.get("https://eu.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=talents&locale=en_GB&apikey=#{api_key}", :verify => false ).parsed_response
+
         if region == "us"
           data = statsus
         elsif region == "eu"
@@ -16,6 +21,7 @@ talentseu = HTTParty.get("https://eu.api.battle.net/wow/character/#{realm}/#{URI
         else
           event.respond "Sorry #{event.user.name}, please insert your region US or EU(?help for more info)"
         end
+
         if region == "us"
           data1 = talentsus
         elsif region == "eu"
@@ -23,22 +29,26 @@ talentseu = HTTParty.get("https://eu.api.battle.net/wow/character/#{realm}/#{URI
         else
           event.respond "Sorry #{event.user.name}, please insert your region US or EU(?help for more info)"
         end
-cclass = {
-          "Z" => "Warrior", "b" => "Paladin", "Y" => "Hunter",       
-          "c" => "Rogue", "X" => "Priest", "d" => "Death Knight",
-          "W" => "Shaman", "e" => "Mage", "V" => "Warlock",
-          "f" => "Monk", "U" => "Druid"
-        }
-specs = data1["talents"].find { |r| r["selected"] == true }
-spec = specs["spec"]["name"]
-armor = data["stats"]["armor"]
-armor103 = armor + 5234.0
-armor100 = armor + 3610.0
-armora = armor / armor103
-armorb = armor / armor100
-armordr103 = armora * 100
-armordr100 = armorb * 100
-puts "STATS BITCH"
+
+        cclass = {
+                  "Z" => "Warrior", "b" => "Paladin", "Y" => "Hunter",       
+                  "c" => "Rogue", "X" => "Priest", "d" => "Death Knight",
+                  "W" => "Shaman", "e" => "Mage", "V" => "Warlock",
+                  "f" => "Monk", "U" => "Druid"
+                }
+
+        specs = data1["talents"].find { |r| r["selected"] == true }
+        spec = specs["spec"]["name"]
+
+        armor = data["stats"]["armor"]
+        armor103 = armor + 5234.0
+        armor100 = armor + 3610.0
+        armora = armor / armor103
+        armorb = armor / armor100
+        armordr103 = armora * 100
+        armordr100 = armorb * 100
+        
+        puts "STATS BITCH"
 
         cchar = cclass[data["calcClass"]]
        

@@ -1,17 +1,21 @@
 module ArmoryBot
 	bot = Bot.new(token: 'MTY5OTgyNzQyMTI4MzYxNDgy.CfCjAg.SDlVm1DTYoQVWdaSqpCRpfHz3gM', 
-				application_id: '169952497690083328', 
-				prefix: '?', advanced_functionality: false)
+				  application_id: '169952497690083328', 
+				  prefix: '?', 
+				  advanced_functionality: false)
 
 	bot.bucket(:armory, limit: 4,
 						time_span: 60,
 						delay: 1)
+
 	bot.bucket(:fight, limit: 1,
 						time_span: 600,
 						delay: 1)
+
 	bot.bucket(:dbupdate, limit: 1,
 						time_span: 86400,
 						delay: 1)
+
 	bot.bucket(:overwatch, limit: 1,
 						time_span: 300,
 						delay: 1)
@@ -33,7 +37,6 @@ module ArmoryBot
 	bot.include! Commands::Game
 	bot.include! Commands::Glory
 	bot.include! Commands::Evaluation
-	bot.include! Commands::OAverage
 	#bot.include! Commands::Register
 	#bot.include! Commands::Update
 	bot.include! Commands::Donate
