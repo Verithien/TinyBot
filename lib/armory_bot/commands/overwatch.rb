@@ -38,39 +38,26 @@ module ArmoryBot
 
         parse_page = Nokogiri::HTML(page)
 
-        top_won = []
-        hero_wins = []
+        hero_name = []
+        hero_stats = []
         no_acc = []
-        top_played = []
-        time_played = []
+        average_stats = []
 
         puts "So far so good"
 
-        topwon = parse_page.css('.bg-crystal-dark').css('.content-box').css('.content-box').css('.row').css('.row').css('.progress-category').css('.progress-2').css('.title')
-        herowins = parse_page.css('.bg-crystal-dark').css('.content-box').css('.content-box').css('.row').css('.row').css('.progress-category').css('.progress-2').css('.description')
+        heroname = parse_page.css('.bg-crystal-dark').css('.content-box').css('.content-box').css('.row').css('.row').css('.progress-category').css('.progress-2').css('.title')
+        herostats = parse_page.css('.bg-crystal-dark').css('.content-box').css('.content-box').css('.row').css('.row').css('.progress-category').css('.progress-2').css('.description')
         noacc = parse_page.css('.undefined').css('.page-wrapper').css('.row').css('.u-align-center')
-        topplayed = parse_page.css('.bg-crystal-dark').css('.content-box').css('.content-box').css('.row').css('.row').css('.progress-category').css('.progress-2').css('.title')
-        timeplayed = parse_page.css('.bg-crystal-dark').css('.content-box').css('.content-box').css('.row').css('.row').css('.progress-category').css('.progress-2').css('.description')
-
+        averagestats = parse_page.css('.bg-crystal-dark').css('.content-box').css('.row').css('.row').css('.card-heading')
 
         topwon.map do |a|
           post_name = a.text
-          top_won.push(post_name)
+          hero_name.push(post_name)
         end
 
         herowins.map do |a|
           post_name = a.text
-          hero_wins.push(post_name)
-        end
-
-        topplayed.map do |a|
-          post_name = a.text
-          top_played.push(post_name)
-        end
-
-        timeplayed.map do |a|
-          post_name = a.text
-          time_played.push(post_name)
+          hero_stats.push(post_name)
         end
 
         noacc.map do |a|
@@ -78,21 +65,30 @@ module ArmoryBot
           no_acc.push(post_name)
         end
 
-        one = top_won[21]
-        two = top_won[22]
-        three = top_won[23]
+        one = hero_name[21]
+        two = hero_name[22]
+        three = hero_name[23]
 
-        win_one = hero_wins[21]
-        win_two = hero_wins[22]
-        win_three = hero_wins[23]
+        win_one = hero_stats[21]
+        win_two = hero_stats[22]
+        win_three = hero_stats[23]
 
-        top_one = top_played[0]
-        top_two = top_played[1]
-        top_three = top_played[2]
+        top_one = hero_name[0]
+        top_two = hero_name[1]
+        top_three = hero_name[2]
 
-        time_one = time_played[0]
-        time_two = time_played[1]
-        time_three = time_played[2]
+        time_one = hero_stats[0]
+        time_two = hero_stats[1]
+        time_three = hero_stats[2]
+
+        elim = average_stats[0]
+        dmg = average_stats[1]
+        deaths = average_stats[2]
+        final = average_stats[3]
+        healing = average_stats[4]
+        objkills = average_stats[5]
+        objtime = average_stats[6]
+        solokills = average_stats[7]
 
         page_not_found = no_acc[0]
 
@@ -106,13 +102,23 @@ module ArmoryBot
         if page_not_found == "Page Not Found"
           event << "Sorry, either no account was found or your account is case sensitive"
         else
-          event.respond"""```ruby
+          event.respond"""#{event.user.mention}
+```ruby
 #{name.capitalize} - Level #{profile["data"]["level"]}
 Games Won: #{profile["data"]["games"]["wins"]} | Lost: #{profile["data"]["games"]["lost"]} | Win Percentage #{profile["data"]["games"]["win_percentage"]}%
 1: #{one} - #{win_one} | 1: #{top_one} - #{time_one}
 2: #{two} - #{win_two} | 2: #{top_two} - #{time_two}
 3: #{three} - #{win_three} | 3: #{top_three} - #{time_three}
 -------------------------------
+Average Stats
+Eliminations: #{elim}
+Damage Done: #{dmg}
+Deaths: #{deaths}
+Final Blows: #{final}
+Healing Done: #{healing}
+Objective Kills: #{objkills}
+Objective Time: #{objtime}
+Solo Kills: #{solokills}
 ```"""
         end
 
