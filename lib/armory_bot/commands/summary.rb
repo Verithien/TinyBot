@@ -89,11 +89,11 @@ module ArmoryBot
             event << "They're in the guild **#{data2["guild"]["name"]}**, have collected **#{data3["mounts"]["numCollected"]}** Mounts, and **#{data4["pets"]["numCollected"]}** Battle Pets."
               if region == "us"
                 event << "Armory: <http://us.battle.net/wow/en/character/#{realm}/#{URI.escape(char)}/advanced>"
-          elsif region == "eu"  
-            event << "Armory: <http://eu.battle.net/wow/en/character/#{realm}/#{URI.escape(char)}/advanced>"
-          else
-            nil
-          end
+              elsif region == "eu"  
+                event << "Armory: <http://eu.battle.net/wow/en/character/#{realm}/#{URI.escape(char)}/advanced>"
+              else
+                nil
+              end
         end
       end
     end
