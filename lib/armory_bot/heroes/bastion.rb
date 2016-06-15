@@ -38,10 +38,10 @@ module ArmoryBot
         reconavg = data["ReconKills-Average"]
         tankavg = data["TankKills-Average"]
         elims = data["Eliminations"]
-        kbs = data["FinalBlows"]
+        objk = data["ObjectiveKills"]
+        objt = data["ObjectiveTime"]
         dmg = data["DamageDone"]
         wacc = data["WeaponAccuracy"]
-        waccm = data["WeaponAccuracy-BestinGame"]
         ksm = data["KillStreak-Best"]
         dmgm = data["DamageDone-MostinGame"]
         elimsm = data["Eliminations-MostinGame"]
@@ -73,7 +73,7 @@ Tank Kills: #{tank} | Most in Game: #{tankm} | Average: #{tankavg}
 
 - Total Stats -
 Eliminations: #{elims} | Damage Done: #{dmg} | Deaths: #{deaths}
-Objective Kills: #{objk} | Objective Time: #{objt} | Solo Kills: #{solokill}
+Objective Kills: #{objk} | Best Killstreak: #{ksm} | Solo Kills: #{solokill}
 
 - Average Stats -
 Eliminations: #{elimsavg} | Damage Done: #{dmgavg} | Deaths: #{deathsavg}
