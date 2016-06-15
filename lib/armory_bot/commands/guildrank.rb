@@ -51,7 +51,7 @@ module ArmoryBot
         progwor3 = progwor2.split(':')
         world_rank = progwor3.at(1)
 
-        puts "Getting Guild Ranking"
+        puts "#{event.server.name} - Getting Guild Ranking"
 
     event.respond("""**#{guild.upcase} - #{realm.upcase} - #{region.upcase}**
 **Server Rank:** #{server_rank}

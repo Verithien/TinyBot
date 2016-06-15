@@ -1,8 +1,8 @@
 module ArmoryBot
   module Commands
-    module Dva
+    module Hanzo
       extend Discordrb::Commands::CommandContainer
-      command(:dva, bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
+      command(:hanzo, bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
 
         platform = platform.downcase
 
@@ -18,7 +18,7 @@ module ArmoryBot
           acc = acc.downcase
         end
 
-        data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/DVa/", :verify => false ).parsed_response
+        data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/Hanzo/", :verify => false ).parsed_response
 
         if platform == "pc"
           name = account.first
@@ -27,12 +27,13 @@ module ArmoryBot
           name = name.join(' ')
         end
 
-        mech = data["MechsCalled"]
-        mech_average = data["MechsCalled-Average"]
-        mech_most = data["MechsCalled-MostinGame"]
-        damage_blocked = data["DamageBlocked"]
-        most_blocked = data["DamageBlocked-MostinGame"]
-        average_blocked = data["DamageBlocked-Average"]
+        recon_mig = data["ReconAssists-MostinGame"]
+        ds_kills = data["DragonstrikeKills"]
+        ds_average = data["DragonstrikeKills-Average"]
+        ds_most = data["DragonstrikeKills-MostinGame"]
+        scatter_kills = data["ScatterArrowKills"]
+        scatter_mig = data["ScatterArrowKills-MostinGame"]
+        scatter_average = data["ScatterArrowKills-Average"]
 
         elims = data["Eliminations"]
         objk = data["ObjectiveKills"]
@@ -61,11 +62,11 @@ module ArmoryBot
         winperc = data["WinPercentage"]
         cards = data["Cards"]
 
-          event.respond """#{event.user.mention} - #{name.capitalize} - D.Va
+          event.respond """#{event.user.mention} - #{name.capitalize} - Hanzo
 ```ruby
 - Hero Specific -
-Mechs Called: #{mech} | Most in Game: #{mech_most} | Average: #{mech_average}
-Damage Blocked: #{damage_blocked} | Most in Game: #{most_blocked} | Average: #{average_blocked}
+Dragonstrike Kills: #{dss} | Kills: #{ds_kills} | Most in Game: #{ds_most} | Average: #{ds_average}
+Scatter Arrow Kills: #{scatter_kills} | Most in Game: #{scatter_mig} | Average: #{scatter_average}
 
 - Total Stats -
 Eliminations: #{elims} | Damage Done: #{dmg} | Deaths: #{deaths}
@@ -80,7 +81,7 @@ Time Played: #{playedt} | Games Won: #{gwon} | Win Percentage: #{winperc}
 Gold: #{gmedals} | Silver: #{smedals} | Bronze: #{bmedals} | Cards: #{cards}
 ```"""
 
-        puts "#{event.server.name} - D.Va"
+        puts "#{event.server.name} - Hanzo"
       end
     end
   end

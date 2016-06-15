@@ -23,7 +23,7 @@ module ArmoryBot
           event.respond "Sorry #{event.user.name}, please insert your region US or EU(?help for more info)"
         end
 
-        puts 'CMD: Gear Search'
+        puts '#{event.server.name} - CMD: Gear Search'
 
         offh = if data["items"]["offHand"] == nil
           "No Off Hand Equipped"

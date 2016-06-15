@@ -1,8 +1,8 @@
 module ArmoryBot
   module Commands
-    module Dva
+    module Junkrat
       extend Discordrb::Commands::CommandContainer
-      command(:dva, bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
+      command(:junkrat, bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
 
         platform = platform.downcase
 
@@ -18,7 +18,7 @@ module ArmoryBot
           acc = acc.downcase
         end
 
-        data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/DVa/", :verify => false ).parsed_response
+        data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/Junkrat/", :verify => false ).parsed_response
 
         if platform == "pc"
           name = account.first
@@ -27,12 +27,11 @@ module ArmoryBot
           name = name.join(' ')
         end
 
-        mech = data["MechsCalled"]
-        mech_average = data["MechsCalled-Average"]
-        mech_most = data["MechsCalled-MostinGame"]
-        damage_blocked = data["DamageBlocked"]
-        most_blocked = data["DamageBlocked-MostinGame"]
-        average_blocked = data["DamageBlocked-Average"]
+        RIP_kills = data["RIP-TireKills"]
+        RIP_most = data["RIP-TireKills-MostinGame"]
+        trapped = data["EnemiesTrapped"]
+        trapped_mig = data["EnemiesTrapped-MostinGame"]
+        trapped_minute = data["EnemiesTrappedaMinute"]
 
         elims = data["Eliminations"]
         objk = data["ObjectiveKills"]
@@ -61,11 +60,11 @@ module ArmoryBot
         winperc = data["WinPercentage"]
         cards = data["Cards"]
 
-          event.respond """#{event.user.mention} - #{name.capitalize} - D.Va
+          event.respond """#{event.user.mention} - #{name.capitalize} - Junkrat
 ```ruby
 - Hero Specific -
-Mechs Called: #{mech} | Most in Game: #{mech_most} | Average: #{mech_average}
-Damage Blocked: #{damage_blocked} | Most in Game: #{most_blocked} | Average: #{average_blocked}
+RIP Tire Kills: #{RIP_kills} | Most in Game: #{RIP_most}
+Enemies Trapped: #{trapped} | Most in Game: #{trapped_mig} | Enemies Trapped Per Minute: #{trapped_minute}
 
 - Total Stats -
 Eliminations: #{elims} | Damage Done: #{dmg} | Deaths: #{deaths}
@@ -80,7 +79,7 @@ Time Played: #{playedt} | Games Won: #{gwon} | Win Percentage: #{winperc}
 Gold: #{gmedals} | Silver: #{smedals} | Bronze: #{bmedals} | Cards: #{cards}
 ```"""
 
-        puts "#{event.server.name} - D.Va"
+        puts "#{event.server.name} - Junkrat"
       end
     end
   end

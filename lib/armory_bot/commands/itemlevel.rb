@@ -21,6 +21,8 @@ module ArmoryBot
             event.respond "Sorry #{event.user.name}, please insert your region US or EU(?help for more info)"
         end
 
+        puts "#{event.server.name} - ilvl"
+
         event.respond "#{char.capitalize} - #{realm.capitalize} - #{region.upcase} has an average ilvl of **#{rdata["items"]["averageItemLevel"]}.** Equipped: **#{rdata["items"]["averageItemLevelEquipped"]}.**"
       
       end  

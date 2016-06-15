@@ -22,6 +22,8 @@ module ArmoryBot
         else
           event.respond "Sorry #{event.user.name}, please insert the region US or EU(?help for more info)"
         end
+
+        puts "#{event.server.name} - Char Prog"
         
         mychar = prog["progression"]["raids"].find { |r| r["name"] == "Hellfire Citadel" }
         hellass = mychar["bosses"].find { |r| r["name"] == "Hellfire Assault"}

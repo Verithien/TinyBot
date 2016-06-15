@@ -4,7 +4,7 @@ module ArmoryBot
       extend Discordrb::Commands::CommandContainer
       command(:tals, bucket: :armory) do |event, *realm, char, region|
 
-        puts 'TALENT CHECK IN AISLE 9'
+        puts '#{event.server.name} - TALENT CHECK IN AISLE 9'
 
         realm = realm.join('-')
         region = region.downcase

@@ -41,7 +41,7 @@ module ArmoryBot
     		rbgw = rbg["seasonWon"]
     		rbgl = rbg["seasonLost"]
 
-        puts "PvP"
+        puts "#{event.server.name} - PvP"
 
 		    event.respond("""**#{char.capitalize} - #{realm.capitalize} - #{region.upcase}**
 **2v2 Rating:** #{arena2v2r}  **Wins:** #{arena2v2w}  **Losses:** #{arena2v2l}

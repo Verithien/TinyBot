@@ -48,7 +48,7 @@ module ArmoryBot
         armordr103 = armora * 100
         armordr100 = armorb * 100
         
-        puts "STATS BITCH"
+        puts "#{event.server.name} - STATS BITCH"
 
         cchar = cclass[data["calcClass"]]
        

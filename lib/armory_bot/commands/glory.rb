@@ -25,7 +25,7 @@ module ArmoryBot
 
         wolves = wolf["mounts"]["collected"].find { |r| r["name"] == "Infernal Direwolf" }
 
-        puts "wolf CHECK"
+        puts "#{event.server.name} - wolf CHECK"
 
         wolves ? "**#{char.capitalize}** has the **Infernal Direwolf** mount from **Glory of the Hellfire Raider**" : "**#{char.capitalize}** does not have the **Infernal Direwolf** yet :("
      

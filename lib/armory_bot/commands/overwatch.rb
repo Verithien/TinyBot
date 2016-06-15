@@ -43,7 +43,7 @@ module ArmoryBot
         hero_stats = []
         no_acc = []
 
-        puts "So far so good"
+        puts "#{event.server.name} - So far so good"
 
         heroname = parse_page.css('.bg-crystal-dark').css('.content-box').css('.content-box').css('.row').css('.row').css('.progress-category').css('.progress-2').css('.title')
         herostats = parse_page.css('.bg-crystal-dark').css('.content-box').css('.content-box').css('.row').css('.row').css('.progress-category').css('.progress-2').css('.description')
@@ -97,6 +97,10 @@ module ArmoryBot
 
         if page_not_found == "Page Not Found"
           event << "Sorry, either no account was found or your account is case sensitive"
+        elsif data["statusCode"] == 500
+          event << "Sorry, you inputted everything correctly, just seems to be an error while retrieving your account. :( "
+        elsif data["statusCode"] == 404
+          event << "Sorry, no account was found with that name."
         else
           event.respond"""#{event.user.mention}
 ```ruby
@@ -116,6 +120,8 @@ Objective Kills: #{stats["ObjectiveKills-Average"]}
 Objective Time: #{stats["ObjectiveTime-Average"]}
 Solo Kills: #{stats["SoloKills-Average"]}
 ```"""
+
+          
         end
       end
     end

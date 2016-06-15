@@ -28,7 +28,7 @@ module ArmoryBot
           realm = realm.join('-')
           region = region.downcase
 
-          puts 'CMD: Character search'
+          puts '#{event.server.name} - CMD: Character search'
           dataus = HTTParty.get("https://us.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=appearance&locale=en_US&apikey=#{api_key}", :verify => false ).parsed_response
           data2us = HTTParty.get("https://us.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=guild&locale=en_US&apikey=#{api_key}", :verify => false ).parsed_response
           data3us = HTTParty.get("https://us.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=mounts&locale=en_US&apikey=#{api_key}", :verify => false ).parsed_response

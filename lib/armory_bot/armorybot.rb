@@ -47,6 +47,26 @@ module ArmoryBot
 	bot.include! Commands::Bastion
 	bot.include! Commands::Dva
 	bot.include! Commands::Genji
+	bot.include! Commands::Hanzo
+	bot.include! Commands::Junkrat
+	#bot.include! Commands::Lucio
+	#bot.include! Commands::Mccree
+	#bot.include! Commands::Mei
+	#bot.include! Commands::Mercy
+	#bot.include! Commands::Pharah
+	#bot.include! Commands::Reaper
+	#bot.include! Commands::Reinhardt
+	#bot.include! Commands::Roadhog
+	#bot.include! Commands::Soldier76
+	#bot.include! Commands::Symmetra
+	#bot.include! Commands::Torbjorn
+	#bot.include! Commands::Tracer
+	#bot.include! Commands::Widowmaker
+	#bot.include! Commands::Winston
+	#bot.include! Commands::Zarya
+	#bot.include! Commands::Zenyatta
+
+
 
 	bot.run :async
 

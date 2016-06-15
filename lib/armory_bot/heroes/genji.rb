@@ -80,6 +80,8 @@ Objective Kills: #{objkavg} | Objective Time: #{objtavg} | Solo Kills: #{solokil
 Time Played: #{playedt} | Games Won: #{gwon} | Win Percentage: #{winperc}
 Gold: #{gmedals} | Silver: #{smedals} | Bronze: #{bmedals} | Cards: #{cards}
 ```"""
+
+        puts "#{event.server.name} - Genji"
       end
     end
   end

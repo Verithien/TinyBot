@@ -24,7 +24,7 @@ module ArmoryBot
 
         myrealm = rstatus["realms"].find { |r| r["slug"] == realm1 }
 
-        puts "Getting Realm Status"
+        puts "#{event.server.name} Getting Realm Status"
 
         myrealm["status"] ? "Online" : "Offline"
       end
