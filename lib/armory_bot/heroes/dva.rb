@@ -1,8 +1,8 @@
 module ArmoryBot
   module Commands
-    module Bastion
+    module Dva
       extend Discordrb::Commands::CommandContainer
-      command(:bastion, bucket: :armory, min_args: 3) do |event, *account, region, platform|
+      command(:dva, bucket: :armory, min_args: 3) do |event, *account, region, platform|
         break unless event.user.id == 100311929821626368
 
         platform = platform.downcase
@@ -19,7 +19,7 @@ module ArmoryBot
           acc = acc.downcase
         end
 
-        data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/Bastion/", :verify => false ).parsed_response
+        data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/DVa/", :verify => false ).parsed_response
 
         if platform == "pc"
           name = account.first
@@ -28,16 +28,13 @@ module ArmoryBot
           name = name.join(' ')
         end
 
-        recon = data["ReconKills"]
-        sentry = data["SentryKills"]
-        tank = data["TankKills"]
-        sentrym = data["SentryKills-MostinGame"]
-        reconm = data["ReconKills-MostinGame"]
-        tankm = data["TankKills-MostinGame"]
-        sentryavg = data["SentryKills-Average"]
-        reconavg = data["ReconKills-Average"]
-        tankavg = data["TankKills-Average"]
-        
+        mech = data["MechsCalled"]
+        mech_average = data["MechsCalled-Average"]
+        mech_most = data["MechsCalled-MostinGame"]
+        damage_blocked = data["DamageBlocked"]
+        most_blocked = data["DamageBlocked-MostinGame"]
+        average_blocked = data["DamageBlocked-Average"]
+
         elims = data["Eliminations"]
         objk = data["ObjectiveKills"]
         objt = data["ObjectiveTime"]
@@ -68,9 +65,8 @@ module ArmoryBot
           event.respond """#{event.user.mention} - #{name.capitalize} - Bastion
 ```ruby
 - Hero Specific -
-Recon Kills: #{recon} | Most in Game: #{reconm} | Average: #{reconavg}
-Sentry Kills: #{sentry} | Most in Game: #{sentrym} | Average: #{sentryavg}
-Tank Kills: #{tank} | Most in Game: #{tankm} | Average: #{tankavg}
+Mechs Called: #{mech} | Most in Game: #{mech_most} | Average: #{mech_average}
+Damage Blocked: #{damage_blocked} | Most in Game: #{most_blocked} | Average: #{average_blocked}
 
 - Total Stats -
 Eliminations: #{elims} | Damage Done: #{dmg} | Deaths: #{deaths}

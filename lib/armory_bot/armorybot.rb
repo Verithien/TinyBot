@@ -16,7 +16,7 @@ module ArmoryBot
 						time_span: 86400,
 						delay: 1)
 
-	bot.bucket(:overwatch, limit: 1,
+	bot.bucket(:overwatch, limit: 3,
 						time_span: 300,
 						delay: 1)
 
@@ -42,7 +42,10 @@ module ArmoryBot
 	bot.include! Commands::Donate
 	bot.include! Commands::Servers
 	bot.include! Commands::Overwatch
+
+	#heroes
 	bot.include! Commands::Bastion
+	bot.include! Commands::Dva
 
 	bot.run :async
 
