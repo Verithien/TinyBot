@@ -2,8 +2,7 @@ module ArmoryBot
   module Commands
     module Dva
       extend Discordrb::Commands::CommandContainer
-      command(:dva, bucket: :armory, min_args: 3) do |event, *account, region, platform|
-        break unless event.user.id == 100311929821626368
+      command(:dva, bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
 
         platform = platform.downcase
 
@@ -80,7 +79,6 @@ Objective Kills: #{objkavg} | Objective Time: #{objtavg} | Solo Kills: #{solokil
 Time Played: #{playedt} | Games Won: #{gwon} | Win Percentage: #{winperc}
 Gold: #{gmedals} | Silver: #{smedals} | Bronze: #{bmedals} | Cards: #{cards}
 ```"""
-
       end
     end
   end

@@ -1,8 +1,8 @@
 module ArmoryBot
   module Commands
-    module Bastion
+    module Genji
       extend Discordrb::Commands::CommandContainer
-      command(:bastion, bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
+      command(:genji, bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
 
         platform = platform.downcase
 
@@ -18,7 +18,7 @@ module ArmoryBot
           acc = acc.downcase
         end
 
-        data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/Bastion/", :verify => false ).parsed_response
+        data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/Genji/", :verify => false ).parsed_response
 
         if platform == "pc"
           name = account.first
@@ -27,15 +27,13 @@ module ArmoryBot
           name = name.join(' ')
         end
 
-        recon = data["ReconKills"]
-        sentry = data["SentryKills"]
-        tank = data["TankKills"]
-        sentrym = data["SentryKills-MostinGame"]
-        reconm = data["ReconKills-MostinGame"]
-        tankm = data["TankKills-MostinGame"]
-        sentryavg = data["SentryKills-Average"]
-        reconavg = data["ReconKills-Average"]
-        tankavg = data["TankKills-Average"]
+        dbs = data["Dragonblades"]
+        db_kills = data["DragonbladeKills"]
+        db_average = data["DragonbladeKills-Average"]
+        db_most = data["DragonbladeKills-MostinGame"]
+        damage_reflected = data["DamageReflected"]
+        most_reflected = data["DamageReflected-MostinGame"]
+        average_reflected = data["DamageReflected-Average"]
 
         elims = data["Eliminations"]
         objk = data["ObjectiveKills"]
@@ -64,12 +62,11 @@ module ArmoryBot
         winperc = data["WinPercentage"]
         cards = data["Cards"]
 
-          event.respond """#{event.user.mention} - #{name.capitalize} - Bastion
+          event.respond """#{event.user.mention} - #{name.capitalize} - Genji
 ```ruby
 - Hero Specific -
-Recon Kills: #{recon} | Most in Game: #{reconm} | Average: #{reconavg}
-Sentry Kills: #{sentry} | Most in Game: #{sentrym} | Average: #{sentryavg}
-Tank Kills: #{tank} | Most in Game: #{tankm} | Average: #{tankavg}
+Dragonblades: #{dbs} | Kills: #{db_kills} | Most in Game: #{db_most} | Average: #{db_average}
+Damage Reflected: #{damage_reflected} | Most in Game: #{most_reflected} | Average: #{average_reflected}
 
 - Total Stats -
 Eliminations: #{elims} | Damage Done: #{dmg} | Deaths: #{deaths}
@@ -83,7 +80,6 @@ Objective Kills: #{objkavg} | Objective Time: #{objtavg} | Solo Kills: #{solokil
 Time Played: #{playedt} | Games Won: #{gwon} | Win Percentage: #{winperc}
 Gold: #{gmedals} | Silver: #{smedals} | Bronze: #{bmedals} | Cards: #{cards}
 ```"""
-
       end
     end
   end

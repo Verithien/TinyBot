@@ -46,6 +46,7 @@ module ArmoryBot
 	#heroes
 	bot.include! Commands::Bastion
 	bot.include! Commands::Dva
+	bot.include! Commands::Genji
 
 	bot.run :async
 
