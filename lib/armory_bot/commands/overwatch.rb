@@ -25,6 +25,7 @@ module ArmoryBot
 
         pc = HTTParty.get("https://playoverwatch.com/en-us/career/#{platform}/#{region}/#{acc}", :verify => false ).parsed_response
         console = HTTParty.get("https://playoverwatch.com/en-us/career/#{platform}/#{acc}", :verify => false ).parsed_response
+        stats = HTTParty.get("https://api.lootbox.eu/pc/us/Chuey-1652/allHeroes/", :verify => false ).parsed_response
         profile = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/profile", :verify => false).parsed_response
 
         if platform == "pc"
@@ -41,7 +42,6 @@ module ArmoryBot
         hero_name = []
         hero_stats = []
         no_acc = []
-        average_stats = []
 
         puts "So far so good"
 
@@ -58,11 +58,6 @@ module ArmoryBot
         herostats.map do |a|
           post_name = a.text
           hero_stats.push(post_name)
-        end
-
-        averagestats.map do |a|
-          post_name = a.text
-          average_stats.push(post_name)
         end
 
         herostats.map do |a|
@@ -91,15 +86,6 @@ module ArmoryBot
         time_two = hero_stats[1]
         time_three = hero_stats[2]
 
-        elim = average_stats[0]
-        dmg = average_stats[1]
-        deaths = average_stats[2]
-        final = average_stats[3]
-        healing = average_stats[4]
-        objkills = average_stats[5]
-        objtime = average_stats[6]
-        solokills = average_stats[7]
-
         page_not_found = no_acc[0]
 
         if platform == "pc"
@@ -121,14 +107,14 @@ Games Won: #{profile["data"]["games"]["wins"]} | Lost: #{profile["data"]["games"
 3: #{three} - #{win_three} | 3: #{top_three} - #{time_three}
 -------------------------------
 Average Stats
-Eliminations: #{elim}
-Damage Done: #{dmg}
-Deaths: #{deaths}
-Final Blows: #{final}
-Healing Done: #{healing}
-Objective Kills: #{objkills}
-Objective Time: #{objtime}
-Solo Kills: #{solokills}
+Eliminations: #{stats["Eliminations-Average"]}
+Damage Done: #{stats["DamageDone-Average"]}
+Deaths: #{stats["Deaths-Average"]}
+Final Blows: #{stats["FinalBlows-Average"]}
+Healing Done: #{stats["HealingDone-Average"]}
+Objective Kills: #{stats["ObjectiveKills-Average"]}
+Objective Time: #{stats["ObjectiveTime-Average"]}
+Solo Kills: #{stats["SoloKills-Average"]}
 ```"""
         end
       end
