@@ -62,6 +62,11 @@ module ArmoryBot
         winperc = data["WinPercentage"]
         cards = data["Cards"]
 
+        if data["statusCode"] == 500
+          event << "Sorry, you inputted everything correctly, just seems to be an error while retrieving your account. :( "
+        elsif data["statusCode"] == 404
+          event << "Sorry, no account was found with that name."
+        else
           event.respond """#{event.user.mention} - #{name.capitalize} - Hanzo
 ```ruby
 - Hero Specific -
@@ -80,7 +85,7 @@ Objective Kills: #{objkavg} | Objective Time: #{objtavg} | Solo Kills: #{solokil
 Time Played: #{playedt} | Games Won: #{gwon} | Win Percentage: #{winperc}
 Gold: #{gmedals} | Silver: #{smedals} | Bronze: #{bmedals} | Cards: #{cards}
 ```"""
-
+        end
         puts "#{event.server.name} - Hanzo"
       end
     end
