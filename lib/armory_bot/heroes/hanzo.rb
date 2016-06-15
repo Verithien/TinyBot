@@ -70,7 +70,7 @@ module ArmoryBot
           event.respond """#{event.user.mention} - #{name.capitalize} - Hanzo
 ```ruby
 - Hero Specific -
-Dragonstrike Kills: #{dss} | Kills: #{ds_kills} | Most in Game: #{ds_most} | Average: #{ds_average}
+Dragonstrike Kills: #{ds_kills} | Most in Game: #{ds_most} | Average: #{ds_average}
 Scatter Arrow Kills: #{scatter_kills} | Most in Game: #{scatter_mig} | Average: #{scatter_average}
 
 - Total Stats -
