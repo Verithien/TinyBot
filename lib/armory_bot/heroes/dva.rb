@@ -62,7 +62,7 @@ module ArmoryBot
         winperc = data["WinPercentage"]
         cards = data["Cards"]
 
-          event.respond """#{event.user.mention} - #{name.capitalize} - Bastion
+          event.respond """#{event.user.mention} - #{name.capitalize} - D.Va
 ```ruby
 - Hero Specific -
 Mechs Called: #{mech} | Most in Game: #{mech_most} | Average: #{mech_average}
