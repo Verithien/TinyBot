@@ -30,10 +30,13 @@ module ArmoryBot
 
         recon = data["ReconKills"]
         sentry = data["SentryKills"]
+        tank = data["TankKills"]
         sentrym = data["SentryKills-MostinGame"]
         reconm = data["ReconKills-MostinGame"]
+        tankm = data["TankKills-MostinGame"]
         sentryavg = data["SentryKills-Average"]
         reconavg = data["ReconKills-Average"]
+        tankavg = data["TankKills-Average"]
         elims = data["Eliminations"]
         kbs = data["FinalBlows"]
         dmg = data["DamageDone"]
@@ -60,9 +63,10 @@ module ArmoryBot
 
           event.respond """#{event.user.mention} - #{name.capitalize} - Bastion
 ```Ruby
-Total Stats
-Recon Kills: #{recon} - Sentry Kills: #{sentry} - Eliminations: #{elims} - Final Blows: #{kbs}
-Damage Done: #{dmg} - Games Played: #{gplayed} - Games Won: #{gwon} - Win Percentage: #{winperc}
+Hero Specific:
+Recon Kills: #{recon} | Most in Game: #{reconm} | Average: #{reconavg}
+Sentry Kills: #{sentry} | Most in Game: #{sentrym} | Average: #{sentryavg}
+Tank Kills: #{tank} | Most in Game: #{tankm} | Average: #{tankavg}
 
 Most in Game
 Recon Kills: #{reconm} - Sentry Kills: #{sentrym} - Eliminations: #{elimsm} - Damage Done: #{dmgm}
