@@ -51,6 +51,8 @@ module ArmoryBot
         objtavg = data["ObjectiveTime-Average"]
         objkavg = data["ObjectiveKills-Average"]
         elimsavg = data["Eliminations-Average"]
+        solokill = data["SoloKills"]
+        solokillavg = data["SoloKills-Average"]
         dmgavg = data["DamageDone-Average"]
         deaths = data["Deaths"]
         bmedals = data["Medals-Bronze"]
@@ -60,24 +62,26 @@ module ArmoryBot
         gplayed = data["GamesPlayed"]
         gwon = data["GamesWon"]
         winperc = data["WinPercentage"]
+        cards = data["Cards"]
 
           event.respond """#{event.user.mention} - #{name.capitalize} - Bastion
-```Ruby
-Hero Specific:
+```ruby
+- Hero Specific -
 Recon Kills: #{recon} | Most in Game: #{reconm} | Average: #{reconavg}
 Sentry Kills: #{sentry} | Most in Game: #{sentrym} | Average: #{sentryavg}
 Tank Kills: #{tank} | Most in Game: #{tankm} | Average: #{tankavg}
 
-Most in Game
-Recon Kills: #{reconm} - Sentry Kills: #{sentrym} - Eliminations: #{elimsm} - Damage Done: #{dmgm}
-Kill Streaks: #{ksm} - Objective Time: #{objtm} - Objective Kills: #{objkm}
+- Total Stats -
+Eliminations: #{elims} | Damage Done: #{dmg} | Deaths: #{deaths}
+Objective Kills: #{objk} | Objective Time: #{objt} | Solo Kills: #{solokill}
 
-Average Stats
-Recon Kills: #{reconavg} - Sentry Kills: #{sentryavg} - Eliminations: #{elimsavg}
-Damage Done: #{dmgavg} - Deaths: #{deathsavg} - Objective Kills: #{objkavg}
+- Average Stats -
+Eliminations: #{elimsavg} | Damage Done: #{dmgavg} | Deaths: #{deathsavg}
+Objective Kills: #{objkavg} | Objective Time: #{objtavg} | Solo Kills: #{solokillavg}
 
-Medals
-Gold: #{gmedals} - Silver: #{smedals} - Bronze: #{bmedals}
+- Game -
+Time Played: #{playedt} | Games Won: #{gwon} | Win Percentage: #{winperc}
+Gold: #{gmedals} | Silver: #{smedals} | Bronze: #{bmedals} | Cards: #{cards}
 ```"""
 
       end
