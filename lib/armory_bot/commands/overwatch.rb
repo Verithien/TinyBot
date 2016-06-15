@@ -25,7 +25,7 @@ module ArmoryBot
 
         pc = HTTParty.get("https://playoverwatch.com/en-us/career/#{platform}/#{region}/#{acc}", :verify => false ).parsed_response
         console = HTTParty.get("https://playoverwatch.com/en-us/career/#{platform}/#{acc}", :verify => false ).parsed_response
-        stats = HTTParty.get("https://api.lootbox.eu/pc/us/Chuey-1652/allHeroes/", :verify => false ).parsed_response
+        stats = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/allHeroes/", :verify => false ).parsed_response
         profile = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/profile", :verify => false).parsed_response
 
         if platform == "pc"
