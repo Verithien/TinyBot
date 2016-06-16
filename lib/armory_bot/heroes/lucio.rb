@@ -4,6 +4,8 @@ module ArmoryBot
       extend Discordrb::Commands::CommandContainer
       command(:lucio, bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
 
+        puts "OK SO FAR SO GOOD"
+
         platform = platform.downcase
 
         acc = account.join(' ')
@@ -19,6 +21,8 @@ module ArmoryBot
         end
 
         data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/Lucio/", :verify => false ).parsed_response
+
+        puts "shit"
 
         if platform == "pc"
           name = account.first
@@ -61,6 +65,8 @@ module ArmoryBot
         gwon = data["GamesWon"]
         winperc = data["WinPercentage"]
         cards = data["Cards"]
+
+        puts "shit again"
 
           event.respond """#{event.user.mention} - #{name.capitalize} - Lúcio
 ```ruby
