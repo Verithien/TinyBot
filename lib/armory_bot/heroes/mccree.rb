@@ -1,8 +1,9 @@
 module ArmoryBot
   module Commands
-    module Junkrat
+    module Mccree
       extend Discordrb::Commands::CommandContainer
-      command(:junkrat, bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
+      command(:mccree, bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
+        break unless event.user.id == 100311929821626368
 
         platform = platform.downcase
 
@@ -18,7 +19,7 @@ module ArmoryBot
           acc = acc.downcase
         end
 
-        data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/Junkrat/", :verify => false ).parsed_response
+        data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/McCree/", :verify => false ).parsed_response
 
         if platform == "pc"
           name = account.first
@@ -65,7 +66,7 @@ module ArmoryBot
         elsif data["statusCode"] == 404
           event << "Sorry, no account was found with that name."
         else
-          event.respond """#{event.user.mention} - #{name.capitalize} - Junkrat
+          event.respond """#{event.user.mention} - #{name.capitalize} - McCree
 ```ruby
 - Hero Specific -
 RIP Tire Kills: #{RIP_kills} | Most in Game: #{RIP_most}
@@ -84,7 +85,7 @@ Time Played: #{playedt} | Games Won: #{gwon} | Win Percentage: #{winperc}
 Gold: #{gmedals} | Silver: #{smedals} | Bronze: #{bmedals} | Cards: #{cards}
 ```"""
         end
-        puts "#{event.server.name} - Junkrat"
+        puts "#{event.server.name} - McCree"
       end
     end
   end

@@ -1,8 +1,8 @@
 module ArmoryBot
   module Commands
-    module Junkrat
+    module Lucio
       extend Discordrb::Commands::CommandContainer
-      command(:junkrat, bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
+      command(:lucio, bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
 
         platform = platform.downcase
 
@@ -18,7 +18,7 @@ module ArmoryBot
           acc = acc.downcase
         end
 
-        data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/Junkrat/", :verify => false ).parsed_response
+        data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/Lucio/", :verify => false ).parsed_response
 
         if platform == "pc"
           name = account.first
@@ -27,17 +27,19 @@ module ArmoryBot
           name = name.join(' ')
         end
 
-        RIP_kills = data["RIP-TireKills"]
-        RIP_most = data["RIP-TireKills-MostinGame"]
-        trapped = data["EnemiesTrapped"]
-        trapped_mig = data["EnemiesTrapped-MostinGame"]
-        trapped_minute = data["EnemiesTrappedaMinute"]
+        barriers = data["SoundBarriersProvided"]
+        barriers_mig = data["SoundBarriersProvided-MostinGame"]
+        barriers_average = data["SoundBarriersProvided-Average"]
 
         elims = data["Eliminations"]
         objk = data["ObjectiveKills"]
         objt = data["ObjectiveTime"]
         dmg = data["DamageDone"]
         wacc = data["WeaponAccuracy"]
+        healing = data["HealingDone"]
+        healing_most = data["HealingDone-MostinGame"]
+        healing_life = data["HealingDone-MostinLife"]
+        healing_average = data["HealingDone-Average"]
         ksm = data["KillStreak-Best"]
         dmgm = data["DamageDone-MostinGame"]
         elimsm = data["Eliminations-MostinGame"]
@@ -60,19 +62,14 @@ module ArmoryBot
         winperc = data["WinPercentage"]
         cards = data["Cards"]
 
-        if data["statusCode"] == 500
-          event << "Sorry, you inputted everything correctly, just seems to be an error while retrieving your account. :( "
-        elsif data["statusCode"] == 404
-          event << "Sorry, no account was found with that name."
-        else
-          event.respond """#{event.user.mention} - #{name.capitalize} - Junkrat
+          event.respond """#{event.user.mention} - #{name.capitalize} - Lúcio
 ```ruby
 - Hero Specific -
-RIP Tire Kills: #{RIP_kills} | Most in Game: #{RIP_most}
-Enemies Trapped: #{trapped} | Most in Game: #{trapped_mig} | Enemies Trapped Per Minute: #{trapped_minute}
+Barriers: #{barriers} | Most in Game: #{barriers_mig} | Average: #{barriers_average}
 
 - Total Stats -
 Eliminations: #{elims} | Damage Done: #{dmg} | Deaths: #{deaths}
+Healing Done: #{healing} | Most in Game: #{healing_most} | Average: #{healing_average} | Per Life: #{healing_life}
 Objective Kills: #{objk} | Best Killstreak: #{ksm} | Solo Kills: #{solokill}
 
 - Average Stats -
@@ -83,8 +80,8 @@ Objective Kills: #{objkavg} | Objective Time: #{objtavg} | Solo Kills: #{solokil
 Time Played: #{playedt} | Games Won: #{gwon} | Win Percentage: #{winperc}
 Gold: #{gmedals} | Silver: #{smedals} | Bronze: #{bmedals} | Cards: #{cards}
 ```"""
-        end
-        puts "#{event.server.name} - Junkrat"
+
+        puts "#{event.server.name} - Lucio"
       end
     end
   end
