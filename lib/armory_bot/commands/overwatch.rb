@@ -23,10 +23,14 @@ module ArmoryBot
           acc = account
         end
 
-        if platform == "xbl" || "psn"
+        if platform == "pc" && region == "us"
+          region1 = "us"
+        elsif platform == "pc" && region =="eu"
+          region1 = "eu"
+        elsif platform == "psn" || "xbl"
           region1 = "global"
         else
-          region1 = region
+          nil
         end
 
         pc = HTTParty.get("https://playoverwatch.com/en-us/career/#{platform}/#{region}/#{acc}", :verify => false ).parsed_response

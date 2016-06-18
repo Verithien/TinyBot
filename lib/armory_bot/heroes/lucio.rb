@@ -20,10 +20,14 @@ module ArmoryBot
           acc = acc.downcase
         end
 
-        if platform == "xbl" || "psn"
+        if platform == "pc" && region == "us"
+          region = "us"
+        elsif platform == "pc" && region =="eu"
+          region = "eu"
+        elsif platform == "psn" || "xbl"
           region = "global"
         else
-          region = region.downcase
+          nil
         end
 
         data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/Lucio/", :verify => false ).parsed_response
