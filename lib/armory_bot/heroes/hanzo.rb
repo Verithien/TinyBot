@@ -28,6 +28,8 @@ module ArmoryBot
 
         data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/Hanzo/", :verify => false ).parsed_response
 
+        puts "https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/Hanzo/"
+
         if platform == "pc"
           name = account.first
         else
