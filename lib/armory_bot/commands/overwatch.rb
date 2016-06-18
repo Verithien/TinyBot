@@ -103,9 +103,9 @@ module ArmoryBot
 
         if page_not_found == "Page Not Found"
           event << "Sorry, either no account was found or your account is case sensitive"
-        elsif data["statusCode"] == 500
+        elsif profile["statusCode"] == 500
           event << "Sorry, you inputted everything correctly, just seems to be an error while retrieving your account. :( "
-        elsif data["statusCode"] == 404
+        elsif profile["statusCode"] == 404
           event << "Sorry, no account was found with that name."
         else
           event.respond"""#{event.user.mention}
