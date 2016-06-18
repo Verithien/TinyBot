@@ -19,6 +19,12 @@ module ArmoryBot
         else
           acc = acc.downcase
         end
+        
+        if platform == "xbl" || "psn"
+          region = "global"
+        else
+          region = region
+        end
 
         data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/Lucio/", :verify => false ).parsed_response
 

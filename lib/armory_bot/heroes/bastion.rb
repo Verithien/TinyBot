@@ -18,6 +18,12 @@ module ArmoryBot
           acc = acc.downcase
         end
 
+        if platform == "xbl" || "psn"
+          region = "global"
+        else
+          region = region
+        end
+
         data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/Bastion/", :verify => false ).parsed_response
 
         if platform == "pc"
