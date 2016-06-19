@@ -4,8 +4,6 @@ module ArmoryBot
       extend Discordrb::Commands::CommandContainer
       command(:lucio, bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
 
-        puts "OK SO FAR SO GOOD"
-
         platform = platform.downcase
 
         acc = account.join(' ')
@@ -32,8 +30,6 @@ module ArmoryBot
 
         data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/Lucio/", :verify => false ).parsed_response
 
-        puts "shit"
-
         if platform == "pc"
           name = account.first
         else
@@ -41,19 +37,17 @@ module ArmoryBot
           name = name.join(' ')
         end
 
-        barriers = data["SoundBarriersProvided"]
-        barriers_mig = data["SoundBarriersProvided-MostinGame"]
-        barriers_average = data["SoundBarriersProvided-Average"]
+        RIP_kills = data["RIP-TireKills"]
+        RIP_most = data["RIP-TireKills-MostinGame"]
+        trapped = data["EnemiesTrapped"]
+        trapped_mig = data["EnemiesTrapped-MostinGame"]
+        trapped_minute = data["EnemiesTrappedaMinute"]
 
         elims = data["Eliminations"]
         objk = data["ObjectiveKills"]
         objt = data["ObjectiveTime"]
         dmg = data["DamageDone"]
         wacc = data["WeaponAccuracy"]
-        healing = data["HealingDone"]
-        healing_most = data["HealingDone-MostinGame"]
-        healing_life = data["HealingDone-MostinLife"]
-        healing_average = data["HealingDone-Average"]
         ksm = data["KillStreak-Best"]
         dmgm = data["DamageDone-MostinGame"]
         elimsm = data["Eliminations-MostinGame"]
@@ -76,8 +70,6 @@ module ArmoryBot
         winperc = data["WinPercentage"]
         cards = data["Cards"]
 
-        puts "shit again"
-
         if data["statusCode"] == 500
           event << "Sorry, you inputted everything correctly, just seems to be an error while retrieving your account. :( "
         elsif data["statusCode"] == 404
@@ -86,11 +78,11 @@ module ArmoryBot
           event.respond """#{event.user.mention} - #{name.capitalize} - Lúcio
 ```ruby
 - Hero Specific -
-Barriers: #{barriers} | Most in Game: #{barriers_mig} | Average: #{barriers_average}
+RIP Tire Kills: #{RIP_kills} | Most in Game: #{RIP_most}
+Enemies Trapped: #{trapped} | Most in Game: #{trapped_mig} | Enemies Trapped Per Minute: #{trapped_minute}
 
 - Total Stats -
 Eliminations: #{elims} | Damage Done: #{dmg} | Deaths: #{deaths}
-Healing Done: #{healing} | Most in Game: #{healing_most} | Average: #{healing_average} | Per Life: #{healing_life}
 Objective Kills: #{objk} | Best Killstreak: #{ksm} | Solo Kills: #{solokill}
 
 - Average Stats -
@@ -102,7 +94,7 @@ Time Played: #{playedt} | Games Won: #{gwon} | Win Percentage: #{winperc}
 Gold: #{gmedals} | Silver: #{smedals} | Bronze: #{bmedals} | Cards: #{cards}
 ```"""
         end
-        puts "#{event.server.name} - Lucio"
+        puts "#{event.server.name} - Junkrat"
       end
     end
   end
