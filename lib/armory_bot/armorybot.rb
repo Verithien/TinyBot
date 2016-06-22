@@ -48,9 +48,9 @@ module ArmoryBot
 	bot.include! Commands::Dva
 	bot.include! Commands::Genji
 	bot.include! Commands::Hanzo
+	bot.include! Commands::Lucio
 	bot.include! Commands::Junkrat
-	#bot.include! Commands::Lucio
-	#bot.include! Commands::Mccree
+	bot.include! Commands::Mccree
 	#bot.include! Commands::Mei
 	#bot.include! Commands::Mercy
 	#bot.include! Commands::Pharah
