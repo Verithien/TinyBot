@@ -37,19 +37,20 @@ module ArmoryBot
           name = name.join(' ')
         end
 
-        RIP_kills = data["RIP-TireKills"]
-        RIP_most = data["RIP-TireKills-MostinGame"]
-        trapped = data["EnemiesTrapped"]
-        trapped_mig = data["EnemiesTrapped-MostinGame"]
-        trapped_minute = data["EnemiesTrappedaMinute"]
+        sound_barrier = data["SoundBarriersProvided"]
+        barrier_most = data["SoundBarriersProvided-MostinGame"]
+        barrier_average = data["SoundBarriersProvided-Average"]
 
         elims = data["Eliminations"]
+        healing = data["HealingDone"]
+        healing_most = data["Healing_MostinGame"]
         objk = data["ObjectiveKills"]
         objt = data["ObjectiveTime"]
         dmg = data["DamageDone"]
         wacc = data["WeaponAccuracy"]
         ksm = data["KillStreak-Best"]
         dmgm = data["DamageDone-MostinGame"]
+        healing_average = data["HealingDone-Average"]
         elimsm = data["Eliminations-MostinGame"]
         objkm = data["ObjectiveKills-MostinGame"]
         objtm = data["ObjectiveTime-MostinGame"]
@@ -78,15 +79,14 @@ module ArmoryBot
           event.respond """#{event.user.mention} - #{name.capitalize} - Lúcio
 ```ruby
 - Hero Specific -
-RIP Tire Kills: #{RIP_kills} | Most in Game: #{RIP_most}
-Enemies Trapped: #{trapped} | Most in Game: #{trapped_mig} | Enemies Trapped Per Minute: #{trapped_minute}
+Sound Barriers: #{sound_barrier} | Most in Game: #{barrier_most} | Average: #{barrier_average}
 
 - Total Stats -
-Eliminations: #{elims} | Damage Done: #{dmg} | Deaths: #{deaths}
+Eliminations: #{elims} | Damage Done: #{dmg} | Healing: #{healing} | Deaths: #{deaths}
 Objective Kills: #{objk} | Best Killstreak: #{ksm} | Solo Kills: #{solokill}
 
 - Average Stats -
-Eliminations: #{elimsavg} | Damage Done: #{dmgavg} | Deaths: #{deathsavg}
+Eliminations: #{elimsavg} | Damage Done: #{dmgavg} | Healing: #{healing_average} | Deaths: #{deathsavg}
 Objective Kills: #{objkavg} | Objective Time: #{objtavg} | Solo Kills: #{solokillavg}
 
 - Game -
@@ -94,7 +94,7 @@ Time Played: #{playedt} | Games Won: #{gwon} | Win Percentage: #{winperc}
 Gold: #{gmedals} | Silver: #{smedals} | Bronze: #{bmedals} | Cards: #{cards}
 ```"""
         end
-        puts "#{event.server.name} - Junkrat"
+        puts "#{event.server.name} - Lucio"
       end
     end
   end

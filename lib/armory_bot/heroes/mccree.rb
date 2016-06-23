@@ -38,11 +38,12 @@ module ArmoryBot
           name = name.join(' ')
         end
 
-        RIP_kills = data["RIP-TireKills"]
-        RIP_most = data["RIP-TireKills-MostinGame"]
-        trapped = data["EnemiesTrapped"]
-        trapped_mig = data["EnemiesTrapped-MostinGame"]
-        trapped_minute = data["EnemiesTrappedaMinute"]
+        deadeye = data["DeadeyeKills"]
+        deadeye_most = data["DeadeyeKills-MostinGame"]
+        deadeye_average = data["DeadeyeKills-Average"]
+        hammer = data["FantheHammerKills"]
+        hammer_average = data["FantheHammerKills-Average"]
+        hammer_most = data["FantheHammerKills-MostinGame"]
 
         elims = data["Eliminations"]
         objk = data["ObjectiveKills"]
@@ -79,8 +80,8 @@ module ArmoryBot
           event.respond """#{event.user.mention} - #{name.capitalize} - McCree
 ```ruby
 - Hero Specific -
-RIP Tire Kills: #{RIP_kills} | Most in Game: #{RIP_most}
-Enemies Trapped: #{trapped} | Most in Game: #{trapped_mig} | Enemies Trapped Per Minute: #{trapped_minute}
+Deadeye Kills: #{deadeye} | Most in Game: #{deadeye_most} | Average: #{deadeye_average}
+Fan the Hammer Kills: #{hammer} | Most in Game: #{hammer_most} | Average: #{hammer_average}
 
 - Total Stats -
 Eliminations: #{elims} | Damage Done: #{dmg} | Deaths: #{deaths}
