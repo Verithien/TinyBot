@@ -8,10 +8,10 @@ module ArmoryBot
 
         postData = HTTParty.post("https://www.carbonitex.net/discord/data/botdata.php",
                                 {  
-        				                  :body => [ { :key => "chuey0187s276sazzf", :servercount => event.bot.servers.count } ].to_json
+        				                  :body => [ { :key => "chuey0187s276sazzf", :servercount => "#{event.bot.servers.count}" } ].to_json
         						            })
 
-        puts "server count"
+        puts "Server Count: #{event.bot.servers.count}"
         puts postData
 
         event.bot.servers.count
