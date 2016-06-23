@@ -43,11 +43,11 @@ module ArmoryBot
 
         puts "#{event.server.name} - PvP"
 
-		    event.respond("""**#{char.capitalize} - #{realm.capitalize} - #{region.upcase}**
+		    event.respond """**#{char.capitalize} - #{realm.capitalize} - #{region.upcase}**
 **2v2 Rating:** #{arena2v2r}  **Wins:** #{arena2v2w}  **Losses:** #{arena2v2l}
 **3v3 Rating:** #{arena3v3r}  **Wins:** #{arena3v3w}  **Losses:** #{arena3v3l}
 **5v5 Rating:** #{arena5v5r}  **Wins:** #{arena5v5w} **Losses:** #{arena5v5l}
-**RBG Rating:** #{rbgr}  **Wins:** #{rbgw}  **Losses:** #{rbgl}""")
+**RBG Rating:** #{rbgr}  **Wins:** #{rbgw}  **Losses:** #{rbgl}"""
 
       end
     end

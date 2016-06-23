@@ -89,7 +89,7 @@ module ArmoryBot
         talent6 = talents["talents"].find { |r| r["tier"] == 6 }
         talentid6 = talent6["spell"]["id"]
 
-        event.user.pm("""**#{char.capitalize}--#{realm.capitalize}--#{region.upcase}**
+        event.respond """**#{char.capitalize}--#{realm.capitalize}--#{region.upcase}**
 __***TALENTS***__
 *#{talent0["spell"]["name"]}* - #{wh}#{talentid0}>
 *#{talent1["spell"]["name"]}* - #{wh}#{talentid1}>
@@ -107,7 +107,7 @@ __***GLYPHS***__
 *#{minglyph0}*
 *#{minglyph1}*
 *#{minglyph2}*
-""")
+"""
       end
     end
   end

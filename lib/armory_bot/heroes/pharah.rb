@@ -37,12 +37,12 @@ module ArmoryBot
           name = name.join(' ')
         end
 
-        rockets = data["EnemiesFrozen"]
-        rockets_most = data["EnemiesFrozen-MostinGame"]
-        rockets_average = data["EnemiesFrozen-Average"]
-        barrage = data["BlizzardKills"]
-        barrage_average = data["BlizzardKills-Average"]
-        barrage_most = data["BlizzardKills-MostinGame"]
+        rockets = data["RocketDirectHits"]
+        rockets_most = data["RocketDirectHits-MostinGame"]
+        rockets_average = data["RocketDirectHits-Average"]
+        barrage = data["BarrageKills"]
+        barrage_average = data["BarrageKills-Average"]
+        barrage_most = data["BarrageKills-MostinGame"]
 
         elims = data["Eliminations"]
         objk = data["ObjectiveKills"]

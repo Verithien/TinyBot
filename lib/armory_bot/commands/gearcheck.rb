@@ -32,7 +32,7 @@ module ArmoryBot
         end
         
         if region == "us"
-            event.user.pm("""
+            event.respond """
 **#{char.capitalize} - #{realm.capitalize} - #{region.upcase}**
 Armory: <http://us.battle.net/wow/en/character/#{realm}/#{URI.escape(char)}/advanced>
 Average Item Level: **#{data["items"]["averageItemLevel"]}**. Equipped Item Level: **#{data["items"]["averageItemLevelEquipped"]}**.
@@ -51,9 +51,9 @@ Average Item Level: **#{data["items"]["averageItemLevel"]}**. Equipped Item Leve
 #{data["items"]["trinket1"]["itemLevel"]} #{data["items"]["trinket1"]["name"]}: #{wh}#{data["items"]["trinket1"]["id"]}>
 #{data["items"]["trinket2"]["itemLevel"]} #{data["items"]["trinket2"]["name"]}: #{wh}#{data["items"]["trinket2"]["id"]}>
 #{data["items"]["mainHand"]["itemLevel"]} #{data["items"]["mainHand"]["name"]}: #{wh}#{data["items"]["mainHand"]["id"]}>
-#{offh}""")
+#{offh}"""
           elsif region == "eu"
-            event.user.pm("""
+            event.respond """
 **#{char.capitalize} - #{realm.capitalize} - #{region.upcase}**
 Armory: <http://eu.battle.net/wow/en/character/#{realm}/#{URI.escape(char)}/advanced>
 Average Item Level: **#{data["items"]["averageItemLevel"]}**. Equipped Item Level: **#{data["items"]["averageItemLevelEquipped"]}**.
@@ -72,7 +72,7 @@ Average Item Level: **#{data["items"]["averageItemLevel"]}**. Equipped Item Leve
 #{data["items"]["trinket1"]["itemLevel"]} #{data["items"]["trinket1"]["name"]}: #{wh}#{data["items"]["trinket1"]["id"]}>
 #{data["items"]["trinket2"]["itemLevel"]} #{data["items"]["trinket2"]["name"]}: #{wh}#{data["items"]["trinket2"]["id"]}>
 #{data["items"]["mainHand"]["itemLevel"]} #{data["items"]["mainHand"]["name"]}: #{wh}#{data["items"]["mainHand"]["id"]}>
-#{offh}""")
+#{offh}"""
           else
             nil
           end
