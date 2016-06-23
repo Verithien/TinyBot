@@ -2,7 +2,7 @@ module ArmoryBot
   module Commands
     module Genji
       extend Discordrb::Commands::CommandContainer
-      command([:genji, :Genji, :GENJI], bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
+      command([:genji, :Genji, :GENJI], bucket: :overwatch, min_args: 3, rate_limit_message: 'All heroes share a rate limit. Wait %time% more seconds.') do |event, *account, region, platform|
 
         platform = platform.downcase
 

@@ -2,8 +2,7 @@ module ArmoryBot
   module Commands
     module Mei
       extend Discordrb::Commands::CommandContainer
-      command([:mei, :Mei, :MEI], bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
-        break unless event.user.id == 100311929821626368
+      command([:mei, :Mei, :MEI], bucket: :overwatch, min_args: 3, rate_limit_message: 'All heroes share a rate limit. Wait %time% more seconds.') do |event, *account, region, platform|
 
         platform = platform.downcase
 

@@ -2,7 +2,7 @@ module ArmoryBot
   module Commands
     module Hanzo
       extend Discordrb::Commands::CommandContainer
-      command([:hanzo, :Hanzo, :HANZO], bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
+      command([:hanzo, :Hanzo, :HANZO], bucket: :overwatch, min_args: 3, rate_limit_message: 'All heroes share a rate limit. Wait %time% more seconds.') do |event, *account, region, platform|
 
         platform = platform.downcase
 

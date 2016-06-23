@@ -2,7 +2,7 @@ module ArmoryBot
   module Commands
     module Tracer
       extend Discordrb::Commands::CommandContainer
-      command([:tracer, :Tracer, :TRACER], bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
+      command([:tracer, :Tracer, :TRACER], bucket: :overwatch, min_args: 3, rate_limit_message: 'All heroes share a rate limit. Wait %time% more seconds.') do |event, *account, region, platform|
 
         platform = platform.downcase
 

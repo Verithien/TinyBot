@@ -2,7 +2,7 @@ module ArmoryBot
   module Commands
     module Reinhardt
       extend Discordrb::Commands::CommandContainer
-      command([:reinhardt, :Reinhardt, :REINHARDT], bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
+      command([:reinhardt, :Reinhardt, :REINHARDT], bucket: :overwatch, min_args: 3, rate_limit_message: 'All heroes share a rate limit. Wait %time% more seconds.') do |event, *account, region, platform|
 
         platform = platform.downcase
 

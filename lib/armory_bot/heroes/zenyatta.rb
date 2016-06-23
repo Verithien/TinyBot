@@ -2,7 +2,7 @@ module ArmoryBot
   module Commands
     module Zenyatta
       extend Discordrb::Commands::CommandContainer
-      command([:zenyatta, :Zenyatta, :ZENYATTA], bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
+      command([:zenyatta, :Zenyatta, :ZENYATTA], bucket: :overwatch, min_args: 3, rate_limit_message: 'All heroes share a rate limit. Wait %time% more seconds.') do |event, *account, region, platform|
 
         platform = platform.downcase
 

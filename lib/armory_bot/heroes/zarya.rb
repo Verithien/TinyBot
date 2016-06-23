@@ -2,7 +2,7 @@ module ArmoryBot
   module Commands
     module Zarya
       extend Discordrb::Commands::CommandContainer
-      command([:zarya, :Zarya, :ZARYA], bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
+      command([:zarya, :Zarya, :ZARYA], bucket: :overwatch, min_args: 3, rate_limit_message: 'All heroes share a rate limit. Wait %time% more seconds.') do |event, *account, region, platform|
 
         platform = platform.downcase
 
@@ -88,7 +88,7 @@ module ArmoryBot
 High Energy Kills: #{energykills} | Most in Game: #{energykills_most} | Average: #{energykills_average}
 Graviton Surge Kills: #{gravitonkills} | Most in Game: #{gravitonkills_most} | Average: #{gravitonkills_average}
 Damage Blocked: #{blocked} | Most in Game: #{blocked_most} | Average: #{blocked_average}
-Barriers Applied: #{barriers} | Average: #{barriers_most} | Max Energy: #{energymax}
+Barriers Applied: #{barriers} | Average: #{barriers_average} | Max Energy: #{energymax}
 
 - Total Stats -
 Eliminations: #{elims} | Damage Done: #{dmg} | Deaths: #{deaths}

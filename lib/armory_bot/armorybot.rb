@@ -4,7 +4,7 @@ module ArmoryBot
 				  prefix: '?', 
 				  advanced_functionality: false)
 
-	bot.bucket(:armory, limit: 4,
+	bot.bucket(:armory, limit: 6,
 						time_span: 60,
 						delay: 1)
 
@@ -16,9 +16,9 @@ module ArmoryBot
 						time_span: 86400,
 						delay: 1)
 
-	bot.bucket(:overwatch, limit: 3,
-						time_span: 300,
-						delay: 1)
+	bot.bucket(:overwatch, limit: 6,
+						time_span: 180,
+						delay: 5)
 
 	bot.include! Commands::ItemLevel
 	bot.include! Commands::Summary

@@ -2,7 +2,7 @@ module ArmoryBot
   module Commands
     module Bastion
       extend Discordrb::Commands::CommandContainer
-      command([:bastion, :Bastion, :BASTION], bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
+      command([:bastion, :Bastion, :BASTION], bucket: :overwatch, min_args: 3, rate_limit_message: 'All heroes share a rate limit. Wait %time% more seconds.') do |event, *account, region, platform|
 
         platform = platform.downcase
 
