@@ -2,7 +2,7 @@ module ArmoryBot
   module Commands
     module Hanzo
       extend Discordrb::Commands::CommandContainer
-      command(:hanzo, bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
+      command([:hanzo, :Hanzo, :HANZO], bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
 
         platform = platform.downcase
 

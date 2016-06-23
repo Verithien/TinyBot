@@ -2,7 +2,7 @@ module ArmoryBot
   module Commands
     module Lucio
       extend Discordrb::Commands::CommandContainer
-      command(:lucio, bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
+      command([:lucio, :Lucio, :LUCIO], bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
 
         platform = platform.downcase
 

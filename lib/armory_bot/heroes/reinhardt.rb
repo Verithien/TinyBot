@@ -1,8 +1,8 @@
 module ArmoryBot
   module Commands
-    module Genji
+    module Reinhardt
       extend Discordrb::Commands::CommandContainer
-      command([:genji, :Genji, :GENJI], bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
+      command([:reinhardt, :Reinhardt, :REINHARDT], bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
 
         platform = platform.downcase
 
@@ -28,7 +28,7 @@ module ArmoryBot
           nil
         end
 
-        data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/Genji/", :verify => false ).parsed_response
+        data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/Reinhardt/", :verify => false ).parsed_response
 
         if platform == "pc"
           name = account.first
@@ -37,13 +37,18 @@ module ArmoryBot
           name = name.join(' ')
         end
 
-        dbs = data["Dragonblades"]
-        db_kills = data["DragonbladeKills"]
-        db_average = data["DragonbladeKills-Average"]
-        db_most = data["DragonbladeKills-MostinGame"]
-        damage_reflected = data["DamageReflected"]
-        most_reflected = data["DamageReflected-MostinGame"]
-        average_reflected = data["DamageReflected-Average"]
+        blocked = data["DamageBlocked"]
+        blocked_most = data["DamageBlocked-MostinGame"]
+        blocked_average = data["DamageBlocked-Average"]
+        charge = data["ChargeKills"]
+        charge_average = data["ChargeKills-Average"]
+        charge_most = data["ChargeKills-MostinGame"]
+        firestrike = data["FireStrikeKills"]
+        firestrike_average = data["FireStrikeKills-Average"]
+        firestrike_most = data["FireStrikeKills-MostinGame"]
+        shatter = data["EarthshatterKills"]
+        shatter_average = data["EarthshatterKills-Average"]
+        shatter_most = data["EarthshatterKills-MostinGame"]
 
         elims = data["Eliminations"]
         objk = data["ObjectiveKills"]
@@ -77,11 +82,13 @@ module ArmoryBot
         elsif data["statusCode"] == 404
           event << "Sorry, no account was found with that name."
         else
-          event.respond """#{event.user.mention} - #{name.capitalize} - Genji
+          event.respond """#{event.user.mention} - #{name.capitalize} - Reinhardt
 ```ruby
 - Hero Specific -
-Dragonblades: #{dbs} | Kills: #{db_kills} | Most in Game: #{db_most} | Average: #{db_average}
-Damage Reflected: #{damage_reflected} | Most in Game: #{most_reflected} | Average: #{average_reflected}
+Charge Kills: #{charge} | Most in Game: #{charge_most} | Average: #{charge_average}
+Fire Strike Kills: #{firestrike} | Most in Game: #{firestrike_most} | Average: #{firestrike_average}
+Earthshatter Kills: #{shatter} | Most in Game: #{shatter_most} | Average: #{shatter_average}
+Damage Blocked: #{blocked} | Most in Game: #{blocked_most} | Average: #{blocked_average}
 
 - Total Stats -
 Eliminations: #{elims} | Damage Done: #{dmg} | Deaths: #{deaths}
@@ -96,7 +103,7 @@ Time Played: #{playedt} | Games Won: #{gwon} | Win Percentage: #{winperc}
 Gold: #{gmedals} | Silver: #{smedals} | Bronze: #{bmedals} | Cards: #{cards}
 ```"""
         end
-        puts "#{event.server.name} - Genji"
+        puts "#{event.server.name} - Reinhardt"
       end
     end
   end

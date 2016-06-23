@@ -1,8 +1,9 @@
 module ArmoryBot
   module Commands
-    module Genji
+    module Mei
       extend Discordrb::Commands::CommandContainer
-      command([:genji, :Genji, :GENJI], bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
+      command([:mei, :Mei, :MEI], bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
+        break unless event.user.id == 100311929821626368
 
         platform = platform.downcase
 
@@ -28,7 +29,7 @@ module ArmoryBot
           nil
         end
 
-        data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/Genji/", :verify => false ).parsed_response
+        data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/Mei/", :verify => false ).parsed_response
 
         if platform == "pc"
           name = account.first
@@ -37,13 +38,15 @@ module ArmoryBot
           name = name.join(' ')
         end
 
-        dbs = data["Dragonblades"]
-        db_kills = data["DragonbladeKills"]
-        db_average = data["DragonbladeKills-Average"]
-        db_most = data["DragonbladeKills-MostinGame"]
-        damage_reflected = data["DamageReflected"]
-        most_reflected = data["DamageReflected-MostinGame"]
-        average_reflected = data["DamageReflected-Average"]
+        frozen = data["EnemiesFrozen"]
+        frozen_most = data["EnemiesFrozen-MostinGame"]
+        frozen_average = data["EnemiesFrozen-Average"]
+        blizzard = data["BlizzardKills"]
+        blizzard_average = data["BlizzardKills-Average"]
+        blizzard_most = data["BlizzardKills-MostinGame"]
+        blocked = data["DamageBlocked"]
+        blocked_most = data["DamageBlocked-MostinGame"]
+        blocked_average = data["DamageBlocked-Average"]
 
         elims = data["Eliminations"]
         objk = data["ObjectiveKills"]
@@ -77,11 +80,12 @@ module ArmoryBot
         elsif data["statusCode"] == 404
           event << "Sorry, no account was found with that name."
         else
-          event.respond """#{event.user.mention} - #{name.capitalize} - Genji
+          event.respond """#{event.user.mention} - #{name.capitalize} - Mei
 ```ruby
 - Hero Specific -
-Dragonblades: #{dbs} | Kills: #{db_kills} | Most in Game: #{db_most} | Average: #{db_average}
-Damage Reflected: #{damage_reflected} | Most in Game: #{most_reflected} | Average: #{average_reflected}
+Enemies Frozen: #{frozen} | Most in Game: #{frozen_most} | Average: #{frozen_average}
+Blizzard Kills: #{blizzard} | Most in Game: #{blizzard_most} | Average: #{blizzard_average}
+Damage Blocked: #{blocked} | Most in Game: #{blocked_most} | Average: #{blocked_average}
 
 - Total Stats -
 Eliminations: #{elims} | Damage Done: #{dmg} | Deaths: #{deaths}
@@ -96,7 +100,7 @@ Time Played: #{playedt} | Games Won: #{gwon} | Win Percentage: #{winperc}
 Gold: #{gmedals} | Silver: #{smedals} | Bronze: #{bmedals} | Cards: #{cards}
 ```"""
         end
-        puts "#{event.server.name} - Genji"
+        puts "#{event.server.name} - Mei"
       end
     end
   end

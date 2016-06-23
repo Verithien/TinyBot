@@ -2,7 +2,7 @@ module ArmoryBot
   module Commands
     module Dva
       extend Discordrb::Commands::CommandContainer
-      command(:dva, bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
+      command([:dva, :Dva, :DVa, :DVA], bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
 
         platform = platform.downcase
 

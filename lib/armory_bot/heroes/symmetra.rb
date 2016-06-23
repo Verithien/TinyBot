@@ -1,8 +1,8 @@
 module ArmoryBot
   module Commands
-    module Genji
+    module Symmetra
       extend Discordrb::Commands::CommandContainer
-      command([:genji, :Genji, :GENJI], bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
+      command([:symmetra, :Symmetra, :SYMMETRA], bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
 
         platform = platform.downcase
 
@@ -28,7 +28,7 @@ module ArmoryBot
           nil
         end
 
-        data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/Genji/", :verify => false ).parsed_response
+        data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/Symmetra/", :verify => false ).parsed_response
 
         if platform == "pc"
           name = account.first
@@ -37,13 +37,18 @@ module ArmoryBot
           name = name.join(' ')
         end
 
-        dbs = data["Dragonblades"]
-        db_kills = data["DragonbladeKills"]
-        db_average = data["DragonbladeKills-Average"]
-        db_most = data["DragonbladeKills-MostinGame"]
-        damage_reflected = data["DamageReflected"]
-        most_reflected = data["DamageReflected-MostinGame"]
-        average_reflected = data["DamageReflected-Average"]
+        turrets = data["SentryTurretKills"]
+        turrets_most = data["SentryTurretKills-MostinGame"]
+        turrets_average = data["SentryTurretKills-Average"]
+        teleported = data["PlayersTeleported"]
+        teleported_average = data["PlayersTeleported-Average"]
+        teleported_most = data["PlayersTeleported-MostinGame"]
+        tp_uptime = data["TeleporterUptime"]
+        tp_uptime_average = data["TeleporterUptime-Average"]
+        tp_uptime_most = data["TeleporterUptime-MostinGame"]
+        shields = data["ShieldsProvided"]
+        shields_average = data["ShieldsProvided-Average"]
+        shields_most = data["ShieldsProvided-MostinGame"]
 
         elims = data["Eliminations"]
         objk = data["ObjectiveKills"]
@@ -77,11 +82,13 @@ module ArmoryBot
         elsif data["statusCode"] == 404
           event << "Sorry, no account was found with that name."
         else
-          event.respond """#{event.user.mention} - #{name.capitalize} - Genji
+          event.respond """#{event.user.mention} - #{name.capitalize} - Symmetra
 ```ruby
 - Hero Specific -
-Dragonblades: #{dbs} | Kills: #{db_kills} | Most in Game: #{db_most} | Average: #{db_average}
-Damage Reflected: #{damage_reflected} | Most in Game: #{most_reflected} | Average: #{average_reflected}
+Sentry Turret Kills: #{turrets} | Most in Game: #{turrets_most} | Average: #{turrets_average}
+Shields Provided: #{shields} | Most in Game: #{shields_most} | Average: #{shields_average}
+Players Teleported: #{teleported} | Most in Game: #{teleported_most} | Average: #{teleported_average}
+Teleporter Uptime: #{tp_uptime} | Most in Game: #{tp_uptime_most} | Average: #{tp_uptime_average}
 
 - Total Stats -
 Eliminations: #{elims} | Damage Done: #{dmg} | Deaths: #{deaths}
@@ -96,7 +103,7 @@ Time Played: #{playedt} | Games Won: #{gwon} | Win Percentage: #{winperc}
 Gold: #{gmedals} | Silver: #{smedals} | Bronze: #{bmedals} | Cards: #{cards}
 ```"""
         end
-        puts "#{event.server.name} - Genji"
+        puts "#{event.server.name} - Symmetra"
       end
     end
   end

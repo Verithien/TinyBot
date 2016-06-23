@@ -1,8 +1,8 @@
 module ArmoryBot
   module Commands
-    module Genji
+    module Soldier76
       extend Discordrb::Commands::CommandContainer
-      command([:genji, :Genji, :GENJI], bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
+      command([:soldier76, :Soldier76, :SOLDIER76], bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
 
         platform = platform.downcase
 
@@ -28,7 +28,7 @@ module ArmoryBot
           nil
         end
 
-        data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/Genji/", :verify => false ).parsed_response
+        data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/Soldier76/", :verify => false ).parsed_response
 
         if platform == "pc"
           name = account.first
@@ -37,13 +37,14 @@ module ArmoryBot
           name = name.join(' ')
         end
 
-        dbs = data["Dragonblades"]
-        db_kills = data["DragonbladeKills"]
-        db_average = data["DragonbladeKills-Average"]
-        db_most = data["DragonbladeKills-MostinGame"]
-        damage_reflected = data["DamageReflected"]
-        most_reflected = data["DamageReflected-MostinGame"]
-        average_reflected = data["DamageReflected-Average"]
+        rockets = data["HelixRocketsKills"]
+        rockets_most = data["HelixRocketsKills-MostinGame"]
+        rockets_average = data["HelixRocketsKills-Average"]
+        visor = data["TacticalVisorKills"]
+        visor_average = data["TacticalVisorKills-Average"]
+        visor_most = data["TacticalVisorKills-MostinGame"]
+        biotic = data["BioticFieldsDeployed"]
+        biotic_healing = data["BioticFieldHealingDone"]
 
         elims = data["Eliminations"]
         objk = data["ObjectiveKills"]
@@ -77,11 +78,12 @@ module ArmoryBot
         elsif data["statusCode"] == 404
           event << "Sorry, no account was found with that name."
         else
-          event.respond """#{event.user.mention} - #{name.capitalize} - Genji
+          event.respond """#{event.user.mention} - #{name.capitalize} - Soldier: 76
 ```ruby
 - Hero Specific -
-Dragonblades: #{dbs} | Kills: #{db_kills} | Most in Game: #{db_most} | Average: #{db_average}
-Damage Reflected: #{damage_reflected} | Most in Game: #{most_reflected} | Average: #{average_reflected}
+Helix Rocket Kills: #{rockets} | Most in Game: #{rockets_most} | Average: #{rockets_average}
+Visor Kills: #{visor} | Most in Game: #{visor_most} | Average: #{visor_average}
+Biotic Fields: #{biotic} | Biotic Field Healing: #{biotic_healing}
 
 - Total Stats -
 Eliminations: #{elims} | Damage Done: #{dmg} | Deaths: #{deaths}
@@ -96,7 +98,7 @@ Time Played: #{playedt} | Games Won: #{gwon} | Win Percentage: #{winperc}
 Gold: #{gmedals} | Silver: #{smedals} | Bronze: #{bmedals} | Cards: #{cards}
 ```"""
         end
-        puts "#{event.server.name} - Genji"
+        puts "#{event.server.name} - Soldier76"
       end
     end
   end

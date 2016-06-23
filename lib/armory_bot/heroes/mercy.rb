@@ -1,8 +1,8 @@
 module ArmoryBot
   module Commands
-    module Genji
+    module Mercy
       extend Discordrb::Commands::CommandContainer
-      command([:genji, :Genji, :GENJI], bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
+      command([:mercy, :Mercy, :MERCY], bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
 
         platform = platform.downcase
 
@@ -28,7 +28,7 @@ module ArmoryBot
           nil
         end
 
-        data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/Genji/", :verify => false ).parsed_response
+        data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/Mercy/", :verify => false ).parsed_response
 
         if platform == "pc"
           name = account.first
@@ -37,21 +37,23 @@ module ArmoryBot
           name = name.join(' ')
         end
 
-        dbs = data["Dragonblades"]
-        db_kills = data["DragonbladeKills"]
-        db_average = data["DragonbladeKills-Average"]
-        db_most = data["DragonbladeKills-MostinGame"]
-        damage_reflected = data["DamageReflected"]
-        most_reflected = data["DamageReflected-MostinGame"]
-        average_reflected = data["DamageReflected-Average"]
+        resurrection = data["PlayersResurrected"]
+        resurrection_most = data["PlayersResurrected-MostinGame"]
+        resurrection_average = data["PlayersResurrected-Average"]
+        saved = data["PlayersSaved"]
+        saved_most = data["MostPlayersSavedinaGame"]
+        saved_average = data["PlayersSaved-Average"]
 
         elims = data["Eliminations"]
+        healing = data["HealingDone"]
+        healing_most = data["Healing_MostinGame"]
         objk = data["ObjectiveKills"]
         objt = data["ObjectiveTime"]
         dmg = data["DamageDone"]
         wacc = data["WeaponAccuracy"]
         ksm = data["KillStreak-Best"]
         dmgm = data["DamageDone-MostinGame"]
+        healing_average = data["HealingDone-Average"]
         elimsm = data["Eliminations-MostinGame"]
         objkm = data["ObjectiveKills-MostinGame"]
         objtm = data["ObjectiveTime-MostinGame"]
@@ -77,18 +79,18 @@ module ArmoryBot
         elsif data["statusCode"] == 404
           event << "Sorry, no account was found with that name."
         else
-          event.respond """#{event.user.mention} - #{name.capitalize} - Genji
+          event.respond """#{event.user.mention} - #{name.capitalize} - Lúcio
 ```ruby
 - Hero Specific -
-Dragonblades: #{dbs} | Kills: #{db_kills} | Most in Game: #{db_most} | Average: #{db_average}
-Damage Reflected: #{damage_reflected} | Most in Game: #{most_reflected} | Average: #{average_reflected}
+Ressurections: #{resurrection} | Most in Game: #{resurrection_most} | Average: #{resurrection_average}
+Players Saved: #{saved} | Most in Game: #{saved_most} | Average: #{saved_average}
 
 - Total Stats -
-Eliminations: #{elims} | Damage Done: #{dmg} | Deaths: #{deaths}
+Eliminations: #{elims} | Damage Done: #{dmg} | Healing: #{healing} | Deaths: #{deaths}
 Objective Kills: #{objk} | Best Killstreak: #{ksm} | Solo Kills: #{solokill}
 
 - Average Stats -
-Eliminations: #{elimsavg} | Damage Done: #{dmgavg} | Deaths: #{deathsavg}
+Eliminations: #{elimsavg} | Damage Done: #{dmgavg} | Healing: #{healing_average} | Deaths: #{deathsavg}
 Objective Kills: #{objkavg} | Objective Time: #{objtavg} | Solo Kills: #{solokillavg}
 
 - Game -
@@ -96,7 +98,7 @@ Time Played: #{playedt} | Games Won: #{gwon} | Win Percentage: #{winperc}
 Gold: #{gmedals} | Silver: #{smedals} | Bronze: #{bmedals} | Cards: #{cards}
 ```"""
         end
-        puts "#{event.server.name} - Genji"
+        puts "#{event.server.name} - Mercy"
       end
     end
   end

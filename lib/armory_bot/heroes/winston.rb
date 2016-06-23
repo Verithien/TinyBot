@@ -1,8 +1,8 @@
 module ArmoryBot
   module Commands
-    module Genji
+    module Winston
       extend Discordrb::Commands::CommandContainer
-      command([:genji, :Genji, :GENJI], bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
+      command([:winston, :Winston, :WINSTON], bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
 
         platform = platform.downcase
 
@@ -28,7 +28,7 @@ module ArmoryBot
           nil
         end
 
-        data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/Genji/", :verify => false ).parsed_response
+        data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/Winston/", :verify => false ).parsed_response
 
         if platform == "pc"
           name = account.first
@@ -37,13 +37,15 @@ module ArmoryBot
           name = name.join(' ')
         end
 
-        dbs = data["Dragonblades"]
-        db_kills = data["DragonbladeKills"]
-        db_average = data["DragonbladeKills-Average"]
-        db_most = data["DragonbladeKills-MostinGame"]
-        damage_reflected = data["DamageReflected"]
-        most_reflected = data["DamageReflected-MostinGame"]
-        average_reflected = data["DamageReflected-Average"]
+        blocked = data["DamageBlocked"]
+        blocked_most = data["DamageBlocked-MostinGame"]
+        blocked_average = data["DamageBlocked-Average"]
+        knockback = data["PlayersKnockedBack"]
+        knockback_average = data["PlayersKnockedBack-Average"]
+        knockback_most = data["PlayersKnockedBack-MostinGame"]
+        jumppack = data["JumpPackKills"]
+        jumppack_average = data["JumpPackKills-Average"]
+        jumppack_most = data["JumpPackKills-MostinGame"]
 
         elims = data["Eliminations"]
         objk = data["ObjectiveKills"]
@@ -77,11 +79,12 @@ module ArmoryBot
         elsif data["statusCode"] == 404
           event << "Sorry, no account was found with that name."
         else
-          event.respond """#{event.user.mention} - #{name.capitalize} - Genji
+          event.respond """#{event.user.mention} - #{name.capitalize} - Winston
 ```ruby
 - Hero Specific -
-Dragonblades: #{dbs} | Kills: #{db_kills} | Most in Game: #{db_most} | Average: #{db_average}
-Damage Reflected: #{damage_reflected} | Most in Game: #{most_reflected} | Average: #{average_reflected}
+Jump Pack Kills: #{jumppack} | Most in Game: #{jumppack_most} | Average: #{jumppack_average}
+Players Knocked Back: #{knockback} | Most in Game: #{knockback_most} | Average: #{knockback_average}
+Damage Blocked: #{blocked} | Most in Game: #{blocked_most} | Average: #{blocked_average}
 
 - Total Stats -
 Eliminations: #{elims} | Damage Done: #{dmg} | Deaths: #{deaths}
@@ -96,7 +99,7 @@ Time Played: #{playedt} | Games Won: #{gwon} | Win Percentage: #{winperc}
 Gold: #{gmedals} | Silver: #{smedals} | Bronze: #{bmedals} | Cards: #{cards}
 ```"""
         end
-        puts "#{event.server.name} - Genji"
+        puts "#{event.server.name} - Winston"
       end
     end
   end

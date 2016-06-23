@@ -2,8 +2,7 @@ module ArmoryBot
   module Commands
     module Mccree
       extend Discordrb::Commands::CommandContainer
-      command(:mccree, bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
-        break unless event.user.id == 100311929821626368
+      command([:mccree, :McCree, :Mccree, :MCCREE], bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
 
         platform = platform.downcase
 

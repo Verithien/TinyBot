@@ -1,8 +1,8 @@
 module ArmoryBot
   module Commands
-    module Genji
+    module Zarya
       extend Discordrb::Commands::CommandContainer
-      command([:genji, :Genji, :GENJI], bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
+      command([:zarya, :Zarya, :ZARYA], bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
 
         platform = platform.downcase
 
@@ -28,7 +28,7 @@ module ArmoryBot
           nil
         end
 
-        data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/Genji/", :verify => false ).parsed_response
+        data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/Zarya/", :verify => false ).parsed_response
 
         if platform == "pc"
           name = account.first
@@ -37,13 +37,18 @@ module ArmoryBot
           name = name.join(' ')
         end
 
-        dbs = data["Dragonblades"]
-        db_kills = data["DragonbladeKills"]
-        db_average = data["DragonbladeKills-Average"]
-        db_most = data["DragonbladeKills-MostinGame"]
-        damage_reflected = data["DamageReflected"]
-        most_reflected = data["DamageReflected-MostinGame"]
-        average_reflected = data["DamageReflected-Average"]
+        blocked = data["DamageBlocked"]
+        blocked_most = data["DamageBlocked-MostinGame"]
+        blocked_average = data["DamageBlocked-Average"]
+        energykills = data["HighEnergyKills"]
+        energykills_average = data["HighEnergyKills-Average"]
+        energykills_most = data["HighEnergyKills-MostinGame"]
+        gravitonkills = data["LifetimeGravitonSurgeKills"]
+        gravitonkills_average = data["GravitonSurgeKills-Average"]
+        gravitonkills_most = data["GravitonSurgeKills-MostinGame"]
+        barriers = data["ProjectedBarriersApplied"]
+        barriers_average = data["ProjectedBarriersApplied-Average"]
+        energymax = data["EnergyMaximum"]
 
         elims = data["Eliminations"]
         objk = data["ObjectiveKills"]
@@ -77,11 +82,13 @@ module ArmoryBot
         elsif data["statusCode"] == 404
           event << "Sorry, no account was found with that name."
         else
-          event.respond """#{event.user.mention} - #{name.capitalize} - Genji
+          event.respond """#{event.user.mention} - #{name.capitalize} - Zarya
 ```ruby
 - Hero Specific -
-Dragonblades: #{dbs} | Kills: #{db_kills} | Most in Game: #{db_most} | Average: #{db_average}
-Damage Reflected: #{damage_reflected} | Most in Game: #{most_reflected} | Average: #{average_reflected}
+High Energy Kills: #{energykills} | Most in Game: #{energykills_most} | Average: #{energykills_average}
+Graviton Surge Kills: #{gravitonkills} | Most in Game: #{gravitonkills_most} | Average: #{gravitonkills_average}
+Damage Blocked: #{blocked} | Most in Game: #{blocked_most} | Average: #{blocked_average}
+Barriers Applied: #{barriers} | Average: #{barriers_most} | Max Energy: #{energymax}
 
 - Total Stats -
 Eliminations: #{elims} | Damage Done: #{dmg} | Deaths: #{deaths}
@@ -96,7 +103,7 @@ Time Played: #{playedt} | Games Won: #{gwon} | Win Percentage: #{winperc}
 Gold: #{gmedals} | Silver: #{smedals} | Bronze: #{bmedals} | Cards: #{cards}
 ```"""
         end
-        puts "#{event.server.name} - Genji"
+        puts "#{event.server.name} - Zarya"
       end
     end
   end
