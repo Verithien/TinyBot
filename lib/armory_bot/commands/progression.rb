@@ -63,7 +63,7 @@ Tyrant Velhari
 Heroic: #{velhari["heroicKills"]} | Mythic: #{velhari["mythicKills"]}
 Fel Lord Zakuun
 Heroic: #{fellord["heroicKills"]} | Mythic: #{fellord["mythicKills"]}
-Xhul'horac
+Xhulhorac
 Heroic: #{xhul["heroicKills"]} | Mythic: #{xhul["mythicKills"]}
 Mannoroth
 Heroic: #{mann["heroicKills"]} | Mythic: #{mann["mythicKills"]}
@@ -93,7 +93,7 @@ Tyrant Velhari
 Normal: #{velhari["normalKills"]} | Heroic: #{velhari["heroicKills"]}
 Fel Lord Zakuun
 Normal: #{fellord["normalKills"]} | Heroic: #{fellord["heroicKills"]} 
-Xhul'horac
+Xhulhorac
 Normal: #{xhul["normalKills"]} | Heroic: #{xhul["heroicKills"]}
 Mannoroth
 Normal: #{mann["normalKills"]} | Heroic: #{mann["heroicKills"]}
@@ -123,7 +123,7 @@ Tyrant Velhari
 LFR: #{velhari["lfrKills"]} | Normal: #{velhari["normalKills"]}
 Fel Lord Zakuun
 LFR: #{fellord["lfrKills"]} | Normal: #{fellord["normalKills"]}
-Xhul'horac
+Xhulhorac
 LFR: #{xhul["lfrKills"]} | Normal: #{xhul["normalKills"]}
 Mannoroth
 LFR: #{mann["lfrKills"]} | Normal: #{mann["normalKills"]}
