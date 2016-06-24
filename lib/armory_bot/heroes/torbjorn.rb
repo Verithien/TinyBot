@@ -38,7 +38,7 @@ module ArmoryBot
         end
 
         armor = data["ArmorPacksCreated"]
-        armor_most = data["ArmorPacksCreated-MostinGame"]
+        armor_average = data["ArmorPacksCreated-Average"]
         turret = data["TurretKills"]
         turret_average = data["TurretKills-Average"]
         moltencore = data["MoltenCoreKills"]
@@ -82,7 +82,7 @@ module ArmoryBot
 - Hero Specific -
 Molten Core Kills: #{moltencore} | Most in Game: #{moltencore_most} | Average: #{moltencore_average}
 Turret Kills: #{turret} | Average: #{turret_average}
-Armor Packs Created: #{armor} | Average: #{armor_most}
+Armor Packs Created: #{armor} | Average: #{armor_average}
 
 - Total Stats -
 Eliminations: #{elims} | Damage Done: #{dmg} | Deaths: #{deaths}
