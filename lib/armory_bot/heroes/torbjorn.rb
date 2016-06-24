@@ -37,8 +37,8 @@ module ArmoryBot
           name = name.join(' ')
         end
 
-        armor = data["ArmoryPacksCreated"]
-        armor_most = data["ArmoryPacksCreated-MostinGame"]
+        armor = data["ArmorPacksCreated"]
+        armor_most = data["ArmorPacksCreated-MostinGame"]
         turret = data["TurretKills"]
         turret_average = data["TurretKills-Average"]
         moltencore = data["MoltenCoreKills"]
