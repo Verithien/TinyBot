@@ -15,7 +15,7 @@ module ArmoryBot
           acc = acc.split(' ')
           acc = acc.join('%20')
         else
-          acc = account
+          acc = account.first
         end
 
         if platform == "pc" && region == "us"
