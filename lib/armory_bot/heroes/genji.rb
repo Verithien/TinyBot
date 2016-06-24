@@ -76,6 +76,8 @@ module ArmoryBot
           event << "Sorry, you inputted everything correctly, just seems to be an error while retrieving your account. :( "
         elsif data["statusCode"] == 404
           event << "Sorry, no account was found with that name."
+        elsif data.first == nil
+          event << "Sorry, doesn't seem to be any information for this hero"
         else
           event.respond """#{event.user.mention} - #{name.capitalize} - Genji
 ```ruby
