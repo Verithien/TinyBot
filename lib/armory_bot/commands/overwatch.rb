@@ -2,9 +2,11 @@ module ArmoryBot
   module Commands
     module Overwatch
       extend Discordrb::Commands::CommandContainer
-        command(:overwatch, bucket: :overwatch) do |event, *account, region, platform|
+        command(:overwatch, bucket: :overwatch) do |event, *account, region, platform, mode|
 
         platform = platform.downcase
+
+        mode = mode.downcase
 
         region = region.downcase
 
@@ -35,8 +37,10 @@ module ArmoryBot
 
         pc = HTTParty.get("https://playoverwatch.com/en-us/career/#{platform}/#{region}/#{acc}", :verify => false ).parsed_response
         console = HTTParty.get("https://playoverwatch.com/en-us/career/#{platform}/#{acc}", :verify => false ).parsed_response
-        stats = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region1}/#{acc}/allHeroes/", :verify => false ).parsed_response
-        profile = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region1}/#{acc}/profile", :verify => false).parsed_response
+        stats1 = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region1}/#{acc}/quick-play/allHeroes/", :verify => false ).parsed_response
+        stats2 = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region1}/#{acc}/competitive-play/allHeroes/", :verify => false ).parsed_response
+        profile1 = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region1}/#{acc}/quick-play/profile", :verify => false).parsed_response
+        profile2 = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region1}/#{acc}/competitive-play/profile", :verify => false).parsed_response
 
         if platform == "pc"
           page = pc
@@ -46,6 +50,13 @@ module ArmoryBot
           nil
         end
 
+        if mode == "cm"
+          stats = stats2
+          profile = profile1
+        else
+          stats = stats1
+          profile = profile2
+        end
 
         parse_page = Nokogiri::HTML(page)
 
