@@ -52,7 +52,7 @@ module ArmoryBot
           name = name.join(' ')
         end
 
-        headshot = data["ScopedHits"]
+        headshot = data["ScopedCriticalHits"]
         headshot_most = data["ScopedCriticalHits-MostinGame"]
         headshot_average = data["ScopedCriticalHits-Average"]
         venom = data["VenomMineKills"]
