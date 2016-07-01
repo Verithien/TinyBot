@@ -51,11 +51,13 @@ module ArmoryBot
         end
 
         if mode == "cm"
-          stats = stats2
+          stats = stats1
           profile = profile1
-        else
+        elsif mode == "qp"
           stats = stats1
           profile = profile2
+        else
+          nil
         end
 
         parse_page = Nokogiri::HTML(page)
