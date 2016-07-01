@@ -31,6 +31,7 @@ module ArmoryBot
         end
 
         data1 = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/quick-play/hero/Junkrat/", :verify => false ).parsed_response
+        data2 = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/competitive-play/hero/Junkrat/", :verify => false ).parsed_response
 
         break unless mode == "qp" || mode == "cp"
 
