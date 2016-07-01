@@ -2,9 +2,11 @@ module ArmoryBot
   module Commands
     module Reinhardt
       extend Discordrb::Commands::CommandContainer
-      command([:reinhardt, :Reinhardt, :REINHARDT], bucket: :overwatch, min_args: 3, rate_limit_message: 'All heroes share a rate limit. Wait %time% more seconds.') do |event, *account, region, platform|
+      command([:reinhardt, :Reinhardt, :REINHARDT], bucket: :overwatch, min_args: 4, rate_limit_message: 'All heroes share a rate limit. Wait %time% more seconds.') do |event, *account, region, platform, mode|
 
         platform = platform.downcase
+
+        mode = mode.downcase
 
         acc = account.join(' ')
 
@@ -28,7 +30,20 @@ module ArmoryBot
           nil
         end
 
-        data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/Reinhardt/", :verify => false ).parsed_response
+        data1 = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/quick-play/hero/Reinhardt/", :verify => false ).parsed_response
+        data2 = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/competitive-play/hero/Reinhardt/", :verify => false ).parsed_response
+
+        break unless mode == "qp" || mode == "cp"
+
+        if mode == nil || mode == "qp"
+          data = data1
+          type = "Quick Play"
+        elsif mode == "cp"
+          data = data2
+          type = "Competitive Play"
+        else
+          nil
+        end
 
         if platform == "pc"
           name = account.first
@@ -82,7 +97,7 @@ module ArmoryBot
         elsif data["statusCode"] == 404
           event << "Sorry, no account was found with that name."
         else
-          event.respond """#{event.user.mention} - #{name.capitalize} - Reinhardt
+          event.respond """#{event.user.mention} - #{name.capitalize} - Reinhardt - #{type}
 ```ruby
 - Hero Specific -
 Charge Kills: #{charge} | Most in Game: #{charge_most} | Average: #{charge_average}

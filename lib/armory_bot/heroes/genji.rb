@@ -2,9 +2,11 @@ module ArmoryBot
   module Commands
     module Genji
       extend Discordrb::Commands::CommandContainer
-      command([:genji, :Genji, :GENJI], bucket: :overwatch, min_args: 3, rate_limit_message: 'All heroes share a rate limit. Wait %time% more seconds.') do |event, *account, region, platform|
+      command([:genji, :Genji, :GENJI], bucket: :overwatch, min_args: 4, rate_limit_message: 'All heroes share a rate limit. Wait %time% more seconds.') do |event, *account, region, platform, mode|
 
         platform = platform.downcase
+
+        mode = mode.downcase
 
         acc = account.join(' ')
 
@@ -28,7 +30,20 @@ module ArmoryBot
           nil
         end
 
-        data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/Genji/", :verify => false ).parsed_response
+        data1 = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/quick-play/hero/Genji/", :verify => false ).parsed_response
+        data2 = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/competitive-play/hero/Genji/", :verify => false ).parsed_response
+
+        break unless mode == "qp" || mode == "cp"
+
+        if mode == nil || mode == "qp"
+          data = data1
+          type = "Quick Play"
+        elsif mode == "cp"
+          data = data2
+          type = "Competitive Play"
+        else
+          nil
+        end
 
         if platform == "pc"
           name = account.first
@@ -79,7 +94,7 @@ module ArmoryBot
         elsif data.first == nil
           event << "Sorry, doesn't seem to be any information for this hero"
         else
-          event.respond """#{event.user.mention} - #{name.capitalize} - Genji
+          event.respond """#{event.user.mention} - #{name.capitalize} - Genji - #{type}
 ```ruby
 - Hero Specific -
 Dragonblades: #{dbs} | Kills: #{db_kills} | Most in Game: #{db_most} | Average: #{db_average}

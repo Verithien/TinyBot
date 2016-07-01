@@ -37,8 +37,10 @@ module ArmoryBot
 
         if mode == nil || mode == "qp"
           data = data1
+          type = "Quick Play"
         elsif mode == "cp"
           data = data2
+          type = "Competitive Play"
         else
           nil
         end
@@ -91,27 +93,8 @@ module ArmoryBot
           event << "Sorry, no account was found with that name."
         elsif data.first == nil
           event << "Sorry, doesn't seem to be any information for this hero"
-        elsif mode == "Competitive Play"
-          event.respond """#{event.user.mention} - #{name.capitalize} - Hanzo - Competitive Play
-```ruby
-- Hero Specific -
-Dragonstrike Kills: #{ds_kills} | Most in Game: #{ds_most} | Average: #{ds_average}
-Scatter Arrow Kills: #{scatter_kills} | Most in Game: #{scatter_mig} | Average: #{scatter_average}
-
-- Total Stats -
-Eliminations: #{elims} | Damage Done: #{dmg} | Deaths: #{deaths}
-Objective Kills: #{objk} | Best Killstreak: #{ksm} | Solo Kills: #{solokill}
-
-- Average Stats -
-Eliminations: #{elimsavg} | Damage Done: #{dmgavg} | Deaths: #{deathsavg}
-Objective Kills: #{objkavg} | Objective Time: #{objtavg} | Solo Kills: #{solokillavg}
-
-- Game -
-Time Played: #{playedt} | Games Won: #{gwon} | Win Percentage: #{winperc}
-Gold: #{gmedals} | Silver: #{smedals} | Bronze: #{bmedals} | Cards: #{cards}
-```"""
         else
-          event.respond """#{event.user.mention} - #{name.capitalize} - Hanzo - Quick Play
+          event.respond """#{event.user.mention} - #{name.capitalize} - Hanzo - #{type}
 ```ruby
 - Hero Specific -
 Dragonstrike Kills: #{ds_kills} | Most in Game: #{ds_most} | Average: #{ds_average}

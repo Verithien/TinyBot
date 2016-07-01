@@ -2,9 +2,11 @@ module ArmoryBot
   module Commands
     module Junkrat
       extend Discordrb::Commands::CommandContainer
-      command([:junkrat, :Junkrat, :JunkRat, :JUNKRAT], bucket: :overwatch, min_args: 3, rate_limit_message: 'All heroes share a rate limit. Wait %time% more seconds.') do |event, *account, region, platform|
+      command([:junkrat, :Junkrat, :JunkRat, :JUNKRAT], bucket: :overwatch, min_args: 4, rate_limit_message: 'All heroes share a rate limit. Wait %time% more seconds.') do |event, *account, region, platform, mode|
 
         platform = platform.downcase
+
+        mode = mode.downcase
 
         acc = account.join(' ')
 
@@ -28,7 +30,19 @@ module ArmoryBot
           nil
         end
 
-        data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/Junkrat/", :verify => false ).parsed_response
+        data1 = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/quick-play/hero/Junkrat/", :verify => false ).parsed_response
+
+        break unless mode == "qp" || mode == "cp"
+
+        if mode == nil || mode == "qp"
+          data = data1
+          type = "Quick Play"
+        elsif mode == "cp"
+          data = data2
+          type = "Competitive Play"
+        else
+          nil
+        end
 
         if platform == "pc"
           name = account.first
@@ -75,7 +89,7 @@ module ArmoryBot
         elsif data["statusCode"] == 404
           event << "Sorry, no account was found with that name."
         else
-          event.respond """#{event.user.mention} - #{name.capitalize} - Junkrat
+          event.respond """#{event.user.mention} - #{name.capitalize} - Junkrat - #{type}
 ```ruby
 - Hero Specific -
 RIP Tire Kills: #{RIP_kills} | Most in Game: #{RIP_most}

@@ -2,7 +2,7 @@ module ArmoryBot
   module Commands
     module Overwatch
       extend Discordrb::Commands::CommandContainer
-        command(:overwatch, bucket: :overwatch) do |event, *account, region, platform, mode|
+        command(:overwatch, bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
 
         platform = platform.downcase
 
@@ -46,16 +46,6 @@ module ArmoryBot
           page = pc
         elsif platform == "xbl" || "psn"
           page = console
-        else
-          nil
-        end
-
-        if mode == "cm"
-          stats = stats1
-          profile = profile1
-        elsif mode == "qp"
-          stats = stats1
-          profile = profile2
         else
           nil
         end
