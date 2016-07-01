@@ -2,9 +2,15 @@ module ArmoryBot
   module Commands
     module Hanzo
       extend Discordrb::Commands::CommandContainer
-      command([:hanzo, :Hanzo, :HANZO], bucket: :overwatch, min_args: 3, rate_limit_message: 'All heroes share a rate limit. Wait %time% more seconds.') do |event, *account, region, platform|
+      command([:hanzo, :Hanzo, :HANZO], bucket: :overwatch, min_args: 3, rate_limit_message: 'All heroes share a rate limit. Wait %time% more seconds.') do |event, *account, region, platform, mode|
 
         platform = platform.downcase
+
+        if mode == nil || mode == "qp"
+          mode = "Quick Play"
+        else
+          mode = "Competitive Play"
+        end
 
         acc = account.join(' ')
 
@@ -28,7 +34,16 @@ module ArmoryBot
           nil
         end
 
-        data = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/hero/Hanzo/", :verify => false ).parsed_response
+        data1 = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/quick-play/hero/Hanzo/", :verify => false ).parsed_response
+        data2 = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/competitive-play/hero/Hanzo/", :verify => false ).parsed_response
+
+        if mode == nil || mode == "Quick Play"
+          data = data1
+        elsif mode == "Competitive Play"
+          data = data2
+        else
+          nil
+        end
 
         if platform == "pc"
           name = account.first
@@ -76,8 +91,29 @@ module ArmoryBot
           event << "Sorry, you inputted everything correctly, just seems to be an error while retrieving your account. :( "
         elsif data["statusCode"] == 404
           event << "Sorry, no account was found with that name."
+        elsif data.first == nil
+          event << "Sorry, doesn't seem to be any information for this hero"
+        elsif mode == "Competitive Play"
+          event.respond """#{event.user.mention} - #{name.capitalize} - Hanzo - Competitive Play
+```ruby
+- Hero Specific -
+Dragonstrike Kills: #{ds_kills} | Most in Game: #{ds_most} | Average: #{ds_average}
+Scatter Arrow Kills: #{scatter_kills} | Most in Game: #{scatter_mig} | Average: #{scatter_average}
+
+- Total Stats -
+Eliminations: #{elims} | Damage Done: #{dmg} | Deaths: #{deaths}
+Objective Kills: #{objk} | Best Killstreak: #{ksm} | Solo Kills: #{solokill}
+
+- Average Stats -
+Eliminations: #{elimsavg} | Damage Done: #{dmgavg} | Deaths: #{deathsavg}
+Objective Kills: #{objkavg} | Objective Time: #{objtavg} | Solo Kills: #{solokillavg}
+
+- Game -
+Time Played: #{playedt} | Games Won: #{gwon} | Win Percentage: #{winperc}
+Gold: #{gmedals} | Silver: #{smedals} | Bronze: #{bmedals} | Cards: #{cards}
+```"""
         else
-          event.respond """#{event.user.mention} - #{name.capitalize} - Hanzo
+          event.respond """#{event.user.mention} - #{name.capitalize} - Hanzo - Quick Play
 ```ruby
 - Hero Specific -
 Dragonstrike Kills: #{ds_kills} | Most in Game: #{ds_most} | Average: #{ds_average}
