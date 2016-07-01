@@ -55,84 +55,91 @@ module ArmoryBot
         cchar = cclass[data["calcClass"]]
        
     if spec == "Blood"
-        event.user.pm """**#{char.capitalize} - #{realm.capitalize} - #{region.upcase} - #{spec} #{cchar}**
-        **Health:** #{data["stats"]["health"]}
-        **Strength:** #{data["stats"]["str"]}     **Stamina:** #{data["stats"]["sta"]}
-        **Crit Rating:** #{data["stats"]["critRating"]}     **Crit:** #{data["stats"]["crit"].round(2)}%
-        **Haste Rating:** #{data["stats"]["hasteRating"]}     **Haste:** #{data["stats"]["haste"].round(2)}%
-        **Mastery Rating:** #{data["stats"]["masteryRating"]}     **Mastery:** #{data["stats"]["mastery"].round(2)}%
-        **Multistrike Rating:** #{data["stats"]["multistrikeRating"]}     **Multistrike:** #{data["stats"]["multistrike"].round(2)}%
-        **Versatility Rating:** #{data["stats"]["versatility"]}     **Versatility Damage Reduction:** #{data["stats"]["versatilityDamageTakenBonus"].round(2)}%
-        **Armor:** #{data["stats"]["armor"]}     **Armor DR:** NPC lvl 103: #{armordr103.round(2)}%  /  lvl 100: #{armordr100.round(2)}%
-        **Dodge:** #{data["stats"]["dodge"].round(2)}%     **Parry:** #{data["stats"]["parry"].round(2)}%
-        """
+        event.respond """#{char.capitalize} - #{realm.capitalize} - #{region.upcase} - #{spec} #{cchar}
+```Ruby
+Health: #{data["stats"]["health"]}
+Strength: #{data["stats"]["str"]}   |   Stamina: #{data["stats"]["sta"]}
+Crit Rating: #{data["stats"]["critRating"]} |   Crit: #{data["stats"]["crit"].round(2)}%
+Haste Rating: #{data["stats"]["hasteRating"]}   |   Haste: #{data["stats"]["haste"].round(2)}%
+Mastery Rating: #{data["stats"]["masteryRating"]}   |   Mastery: #{data["stats"]["mastery"].round(2)}%
+Multistrike Rating: #{data["stats"]["multistrikeRating"]}   |   Multistrike: #{data["stats"]["multistrike"].round(2)}%
+Versatility Rating: #{data["stats"]["versatility"]} |   Versatility Damage Reduction: #{data["stats"]["versatilityDamageTakenBonus"].round(2)}%
+Armor: #{data["stats"]["armor"]}    |   Armor DR: NPC lvl 103: #{armordr103.round(2)}%  /  lvl 100: #{armordr100.round(2)}%
+Dodge: #{data["stats"]["dodge"].round(2)}%  |   Parry: #{data["stats"]["parry"].round(2)}%
+```"""
     elsif spec == "Protection"
-      event.user.pm """**#{char.capitalize} - #{realm.capitalize} - #{region.upcase} - #{spec} #{cchar}**
-        **Health:** #{data["stats"]["health"]}
-        **Strength:** #{data["stats"]["str"]}     **Stamina:** #{data["stats"]["sta"]}
-        **Crit Rating:** #{data["stats"]["critRating"]}     **Crit:** #{data["stats"]["crit"].round(2)}%
-        **Haste Rating:** #{data["stats"]["hasteRating"]}     **Haste:** #{data["stats"]["haste"].round(2)}%
-        **Mastery Rating:** #{data["stats"]["masteryRating"]}     **Mastery:** #{data["stats"]["mastery"].round(2)}%
-        **Multistrike Rating:** #{data["stats"]["multistrikeRating"]}     **Multistrike:** #{data["stats"]["multistrike"].round(2)}%
-        **Versatility Rating:** #{data["stats"]["versatility"]}     **Versatility Damage Reduction:** #{data["stats"]["versatilityDamageTakenBonus"].round(2)}%
-        **Armor:** #{data["stats"]["armor"]}     **Armor DR:** NPC lvl 103: #{armordr103.round(2)}%  /  lvl 100: #{armordr100.round(2)}%
-        **Dodge:** #{data["stats"]["dodge"].round(2)}%     **Parry:** #{data["stats"]["parry"].round(2)}%     **Block:** #{data["stats"]["block"].round(2)}%
-        """
+      event.respond """#{char.capitalize} - #{realm.capitalize} - #{region.upcase} - #{spec} #{cchar}
+```Ruby
+Health: #{data["stats"]["health"]}
+Strength: #{data["stats"]["str"]}   |   Stamina: #{data["stats"]["sta"]}
+Crit Rating: #{data["stats"]["critRating"]} |   Crit: #{data["stats"]["crit"].round(2)}%
+Haste Rating: #{data["stats"]["hasteRating"]}   |   Haste: #{data["stats"]["haste"].round(2)}%
+Mastery Rating: #{data["stats"]["masteryRating"]}   |   Mastery: #{data["stats"]["mastery"].round(2)}%
+Multistrike Rating: #{data["stats"]["multistrikeRating"]}   |   Multistrike: #{data["stats"]["multistrike"].round(2)}%
+Versatility Rating: #{data["stats"]["versatility"]} |   Versatility Damage Reduction: #{data["stats"]["versatilityDamageTakenBonus"].round(2)}%
+Armor: #{data["stats"]["armor"]}    |   Armor DR: NPC lvl 103: #{armordr103.round(2)}%  /  lvl 100: #{armordr100.round(2)}%
+Dodge: #{data["stats"]["dodge"].round(2)}%  |   Parry: #{data["stats"]["parry"].round(2)}%  |   Block: #{data["stats"]["block"].round(2)}%
+```"""
     elsif spec == "Brewmaster" or spec == "Guardian"
-      event.user.pm """**#{char.capitalize} - #{realm.capitalize} - #{region.upcase} - #{spec} #{cchar}**
-        **Health:** #{data["stats"]["health"]}
-        **Agility:** #{data["stats"]["agi"]}     **Stamina:** #{data["stats"]["sta"]}
-        **Crit Rating:** #{data["stats"]["critRating"]}     **Crit:** #{data["stats"]["crit"].round(2)}%
-        **Haste Rating:** #{data["stats"]["hasteRating"]}     **Haste:** #{data["stats"]["haste"].round(2)}%
-        **Mastery Rating:** #{data["stats"]["masteryRating"]}     **Mastery:** #{data["stats"]["mastery"].round(2)}%
-        **Multistrike Rating:** #{data["stats"]["multistrikeRating"]}     **Multistrike:** #{data["stats"]["multistrike"].round(2)}%
-        **Versatility Rating:** #{data["stats"]["versatility"]}     **Versatility Damage Reduction:** #{data["stats"]["versatilityDamageTakenBonus"].round(2)}%
-        **Armor:** #{data["stats"]["armor"]}     **Armor DR:** NPC lvl 103: #{armordr103.round(2)}%  /  lvl 100: #{armordr100.round(2)}%
-        **Dodge:** #{data["stats"]["dodge"].round(2)}%     **Parry:** #{data["stats"]["parry"].round(2)}%
-        """
+      event.respond """#{char.capitalize} - #{realm.capitalize} - #{region.upcase} - #{spec} #{cchar}
+```Ruby
+Health: #{data["stats"]["health"]}
+Agility: #{data["stats"]["agi"]}    |   Stamina: #{data["stats"]["sta"]}
+Crit Rating: #{data["stats"]["critRating"]} |   Crit: #{data["stats"]["crit"].round(2)}%
+Haste Rating: #{data["stats"]["hasteRating"]}   |   Haste: #{data["stats"]["haste"].round(2)}%
+Mastery Rating: #{data["stats"]["masteryRating"]}   |   Mastery: #{data["stats"]["mastery"].round(2)}%
+Multistrike Rating: #{data["stats"]["multistrikeRating"]}   |   Multistrike: #{data["stats"]["multistrike"].round(2)}%
+Versatility Rating: #{data["stats"]["versatility"]} |   Versatility Damage Reduction: #{data["stats"]["versatilityDamageTakenBonus"].round(2)}%
+Armor: #{data["stats"]["armor"]}    |   Armor DR: NPC lvl 103: #{armordr103.round(2)}%  /  lvl 100: #{armordr100.round(2)}%
+Dodge: #{data["stats"]["dodge"].round(2)}%  |   Parry: #{data["stats"]["parry"].round(2)}%
+```"""
   elsif spec == "Holy" or spec == "Discipline" or spec == "Mistweaver" or spec == "Restoration"
-      event.user.pm """**#{char.capitalize} - #{realm.capitalize} - #{region.upcase} - #{spec} #{cchar}**
-        **Health:** #{data["stats"]["health"]}
-        **Intellect:** #{data["stats"]["int"]}     **Stamina:** #{data["stats"]["sta"]}
-        **Crit Rating:** #{data["stats"]["critRating"]}     **Crit:** #{data["stats"]["crit"].round(2)}%
-        **Haste Rating:** #{data["stats"]["hasteRating"]}     **Haste:** #{data["stats"]["haste"].round(2)}%
-        **Mastery Rating:** #{data["stats"]["masteryRating"]}     **Mastery:** #{data["stats"]["mastery"].round(2)}%
-        **Multistrike Rating:** #{data["stats"]["multistrikeRating"]}     **Multistrike:** #{data["stats"]["multistrike"].round(2)}%
-        **Versatility Rating:** #{data["stats"]["versatility"]}     **Versatility Healing Increase:** #{data["stats"]["versatilityHealingDoneBonus"].round(2)}%
-        **Spirit:** #{data["stats"]["spr"]}     **Combat Regen:** #{data["stats"]["mana5Combat"]} mp5
-        """
+      event.respond """#{char.capitalize} - #{realm.capitalize} - #{region.upcase} - #{spec} #{cchar}
+```Ruby
+Health: #{data["stats"]["health"]}
+Intellect: #{data["stats"]["int"]}  |   Stamina: #{data["stats"]["sta"]}
+Crit Rating: #{data["stats"]["critRating"]} |   Crit: #{data["stats"]["crit"].round(2)}%
+Haste Rating: #{data["stats"]["hasteRating"]}   |   Haste: #{data["stats"]["haste"].round(2)}%
+Mastery Rating: #{data["stats"]["masteryRating"]}   |   Mastery: #{data["stats"]["mastery"].round(2)}%
+Multistrike Rating: #{data["stats"]["multistrikeRating"]}   |   Multistrike: #{data["stats"]["multistrike"].round(2)}%
+Versatility Rating: #{data["stats"]["versatility"]} |   Versatility Healing Increase: #{data["stats"]["versatilityHealingDoneBonus"].round(2)}%
+Spirit: #{data["stats"]["spr"]} |   Combat Regen: #{data["stats"]["mana5Combat"]} mp5
+```"""
     elsif cchar == "Death Knight" or cchar == "Paladin" or cchar == "Warrior"
-      event.user.pm """**#{char.capitalize} - #{realm.capitalize} - #{region.upcase} - #{spec} #{cchar}**
-        **Health:** #{data["stats"]["health"]}
-        **Strength:** #{data["stats"]["str"]}     **Stamina:** #{data["stats"]["sta"]}
-        **Crit Rating:** #{data["stats"]["critRating"]}     **Crit:** #{data["stats"]["crit"].round(2)}%
-        **Haste Rating:** #{data["stats"]["hasteRating"]}     **Haste:** #{data["stats"]["haste"].round(2)}%
-        **Mastery Rating:** #{data["stats"]["masteryRating"]}     **Mastery:** #{data["stats"]["mastery"].round(2)}%
-        **Multistrike Rating:** #{data["stats"]["multistrikeRating"]}     **Multistrike:** #{data["stats"]["multistrike"].round(2)}%
-        **Versatility Rating:** #{data["stats"]["versatility"]}     **Versatility Damage Increase:** #{data["stats"]["versatilityDamageDoneBonus"].round(2)}%
-        """   
+      event.respond """#{char.capitalize} - #{realm.capitalize} - #{region.upcase} - #{spec} #{cchar}
+```Ruby
+Health: #{data["stats"]["health"]}
+Strength: #{data["stats"]["str"]}   |   Stamina: #{data["stats"]["sta"]}
+Crit Rating: #{data["stats"]["critRating"]} |   Crit: #{data["stats"]["crit"].round(2)}%
+Haste Rating: #{data["stats"]["hasteRating"]}   |   Haste: #{data["stats"]["haste"].round(2)}%
+Mastery Rating: #{data["stats"]["masteryRating"]}   |   Mastery: #{data["stats"]["mastery"].round(2)}%
+Multistrike Rating: #{data["stats"]["multistrikeRating"]}   |   Multistrike: #{data["stats"]["multistrike"].round(2)}%
+Versatility Rating: #{data["stats"]["versatility"]} |   Versatility Damage Increase: #{data["stats"]["versatilityDamageDoneBonus"].round(2)}%
+```"""   
     elsif cchar == "Hunter" or cchar == "Monk" or cchar == "Rogue" or spec == "Feral" or spec =="Enhancement"
-      event.user.pm """**#{char.capitalize} - #{realm.capitalize} - #{region.upcase} - #{spec} #{cchar}**
-        **Health:** #{data["stats"]["health"]}
-        **Strength:** #{data["stats"]["str"]}     **Stamina:** #{data["stats"]["sta"]}
-        **Crit Rating:** #{data["stats"]["critRating"]}     **Crit:** #{data["stats"]["crit"].round(2)}%
-        **Haste Rating:** #{data["stats"]["hasteRating"]}     **Haste:** #{data["stats"]["haste"].round(2)}%
-        **Mastery Rating:** #{data["stats"]["masteryRating"]}     **Mastery:** #{data["stats"]["mastery"].round(2)}%
-        **Multistrike Rating:** #{data["stats"]["multistrikeRating"]}     **Multistrike:** #{data["stats"]["multistrike"].round(2)}%
-        **Versatility Rating:** #{data["stats"]["versatility"]}     **Versatility Damage Increase:** #{data["stats"]["versatilityDamageDoneBonus"].round(2)}%
-        """   
+      event.respond """#{char.capitalize} - #{realm.capitalize} - #{region.upcase} - #{spec} #{cchar}
+```Ruby
+Health: #{data["stats"]["health"]}
+Strength: #{data["stats"]["str"]}   |   Stamina: #{data["stats"]["sta"]}
+Crit Rating: #{data["stats"]["critRating"]} |   Crit: #{data["stats"]["crit"].round(2)}%
+Haste Rating: #{data["stats"]["hasteRating"]}   |   Haste: #{data["stats"]["haste"].round(2)}%
+Mastery Rating: #{data["stats"]["masteryRating"]}   |   Mastery: #{data["stats"]["mastery"].round(2)}%
+Multistrike Rating: #{data["stats"]["multistrikeRating"]}   |   Multistrike: #{data["stats"]["multistrike"].round(2)}%
+Versatility Rating: #{data["stats"]["versatility"]} |   Versatility Damage Increase: #{data["stats"]["versatilityDamageDoneBonus"].round(2)}%
+```"""   
   elsif spec == "Shadow" or spec == "Balance" or cchar == "Mage" or spec == "Elemental" or cchar == "Warlock"
-      event.user.pm """**#{char.capitalize} - #{realm.capitalize} - #{region.upcase} - #{spec} #{cchar}**
-        **Health:** #{data["stats"]["health"]}
-        **Intellect:** #{data["stats"]["int"]}     **Stamina:** #{data["stats"]["sta"]}
-        **Crit Rating:** #{data["stats"]["critRating"]}     **Crit:** #{data["stats"]["crit"].round(2)}%
-        **Haste Rating:** #{data["stats"]["hasteRating"]}     **Haste:** #{data["stats"]["haste"].round(2)}%
-        **Mastery Rating:** #{data["stats"]["masteryRating"]}     **Mastery:** #{data["stats"]["mastery"].round(2)}%
-        **Multistrike Rating:** #{data["stats"]["multistrikeRating"]}     **Multistrike:** #{data["stats"]["multistrike"].round(2)}%
-        **Versatility Rating:** #{data["stats"]["versatility"]}     **Versatility Damage Increase:** #{data["stats"]["versatilityDamageDoneBonus"].round(2)}%
-        """   
+      event.respond """#{char.capitalize} - #{realm.capitalize} - #{region.upcase} - #{spec} #{cchar}
+```Ruby
+Health: #{data["stats"]["health"]}
+Intellect: #{data["stats"]["int"]}  | Stamina: #{data["stats"]["sta"]}
+Crit Rating: #{data["stats"]["critRating"]} |   Crit: #{data["stats"]["crit"].round(2)}%
+Haste Rating: #{data["stats"]["hasteRating"]}   |   Haste: #{data["stats"]["haste"].round(2)}%
+Mastery Rating: #{data["stats"]["masteryRating"]}   |   Mastery: #{data["stats"]["mastery"].round(2)}%
+Multistrike Rating: #{data["stats"]["multistrikeRating"]}   |   Multistrike: #{data["stats"]["multistrike"].round(2)}%
+Versatility Rating: #{data["stats"]["versatility"]} |   Versatility Damage Increase: #{data["stats"]["versatilityDamageDoneBonus"].round(2)}%
+```"""   
     else
-      event.user.pm "No info found"
+      event.respond "No info found"
     end
 
     puts "STATS COMPLETE"
