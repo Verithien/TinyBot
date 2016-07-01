@@ -2,15 +2,11 @@ module ArmoryBot
   module Commands
     module Hanzo
       extend Discordrb::Commands::CommandContainer
-      command([:hanzo, :Hanzo, :HANZO], bucket: :overwatch, min_args: 3, rate_limit_message: 'All heroes share a rate limit. Wait %time% more seconds.') do |event, *account, region, platform, mode|
+      command([:hanzo, :Hanzo, :HANZO], bucket: :overwatch, min_args: 4, rate_limit_message: 'All heroes share a rate limit. Wait %time% more seconds.') do |event, *account, region, platform, mode|
 
         platform = platform.downcase
 
-        if mode == nil || mode == "qp"
-          mode = "Quick Play"
-        else
-          mode = "Competitive Play"
-        end
+        mode = mode.first
 
         acc = account.join(' ')
 
@@ -37,9 +33,11 @@ module ArmoryBot
         data1 = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/quick-play/hero/Hanzo/", :verify => false ).parsed_response
         data2 = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/competitive-play/hero/Hanzo/", :verify => false ).parsed_response
 
-        if mode == nil || mode == "Quick Play"
+        break unless mode == "qp" || mode == "cp"
+
+        if mode == nil || mode == "qp"
           data = data1
-        elsif mode == "Competitive Play"
+        elsif mode == "cp"
           data = data2
         else
           nil
