@@ -1,10 +1,8 @@
 module ArmoryBot
   module Commands
-    module Servers
+    module BotStats
       extend Discordrb::Commands::CommandContainer
-      	command(:servers) do |event|
-
-        break unless event.user.id == 100311929821626368
+      	command(:bstats, bucket: :fight) do |event|
 
         postData = HTTParty.post("https://www.carbonitex.net/discord/data/botdata.php",
                                 {  
@@ -14,7 +12,13 @@ module ArmoryBot
         puts "Server Count: #{event.bot.servers.count}"
         puts postData
 
-        event.bot.servers.count
+event.respond """
+```ruby
+Armory Bot Stats
+
+Servers: #{event.bot.servers.count}
+Users: #{event.bot.users.count}
+```"""
 
       end
     end

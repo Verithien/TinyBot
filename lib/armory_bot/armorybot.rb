@@ -20,6 +20,10 @@ module ArmoryBot
 						time_span: 180,
 						delay: 5)
 
+	bot.bucket(:hots, limit: 3,
+						time_span: 60,
+						delay: 5)
+
 	bot.include! Commands::ItemLevel
 	bot.include! Commands::Summary
 	bot.include! Commands::GearCheck
@@ -33,14 +37,13 @@ module ArmoryBot
 	bot.include! Commands::Stats
 	bot.include! Commands::PvP
 	bot.include! Commands::Moose
-	bot.include! Commands::ServerList
 	bot.include! Commands::Game
 	bot.include! Commands::Glory
 	bot.include! Commands::Evaluation
 	#bot.include! Commands::Register
 	#bot.include! Commands::Update
 	bot.include! Commands::Donate
-	bot.include! Commands::Servers
+	bot.include! Commands::BotStats
 	bot.include! Commands::Overwatch
 
 	#heroes
@@ -66,6 +69,8 @@ module ArmoryBot
 	bot.include! Commands::Zarya
 	bot.include! Commands::Zenyatta
 
+	#hots
+	#bot.include! Commands::MMR
 
 
 	bot.run :async
