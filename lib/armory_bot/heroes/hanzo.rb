@@ -6,7 +6,7 @@ module ArmoryBot
 
         platform = platform.downcase
 
-        mode = mode.first
+        mode = mode.downcase
 
         acc = account.join(' ')
 
