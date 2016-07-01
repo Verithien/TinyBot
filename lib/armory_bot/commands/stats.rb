@@ -6,6 +6,8 @@ module ArmoryBot
 
         realm = realm.join('-')
 
+        region = region.downcase
+
         api_key = 'vg25atxufftra3tsx567svh9r8fh79mv'
 
         statsus = HTTParty.get("https://us.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=stats&locale=en_US&apikey=#{api_key}", :verify => false ).parsed_response
