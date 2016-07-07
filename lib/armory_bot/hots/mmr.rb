@@ -23,43 +23,43 @@ module ArmoryBot
           hero_league = data["LeaderboardRankings"].find { |r| r["GameMode"] == "HeroLeague" }
           team_league = data["LeaderboardRankings"].find { |r| r["GameMode"] == "TeamLeague" }
 
-          if quick_match["CurrentMMR"] > 2918
+          if quick_match["CurrentMMR"] >= 2918
             qmmmr = "Master"
-          elsif quick_match["CurrentMMR"] > 2422
+          elsif quick_match["CurrentMMR"] >= 2422
             qmmmr = "Diamond"
-          elsif quick_match["CurrentMMR"] > 2067
+          elsif quick_match["CurrentMMR"] >= 2067
             qmmmr = "Platinum"
-          elsif quick_match["CurrentMMR"] > 1818
+          elsif quick_match["CurrentMMR"] >= 1818
             qmmmr = "Gold"
-          elsif quick_match["CurrentMMR"] > 1565
+          elsif quick_match["CurrentMMR"] >= 1565
             qmmmr = "Silver"
           else 
             qmmmr = "Bronze"
           end
 
-          if hero_league["CurrentMMR"] > 3095
+          if hero_league["CurrentMMR"] >= 3095
             hlmmr = "Master"
-          elsif hero_league["CurrentMMR"] > 2537
+          elsif hero_league["CurrentMMR"] >= 2537
             hlmmr = "Diamond"
-          elsif hero_league["CurrentMMR"] > 2114
+          elsif hero_league["CurrentMMR"] >= 2114
             hlmmr = "Platinum"
-          elsif hero_league["CurrentMMR"] > 1820
+          elsif hero_league["CurrentMMR"] >= 1820
             hlmmr = "Gold"
-          elsif hero_league["CurrentMMR"] > 1527
+          elsif hero_league["CurrentMMR"] >= 1527
             hlmmr = "Silver"
           else 
             hlmmr = "Bronze"
           end
 
-          if team_league["CurrentMMR"] > 3106
+          if team_league["CurrentMMR"] >= 3106
             tlmmr = "Master"
-          elsif team_league["CurrentMMR"] > 2626
+          elsif team_league["CurrentMMR"] >= 2626
             tlmmr = "Diamond"
-          elsif team_league["CurrentMMR"] > 2245
+          elsif team_league["CurrentMMR"] >= 2245
             tlmmr = "Platinum"
-          elsif team_league["CurrentMMR"] > 1967
+          elsif team_league["CurrentMMR"] >= 1967
             tlmmr = "Gold"
-          elsif team_league["CurrentMMR"] > 1695
+          elsif team_league["CurrentMMR"] >= 1695
             tlmmr = "Silver"
           else 
             tlmmr = "Bronze"
