@@ -19,9 +19,9 @@ module ArmoryBot
           data = HTTParty.get("https://api.hotslogs.com/Public/Players/#{region_num[region]}/#{acc}", :verify => false ).parsed_response
           data1 = data["LeaderboardRankings"]
 
-          quick_match = id["LeaderboardRankings"].find { |r| r["GameMode"] == "QuickMatch" }
-          hero_league = id["LeaderboardRankings"].find { |r| r["GameMode"] == "HeroLeague" }
-          team_league = id["LeaderboardRankings"].find { |r| r["GameMode"] == "TeamLeague" }
+          quick_match = data["LeaderboardRankings"].find { |r| r["GameMode"] == "QuickMatch" }
+          hero_league = data["LeaderboardRankings"].find { |r| r["GameMode"] == "HeroLeague" }
+          team_league = data["LeaderboardRankings"].find { |r| r["GameMode"] == "TeamLeague" }
 
           if quick_match["CurrentMMR"] > 2918
             qmmmr = "Master"
