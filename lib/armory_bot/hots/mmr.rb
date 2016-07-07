@@ -11,7 +11,9 @@ module ArmoryBot
             "CN" => 5
           }
 
-          acc = account.split('#')
+
+          acc = account.first
+          acc = acc.split('#')
           acc = acc.join('_')
 
           data = HTTParty.get("https://api.hotslogs.com/Public/Players/#{region_num[region]}/#{acc}", :verify => false ).parsed_response
