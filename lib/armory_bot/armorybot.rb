@@ -70,7 +70,7 @@ module ArmoryBot
 	bot.include! Commands::Zenyatta
 
 	#hots
-	#bot.include! Commands::MMR
+	bot.include! Commands::MMR
 
 
 	bot.run :async
