@@ -23,6 +23,107 @@ module ArmoryBot
           hero_league = data["LeaderboardRankings"].find { |r| r["GameMode"] == "HeroLeague" }
           team_league = data["LeaderboardRankings"].find { |r| r["GameMode"] == "TeamLeague" }
 
+        if hero_league == nil && team_league == nil && quick_match == nil
+          event << "No matchmaking information found for this Account"
+        elsif team_league == nil && hero_league == nil
+          if quick_match["CurrentMMR"] >= 2918
+            qmmmr = "Master"
+          elsif quick_match["CurrentMMR"] >= 2422
+            qmmmr = "Diamond"
+          elsif quick_match["CurrentMMR"] >= 2067
+            qmmmr = "Platinum"
+          elsif quick_match["CurrentMMR"] >= 1818
+            qmmmr = "Gold"
+          elsif quick_match["CurrentMMR"] >= 1565
+            qmmmr = "Silver"
+          else 
+            qmmmr = "Bronze"
+          end
+        elsif hero_league == nil && quick_match == nil
+          if team_league["CurrentMMR"] >= 3106
+            tlmmr = "Master"
+          elsif team_league["CurrentMMR"] >= 2626
+            tlmmr = "Diamond"
+          elsif team_league["CurrentMMR"] >= 2245
+            tlmmr = "Platinum"
+          elsif team_league["CurrentMMR"] >= 1967
+            tlmmr = "Gold"
+          elsif team_league["CurrentMMR"] >= 1695
+            tlmmr = "Silver"
+          else 
+            tlmmr = "Bronze"
+          end
+        elsif team_league == nil && quick_match == nil
+          if hero_league["CurrentMMR"] >= 3095
+            hlmmr = "Master"
+          elsif hero_league["CurrentMMR"] >= 2537
+            hlmmr = "Diamond"
+          elsif hero_league["CurrentMMR"] >= 2114
+            hlmmr = "Platinum"
+          elsif hero_league["CurrentMMR"] >= 1820
+            hlmmr = "Gold"
+          elsif hero_league["CurrentMMR"] >= 1527
+            hlmmr = "Silver"
+          else 
+            hlmmr = "Bronze"
+          end
+        elsif team_league == nil
+          if quick_match["CurrentMMR"] >= 2918
+            qmmmr = "Master"
+          elsif quick_match["CurrentMMR"] >= 2422
+            qmmmr = "Diamond"
+          elsif quick_match["CurrentMMR"] >= 2067
+            qmmmr = "Platinum"
+          elsif quick_match["CurrentMMR"] >= 1818
+            qmmmr = "Gold"
+          elsif quick_match["CurrentMMR"] >= 1565
+            qmmmr = "Silver"
+          else 
+            qmmmr = "Bronze"
+          end
+
+          if hero_league["CurrentMMR"] >= 3095
+            hlmmr = "Master"
+          elsif hero_league["CurrentMMR"] >= 2537
+            hlmmr = "Diamond"
+          elsif hero_league["CurrentMMR"] >= 2114
+            hlmmr = "Platinum"
+          elsif hero_league["CurrentMMR"] >= 1820
+            hlmmr = "Gold"
+          elsif hero_league["CurrentMMR"] >= 1527
+            hlmmr = "Silver"
+          else 
+            hlmmr = "Bronze"
+          end
+        elsif hero_league == nil 
+          if quick_match["CurrentMMR"] >= 2918
+            qmmmr = "Master"
+          elsif quick_match["CurrentMMR"] >= 2422
+            qmmmr = "Diamond"
+          elsif quick_match["CurrentMMR"] >= 2067
+            qmmmr = "Platinum"
+          elsif quick_match["CurrentMMR"] >= 1818
+            qmmmr = "Gold"
+          elsif quick_match["CurrentMMR"] >= 1565
+            qmmmr = "Silver"
+          else 
+            qmmmr = "Bronze"
+          end
+
+          if team_league["CurrentMMR"] >= 3106
+            tlmmr = "Master"
+          elsif team_league["CurrentMMR"] >= 2626
+            tlmmr = "Diamond"
+          elsif team_league["CurrentMMR"] >= 2245
+            tlmmr = "Platinum"
+          elsif team_league["CurrentMMR"] >= 1967
+            tlmmr = "Gold"
+          elsif team_league["CurrentMMR"] >= 1695
+            tlmmr = "Silver"
+          else 
+            tlmmr = "Bronze"
+          end
+        else            
           if quick_match["CurrentMMR"] >= 2918
             qmmmr = "Master"
           elsif quick_match["CurrentMMR"] >= 2422
@@ -64,6 +165,7 @@ module ArmoryBot
           else 
             tlmmr = "Bronze"
           end
+        end
 
 
           if data1[0] == nil
