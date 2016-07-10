@@ -68,9 +68,9 @@ module ArmoryBot
 	bot.include! Commands::Winston
 	bot.include! Commands::Zarya
 	bot.include! Commands::Zenyatta
-
-	#hots
 	bot.include! Commands::MMR
+	#hots
+
 
 
 	bot.run :async
