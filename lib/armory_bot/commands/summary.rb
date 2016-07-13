@@ -68,7 +68,6 @@ Battle Pets: `#{data4["pets"]["numCollected"]}`"""
 
 Achievement Points: `#{data["achievementPoints"]}`
 Mounts: #{data3["mounts"]["numCollected"]}``"""
-          end
         end
       end
     end
