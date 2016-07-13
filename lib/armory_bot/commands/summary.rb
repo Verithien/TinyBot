@@ -55,19 +55,20 @@ module ArmoryBot
 
           if data2["guild"] == nil
             event.respond """**#{char.capitalize} - #{realm.capitalize}(#{region.upcase})
-#{data} | **#{charrace}** | **#{charclass}**
+#{data["level"]} | **#{charrace}** | **#{charclass}**
 #{armory}
 
 Achievement Points: `#{data["achievementPoints"]}`
-Mounts: #{data3["mounts"]["numCollected"]}``
+Mounts: `#{data3["mounts"]["numCollected"]}`
 Battle Pets: `#{data4["pets"]["numCollected"]}`"""
           else
             event.respond """**#{char.capitalize} - #{realm.capitalize}(#{region.upcase}) | **<#{data2["guild"]["name"]}>**
-#{data} | **#{charrace}** | **#{charclass}**
+#{data["level"]} | **#{charrace}** | **#{charclass}**
 #{armory}
 
 Achievement Points: `#{data["achievementPoints"]}`
-Mounts: #{data3["mounts"]["numCollected"]}``"""
+Mounts: `#{data3["mounts"]["numCollected"]}`
+Battle Pets: `#{data4["pets"]["numCollected"]}`"""
         end
       end
     end
