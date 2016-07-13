@@ -2,7 +2,7 @@ module ArmoryBot
   module Commands
     module Summary
       extend Discordrb::Commands::CommandContainer
-      command(:char, bucket: :armory) do |event, *realm, char, region|
+      command(:char, bucket: :armory, min_args: 3) do |event, *realm, char, region|
 
           api_key = 'vg25atxufftra3tsx567svh9r8fh79mv'
 
@@ -21,10 +21,6 @@ module ArmoryBot
             24 => "Pandaren", 25 => "Pandaren", 26 => "Pandaren"  
           }
 
-          cgender = {
-            0 => "male", 1 => "female"
-          }
-
           realm = realm.join('-')
           region = region.downcase
 
@@ -40,60 +36,39 @@ module ArmoryBot
               
           if region == "us"
             data = dataus
+            data2 = data2us
+            data3 = data3us
+            data4 = data4us
+            armory = "<http://us.battle.net/wow/en/character/#{realm}/#{URI.escape(char)}/advanced>"
           elsif region == "eu"
             data = dataeu
-          else
-            nil
-          end
-
-          if region == "us"
-            data2 = data2us
-          elsif region == "eu"
             data2 = data2eu
-          else
-            nil
-          end
-
-          if region == "us"
-            data3 = data3us
-          elsif region == "eu"
             data3 = data3eu
+            data4 = data4eu
+            armory = "<http://eu.battle.net/wow/en/character/#{realm}/#{URI.escape(char)}/advanced>"
           else
             nil
-          end
-
-          if region == "us"
-            data4 = data4us
-          elsif region == "eu"
-            data4 = data4eu
-          else
-            event.respond "Sorry #{event.user.name}, please insert the region US or EU(?help for more info)"
           end
 
           charclass = cclass[data["class"]]
-          charrace = crace[data["race"]] 
-          chargender = cgender[data["gender"]]
+          charrace = crace[data["race"]]
 
           if data2["guild"] == nil
-            event << "**#{char.capitalize}** - **#{realm.capitalize}** - **#{region.upcase}** is a **#{chargender.capitalize}** **#{charrace}** **#{charclass}** and has **#{data["achievementPoints"]}** Achievement Points."
-            event << "They have collected **#{data3["mounts"]["numCollected"]}** Mounts, and **#{data4["pets"]["numCollected"]}** Battle Pets."
-              if region == "us"
-                event << "Armory: <http://us.battle.net/wow/en/character/#{realm}/#{URI.escape(char)}/advanced>"
-              elsif region == "eu"  
-                event << "Armory: <http://eu.battle.net/wow/en/character/#{realm}/#{URI.escape(char)}/advanced>"
-              else
-                nil
-              end
+            event.respond """**#{char.capitalize} - #{realm.capitalize}(#{region.upcase})
+#{data} | **#{charrace}** | **#{charclass}**
+#{armory}
+
+Achievement Points: `#{data["achievementPoints"]}`
+Mounts: #{data3["mounts"]["numCollected"]}``
+Battle Pets: `#{data4["pets"]["numCollected"]}`"""
           else
-            event << "**#{char.capitalize}** - **#{realm.capitalize}** - **#{region.upcase}** is a **#{chargender.capitalize}** **#{charrace}** **#{charclass}** and has **#{data["achievementPoints"]}** Achievement Points."
-            event << "They're in the guild **#{data2["guild"]["name"]}**, have collected **#{data3["mounts"]["numCollected"]}** Mounts, and **#{data4["pets"]["numCollected"]}** Battle Pets."
-              if region == "us"
-                event << "Armory: <http://us.battle.net/wow/en/character/#{realm}/#{URI.escape(char)}/advanced>"
-              elsif region == "eu"  
-                event << "Armory: <http://eu.battle.net/wow/en/character/#{realm}/#{URI.escape(char)}/advanced>"
-              else
-                nil
-              end
+            event.respond """**#{char.capitalize} - #{realm.capitalize}(#{region.upcase}) | **<#{data2["guild"]["name"]}>**
+#{data} | **#{charrace}** | **#{charclass}**
+#{armory}
+
+Achievement Points: `#{data["achievementPoints"]}`
+Mounts: #{data3["mounts"]["numCollected"]}``"""
+          end
         end
       end
     end
