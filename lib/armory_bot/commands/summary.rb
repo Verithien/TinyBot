@@ -29,26 +29,44 @@ module ArmoryBot
           data2us = HTTParty.get("https://us.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=guild&locale=en_US&apikey=#{api_key}", :verify => false ).parsed_response
           data3us = HTTParty.get("https://us.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=mounts&locale=en_US&apikey=#{api_key}", :verify => false ).parsed_response
           data4us = HTTParty.get("https://us.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=pets&locale=en_US&apikey=#{api_key}", :verify => false ).parsed_response
+          data5us = HTTParty.get("https://us.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=feed&locale=en_US&apikey=#{api_key}", :verify => false).parsed_response
           dataeu = HTTParty.get("https://eu.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=appearance&locale=en_GB&apikey=#{api_key}", :verify => false ).parsed_response
           data2eu = HTTParty.get("https://eu.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=guild&locale=en_GB&apikey=#{api_key}", :verify => false ).parsed_response
           data3eu = HTTParty.get("https://eu.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=mounts&locale=en_GB&apikey=#{api_key}", :verify => false ).parsed_response
           data4eu = HTTParty.get("https://eu.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=pets&locale=en_GB&apikey=#{api_key}", :verify => false ).parsed_response
+          data5eu = HTTParty.get("https://eu.api.battle.net/wow/character/#{realm}/#{URI.escape(char)}?fields=feed&locale=en_GB&apikey=#{api_key}", :verify => false ).parsed_response
               
           if region == "us"
             data = dataus
             data2 = data2us
             data3 = data3us
             data4 = data4us
+            data5 = data5us            
             armory = "<http://us.battle.net/wow/en/character/#{realm}/#{URI.escape(char)}/advanced>"
           elsif region == "eu"
             data = dataeu
             data2 = data2eu
             data3 = data3eu
             data4 = data4eu
+            data5 = data5eu
             armory = "<http://eu.battle.net/wow/en/character/#{realm}/#{URI.escape(char)}/advanced>"
           else
             nil
           end
+
+          boss_kill = data5["feed"].find { |r| r["type"] == "BOSSKILL" }
+          achievement = data5["feed"].find { |r| r["type"] == "ACHIEVEMENT" }
+          loot1 = data5["feed"].find { |r| r["type"] == "LOOT" }
+
+          bosses = boss_kill["achievement"]["title"].split('(')
+          kills = bosses[0].split('kills')
+
+          loot2 = "http://www.wowhead.com/item=#{loot["itemId"]}&xml"
+
+          loot_data = HTTParty.get("#{loot2}", :verify => false).parsed_response
+
+          loot = loot_data["wowhead"]["item"]["name"]
+
 
           charclass = cclass[data["class"]]
           charrace = crace[data["race"]]
@@ -60,7 +78,11 @@ module ArmoryBot
 
 Achievement Points: `#{data["achievementPoints"]}`
 Mounts: `#{data3["mounts"]["numCollected"]}`
-Battle Pets: `#{data4["pets"]["numCollected"]}`"""
+Battle Pets: `#{data4["pets"]["numCollected"]}`
+__Recent Activity__
+`Achievement` `#{achievement["achievement"]["title"]}`
+`Boss Kill` `#{kills}`
+`Loot` `loot`"""
           else
             event.respond """**#{char.capitalize} - #{realm.capitalize}(#{region.upcase}) | <#{data2["guild"]["name"]}>**
 #{data["level"]} | #{charrace} | #{charclass}
@@ -68,7 +90,11 @@ Battle Pets: `#{data4["pets"]["numCollected"]}`"""
 
 Achievement Points: `#{data["achievementPoints"]}`
 Mounts: `#{data3["mounts"]["numCollected"]}`
-Battle Pets: `#{data4["pets"]["numCollected"]}`"""
+Battle Pets: `#{data4["pets"]["numCollected"]}`
+__Recent Activity__
+`Achievement` `#{achievement["achievement"]["title"]}`
+`Boss Kill` `#{kills}`
+`Loot` `loot`"""
         end
       end
     end
