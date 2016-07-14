@@ -68,8 +68,10 @@ module ArmoryBot
 	bot.include! Commands::Winston
 	bot.include! Commands::Zarya
 	bot.include! Commands::Zenyatta
-	bot.include! Commands::MMR
+
 	#hots
+	bot.include! Commands::MMR
+
 
 
 
@@ -77,6 +79,7 @@ module ArmoryBot
 
 	bot.profile.username = 'Blizzard Bot'
 	bot.profile.avatar = File.new('/app/lib/armory_bot/wow_icon.jpg')
+	#bot.profile.avatar = File.new('C:\Users\Jesus\Desktop\armory_bot\lib\armory_bot')
 	bot.sync
 
 end
