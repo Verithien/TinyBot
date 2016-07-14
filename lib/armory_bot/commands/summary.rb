@@ -61,7 +61,7 @@ module ArmoryBot
           bosses = boss_kill["achievement"]["title"].split('(')
           kills = bosses[0].split('kills')
 
-          loot2 = "http://www.wowhead.com/item=#{loot["itemId"]}&xml"
+          loot2 = "http://www.wowhead.com/item=#{loot1["itemId"]}&xml"
 
           loot_data = HTTParty.get("#{loot2}", :verify => false).parsed_response
 
