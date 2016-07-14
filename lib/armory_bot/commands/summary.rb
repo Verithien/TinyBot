@@ -75,26 +75,26 @@ module ArmoryBot
             event.respond """**#{char.capitalize} - #{realm.capitalize}(#{region.upcase})**
 #{data["level"]} | #{charrace} | #{charclass}
 #{armory}
-
-Achievement Points: `#{data["achievementPoints"]}`
-Mounts: `#{data3["mounts"]["numCollected"]}`
-Battle Pets: `#{data4["pets"]["numCollected"]}`
-__Recent Activity__
-`Achievement` `#{achievement["achievement"]["title"]}`
-`Boss Kill` `#{kills}`
-`Loot` `loot`"""
+```Ruby
+Achievement Points: \"#{data["achievementPoints"]}\"
+Mounts: \"#{data3["mounts"]["numCollected"]}\"
+Battle Pets: \"#{data4["pets"]["numCollected"]}\"
+-Recent Activity-
+Achievement: \"#{achievement["achievement"]["title"]}\"
+Boss Kill: \"#{kills[0]}\"
+Loot: \"#{loot}\"```"""
           else
             event.respond """**#{char.capitalize} - #{realm.capitalize}(#{region.upcase}) | <#{data2["guild"]["name"]}>**
 #{data["level"]} | #{charrace} | #{charclass}
 #{armory}
-
-Achievement Points: `#{data["achievementPoints"]}`
-Mounts: `#{data3["mounts"]["numCollected"]}`
-Battle Pets: `#{data4["pets"]["numCollected"]}`
-__Recent Activity__
-`Achievement` `#{achievement["achievement"]["title"]}`
-`Boss Kill` `#{kills}`
-`Loot` `loot`"""
+```Ruby
+Achievement Points: \"#{data["achievementPoints"]}\"
+Mounts: \"#{data3["mounts"]["numCollected"]}\"
+Battle Pets: \"#{data4["pets"]["numCollected"]}\"
+-Recent Activity-
+Achievement: \"#{achievement["achievement"]["title"]}\"
+Boss Kill: \"#{kills[0]}\"
+Loot: \"#{loot}\"```"""
         end
       end
     end
