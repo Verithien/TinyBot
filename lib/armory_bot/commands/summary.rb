@@ -76,10 +76,11 @@ module ArmoryBot
 #{data["level"]} | #{charrace} | #{charclass}
 #{armory}
 ```Ruby
-Achievement Points: \"#{data["achievementPoints"]}\"
-Mounts: \"#{data3["mounts"]["numCollected"]}\"
-Battle Pets: \"#{data4["pets"]["numCollected"]}\"
--Recent Activity-
+Achievement Points: #{data["achievementPoints"]}
+Mounts: #{data3["mounts"]["numCollected"]}
+Battle Pets: #{data4["pets"]["numCollected"]}
+---------------
+Recent Activity
 Achievement: \"#{achievement["achievement"]["title"]}\"
 Boss Kill: \"#{kills[0]}\"
 Loot: \"#{loot}\"```"""
@@ -88,10 +89,11 @@ Loot: \"#{loot}\"```"""
 #{data["level"]} | #{charrace} | #{charclass}
 #{armory}
 ```Ruby
-Achievement Points: \"#{data["achievementPoints"]}\"
-Mounts: \"#{data3["mounts"]["numCollected"]}\"
-Battle Pets: \"#{data4["pets"]["numCollected"]}\"
--Recent Activity-
+Achievement Points: #{data["achievementPoints"]}
+Mounts: #{data3["mounts"]["numCollected"]}
+Battle Pets: #{data4["pets"]["numCollected"]}
+---------------
+Recent Activity
 Achievement: \"#{achievement["achievement"]["title"]}\"
 Boss Kill: \"#{kills[0]}\"
 Loot: \"#{loot}\"```"""
