@@ -46,10 +46,10 @@ module ArmoryBot
 		    event.respond """**#{char.capitalize} - #{realm.capitalize}(#{region.upcase}) | PvP Stats**
 ```Ruby
 Type | Rating - Wins - Loses
-2v2  | #{pad2(arena2v2r)} - #{arena2v2w} - #{arena2v2l}
-3v3  | #{pad3(arena3v3r)} - #{arena3v3w} - #{arena3v3l}
-5v5  | #{pad5(arena5v5r)} - #{arena5v5w} - #{arena5v5l}
-RBG  | #{padr(rbgr)} - #{rbgw} - #{rbgl}"""
+2v2  | #{arena2v2r} - #{arena2v2w} - #{arena2v2l}
+3v3  | #{(arena3v3r} - #{arena3v3w} - #{arena3v3l}
+5v5  | #{arena5v5r} - #{arena5v5w} - #{arena5v5l}
+RBG  | #{rbgr} - #{rbgw} - #{rbgl}"""
 
       end
     end
