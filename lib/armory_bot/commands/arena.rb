@@ -22,106 +22,34 @@ module ArmoryBot
         end
 
     		arena2v2 = arena["pvp"]["brackets"]["ARENA_BRACKET_2v2"]
-    		arena2v2r = "#{arena2v2["rating"]}"
+    		arena2v2r = arena2v2["rating"]
     		arena2v2w = arena2v2["seasonWon"]
-    		#arena2v2l = arena2v2["seasonLost"]
+    		arena2v2l = arena2v2["seasonLost"]
 
     		arena3v3 = arena["pvp"]["brackets"]["ARENA_BRACKET_3v3"]
-    		arena3v3r = "#{arena3v3["rating"]}"
+    		arena3v3r = arena3v3["rating"]
     		arena3v3w = arena3v3["seasonWon"]
-    		#arena3v3l = arena3v3["seasonLost"]
+    		arena3v3l = arena3v3["seasonLost"]
 
     		arena5v5 = arena["pvp"]["brackets"]["ARENA_BRACKET_5v5"]
-    		arena5v5r = "#{arena5v5["rating"]}"
+    		arena5v5r = arena5v5["rating"]
     		arena5v5w = arena5v5["seasonWon"]
-    		#arena5v5l = arena5v5["seasonLost"]
+    		arena5v5l = arena5v5["seasonLost"]
 
     		rbg = arena["pvp"]["brackets"]["ARENA_BRACKET_RBG"]
-    		rbgr = "#{rbg["rating"]}"
+    		rbgr = rbg["rating"]
     		rbgw = rbg["seasonWon"]
-    		#rbgl = rbg["seasonLost"]
-
-        if arena2v2r.length == 1
-          def pad2( random )
-              "     " + random
-          end
-        elsif arena2v2r.length == 2
-          def pad2( random )
-              "    " + random
-          end
-        elsif arena2v2r.length == 3
-          def pad2( random )
-              "   " + random
-          end
-        else
-          def pad2( random )
-              "  " + random
-          end
-        end
-
-        if arena3v3r == 0
-          def pad3( random )
-              "     " + random
-          end
-        elsif arena3v3r.length == 2
-          def pad3( random )
-              "    " + random
-          end
-        elsif arena3v3r.length == 3
-          def pad3( random )
-              "   " + random
-          end
-        else
-          def pad3( random )
-              "  " + random
-          end
-        end
-
-        if arena5v5r == 0
-          def pad5( random )
-              "     " + random
-          end
-        elsif arena5v5r.length == 2
-          def pad5( random )
-              "    " + random
-          end
-        elsif arena5v5r.length == 3
-          def pad5( random )
-              "   " + random
-          end
-        else
-          def pad5( random )
-              "  " + random
-          end
-        end
-
-        if rbgr == 0
-          def padr( random )
-              "     " + random
-          end
-        elsif rbgr.length == 2
-          def padr( random )
-              "    " + random
-          end
-        elsif rbgr.length == 3
-          def padr( random )
-              "   " + random
-          end
-        else
-          def padr( random )
-              "  " + random
-          end
-        end
+    		rbgl = rbg["seasonLost"]
 
         puts "#{event.server.name} - PvP"
 
 		    event.respond """**#{char.capitalize} - #{realm.capitalize}(#{region.upcase}) | PvP Stats**
 ```Ruby
-Type | Rating | Wins
-2v2  | #{pad2(arena2v2r)} | #{arena2v2w}
-3v3  | #{pad3(arena3v3r)} | #{arena3v3w}
-5v5  | #{pad5(arena5v5r)} | #{arena5v5w}
-RBG  | #{padr(rbgr)} | #{rbgw}"""
+Type | Rating - Wins - Loses
+2v2  | #{pad2(arena2v2r)} - #{arena2v2w} - #{arena2v2l}
+3v3  | #{pad3(arena3v3r)} - #{arena3v3w} - #{arena3v3l}
+5v5  | #{pad5(arena5v5r)} - #{arena5v5w} - #{arena5v5l}
+RBG  | #{padr(rbgr)} - #{rbgw} - #{rbgl}"""
 
       end
     end
