@@ -12,6 +12,8 @@ module ArmoryBot
         rstatuseu = HTTParty.get("https://eu.api.battle.net/wow/realm/status?locale=en_GB&apikey=#{api_key}", :verify => false ).parsed_response
 
         realm = realm.join('-')
+        realmevent = realm.split('-')
+        realmevent = realmevent.join(' ')
 
         realm1 = realm.downcase
           if region == "us"
@@ -26,7 +28,7 @@ module ArmoryBot
 
         puts "#{event.server.name} Getting Realm Status"
 
-        myrealm["status"] ? "Online" : "Offline"
+        myrealm["status"] ? "**Realm Status |** #{realmevent.capitalize} `Online`" : "**Realm Status |** #{realmevent.capitalize} `Offline`"
       end
     end
   end

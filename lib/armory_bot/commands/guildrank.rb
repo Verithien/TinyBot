@@ -53,10 +53,10 @@ module ArmoryBot
 
         puts "#{event.server.name} - Getting Guild Ranking"
 
-    event.respond("""**#{guild.upcase} - #{realm.upcase} - #{region.upcase}**
-**Server Rank:** #{server_rank}
-**Region Rank:** #{region_rank}
-**World Rank:** #{world_rank}
+    event.respond("""**<#{guild.upcase}> - #{realm.upcase}(#{region.upcase}) | Guild Rank**
+**Server Rank:** `#{server_rank}`
+**Region Rank:** `#{region_rank}`
+**World Rank:** `#{world_rank}`
 <http://www.wowprogress.com/guild/#{region.downcase}/#{realm1}/#{guild1}>""")
 
 
