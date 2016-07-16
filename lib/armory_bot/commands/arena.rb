@@ -41,13 +41,92 @@ module ArmoryBot
     		rbgw = rbg["seasonWon"]
     		rbgl = rbg["seasonLost"]
 
+        if arena2v2r == 0
+          def pad2( random )
+              "     " + random
+          end
+        elsif arena2v2r.length == 2
+          def pad2( random )
+              "    " + random
+          end
+        elsif arena2v2r.length = 3
+          def pad2( random )
+              "   " + random
+          end
+        else
+          def pad2( random )
+              "  " + random
+          end
+        end
+
+        if arena3v3r == 0
+          def pad3( random )
+              "     " + random
+          end
+        elsif arena3v3r.length == 2
+          def pad3( random )
+              "    " + random
+          end
+        elsif arena3v3r.length = 3
+          def pad3( random )
+              "   " + random
+          end
+        else
+          def pad3( random )
+              "  " + random
+          end
+        end
+
+        if arena5v5r == 0
+          def pad5( random )
+              "     " + random
+          end
+        elsif arena5v5r.length == 2
+          def pad5( random )
+              "    " + random
+          end
+        elsif arena5v5r.length = 3
+          def pad5( random )
+              "   " + random
+          end
+        else
+          def pad5( random )
+              "  " + random
+          end
+        end
+
+        if rbgr == 0
+          def padr( random )
+              "     " + random
+          end
+        elsif rbgr.length == 2
+          def padr( random )
+              "    " + random
+          end
+        elsif rbgr.length = 3
+          def padr( random )
+              "   " + random
+          end
+        else
+          def padr( random )
+              "  " + random
+          end
+        end
+
+        2v2wr = ((arena2v2w / ( arena2v2w + arena2v2l )) * 100).round(2)
+        3v3wr = ((arena3v3w / ( arena3v3w + arena3v3l )) * 100).round(2)
+        5v5wr = ((arena5v5w / ( arena5v5w + arena5v5l )) * 100).round(2)
+        rbgwr = ((rbgw / ( rbgw + rbgl )) * 100).round(2)
+
         puts "#{event.server.name} - PvP"
 
-		    event.respond """**#{char.capitalize} - #{realm.capitalize} - #{region.upcase}**
-**2v2 Rating:** #{arena2v2r}  **Wins:** #{arena2v2w}  **Losses:** #{arena2v2l}
-**3v3 Rating:** #{arena3v3r}  **Wins:** #{arena3v3w}  **Losses:** #{arena3v3l}
-**5v5 Rating:** #{arena5v5r}  **Wins:** #{arena5v5w} **Losses:** #{arena5v5l}
-**RBG Rating:** #{rbgr}  **Wins:** #{rbgw}  **Losses:** #{rbgl}"""
+		    event.respond """**#{char.capitalize} - #{realm.capitalize}(#{region.upcase}) | PvP Stats**
+```Ruby
+Type | Rating | Win %
+2v2  | #{pad2(arena2v2r)} | #{2v2wr}
+3v3  | #{pad3(arena3v3r)} | #{3v3wr}
+5v5  | #{pad5(arena5v5r)} | #{5v5wr}
+RBG  | #{padr(rbgr)} | #{rbgwr}"""
 
       end
     end
