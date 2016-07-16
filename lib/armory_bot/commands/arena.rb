@@ -24,22 +24,22 @@ module ArmoryBot
     		arena2v2 = arena["pvp"]["brackets"]["ARENA_BRACKET_2v2"]
     		arena2v2r = arena2v2["rating"]
     		arena2v2w = arena2v2["seasonWon"]
-    		arena2v2l = arena2v2["seasonLost"]
+    		#arena2v2l = arena2v2["seasonLost"]
 
     		arena3v3 = arena["pvp"]["brackets"]["ARENA_BRACKET_3v3"]
     		arena3v3r = arena3v3["rating"]
     		arena3v3w = arena3v3["seasonWon"]
-    		arena3v3l = arena3v3["seasonLost"]
+    		#arena3v3l = arena3v3["seasonLost"]
 
     		arena5v5 = arena["pvp"]["brackets"]["ARENA_BRACKET_5v5"]
     		arena5v5r = arena5v5["rating"]
     		arena5v5w = arena5v5["seasonWon"]
-    		arena5v5l = arena5v5["seasonLost"]
+    		#arena5v5l = arena5v5["seasonLost"]
 
     		rbg = arena["pvp"]["brackets"]["ARENA_BRACKET_RBG"]
     		rbgr = rbg["rating"]
     		rbgw = rbg["seasonWon"]
-    		rbgl = rbg["seasonLost"]
+    		#rbgl = rbg["seasonLost"]
 
         if arena2v2r == 0
           def pad2( random )
@@ -113,20 +113,15 @@ module ArmoryBot
           end
         end
 
-        2v2wr = ((arena2v2w / ( arena2v2w + arena2v2l )) * 100).round(2)
-        3v3wr = ((arena3v3w / ( arena3v3w + arena3v3l )) * 100).round(2)
-        5v5wr = ((arena5v5w / ( arena5v5w + arena5v5l )) * 100).round(2)
-        rbgwr = ((rbgw / ( rbgw + rbgl )) * 100).round(2)
-
         puts "#{event.server.name} - PvP"
 
 		    event.respond """**#{char.capitalize} - #{realm.capitalize}(#{region.upcase}) | PvP Stats**
 ```Ruby
-Type | Rating | Win %
-2v2  | #{pad2(arena2v2r)} | #{2v2wr}
-3v3  | #{pad3(arena3v3r)} | #{3v3wr}
-5v5  | #{pad5(arena5v5r)} | #{5v5wr}
-RBG  | #{padr(rbgr)} | #{rbgwr}"""
+Type | Rating | Wins
+2v2  | #{pad2(arena2v2r)} | #{arena2v2w}
+3v3  | #{pad3(arena3v3r)} | #{arena3v3w}
+5v5  | #{pad5(arena5v5r)} | #{arena5v5w}
+RBG  | #{padr(rbgr)} | #{rbgw}"""
 
       end
     end
