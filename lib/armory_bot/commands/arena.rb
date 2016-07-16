@@ -47,9 +47,10 @@ module ArmoryBot
 ```Ruby
 Type | Rating - Wins - Loses
 2v2  | #{arena2v2r} - #{arena2v2w} - #{arena2v2l}
-3v3  | #{(arena3v3r} - #{arena3v3w} - #{arena3v3l}
+3v3  | #{arena3v3r} - #{arena3v3w} - #{arena3v3l}
 5v5  | #{arena5v5r} - #{arena5v5w} - #{arena5v5l}
-RBG  | #{rbgr} - #{rbgw} - #{rbgl}"""
+RBG  | #{rbgr} - #{rbgw} - #{rbgl}
+```"""
 
       end
     end
