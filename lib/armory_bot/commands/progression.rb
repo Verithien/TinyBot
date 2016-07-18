@@ -55,7 +55,7 @@ module ArmoryBot
 `#{xhul["mythicKills"]}` | `Xhulhorac`
 `#{mann["mythicKills"]}` | `Mannoroth`
 `#{archi["mythicKills"]}` | `Archimonde`
-```"""
+"""
             elsif korm["heroicKills"] >= 1
                         event.respond """**#{char.capitalize} - #{realm.capitalize}(#{region.upcase}) | Heroic Progression**
 `#{assault["heroicKills"]}` | `Hellfire Assault`
@@ -71,7 +71,7 @@ module ArmoryBot
 `#{xhul["heroicKills"]}` | `Xhulhorac`
 `#{mann["heroicKills"]}` | `Mannoroth`
 `#{archi["heroicKills"]}` | `Archimonde`
-```"""
+"""
             else
                         event.respond """**#{char.capitalize} - #{realm.capitalize}(#{region.upcase}) | Normal Progression**
 `#{assault["normalKills"]}` | `Hellfire Assault`
@@ -87,7 +87,7 @@ module ArmoryBot
 `#{xhul["normalKills"]}` | `Xhulhorac`
 `#{mann["normalKills"]}` | `Mannoroth`
 `#{archi["normalKills"]}` | `Archimonde`
-```"""
+"""
 end
 
      end

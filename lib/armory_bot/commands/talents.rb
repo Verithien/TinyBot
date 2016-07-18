@@ -103,7 +103,7 @@ module ArmoryBot
         event.respond """**#{char.capitalize} - #{realm.capitalize}(#{region.upcase}) | #{charclass} #{talents["spec"]["name"].capitalize}**
 Armory: <http://us.battle.net/wow/en/character/#{realm}/#{URI.escape(char)}/advanced>
 
-__TALENTS__
+`TALENTS`
 `15` `#{talent0["spell"]["name"]}`
 `30` `#{talent1["spell"]["name"]}`
 `45` `#{talent2["spell"]["name"]}`
