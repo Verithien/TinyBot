@@ -27,7 +27,7 @@ module ArmoryBot
 
         puts "#{event.server.name} - wolf CHECK"
 
-        wolves ? "**#{char.capitalize}** has the **Infernal Direwolf** mount from **Glory of the Hellfire Raider**" : "**#{char.capitalize}** does not have the **Infernal Direwolf** yet :("
+        wolves ? "**#{char.capitalize}** | **Infernal Direwolf**: `Yes`" : "**#{char.capitalize}** | **Infernal Direwolf**: `No`"
      
       end
     end

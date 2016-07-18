@@ -27,7 +27,7 @@ module ArmoryBot
 
         puts "#{event.server.name} - MOOSE CHECK"
 
-        mooses ? "**#{char.capitalize}** has the **Grove Warden** mount from **Archimonde**" : "**#{char.capitalize}** does not have the moose yet :("
+        mooses ? "**#{char.capitalize}** | **Grove Warden**: `Yes`" : "**#{char.capitalize}** | **Grove Warden**: `No`"
       
       end
     end
