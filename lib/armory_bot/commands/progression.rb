@@ -74,6 +74,19 @@ module ArmoryBot
 ```"""
             else
                         event.respond """**#{char.capitalize} - #{realm.capitalize}(#{region.upcase}) | Normal Progression**
+`#{assault["normalKills"]}` | `Hellfire Assault`
+`#{iron["normalKills"]}` | `Iron Reaver`
+`#{korm["normalKills"]}` | `Kormrok`
+`#{hellfire_council["normalKills"]}` | `Hellfire High Council`
+`#{killrogg["normalKills"]}` | `Kilrogg Deadeye`
+`#{gore["normalKills"]}` | `Gorefiend`
+`#{iskar["normalKills"]}` | `Shadow Lord Iskar`
+`#{socrethar["normalKills"]}` | `Socrethar the Eternal`
+`#{velhari["normalKills"]}` | `Tyrant Velhari`
+`#{fellord["normalKills"]}` | `Fel Lord Zakuun`
+`#{xhul["normalKills"]}` | `Xhulhorac`
+`#{mann["normalKills"]}` | `Mannoroth`
+`#{archi["normalKills"]}` | `Archimonde`
 ```"""
 end
 
