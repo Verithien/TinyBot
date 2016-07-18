@@ -35,7 +35,7 @@ module ArmoryBot
             event.respond """
 **#{char.capitalize} - #{realm.capitalize} - #{region.upcase}**
 Armory: <http://us.battle.net/wow/en/character/#{realm}/#{URI.escape(char)}/advanced>
-Average Item Level: **#{data["items"]["averageItemLevel"]}**. Equipped Item Level: **#{data["items"]["averageItemLevelEquipped"]}**.
+Item Level: `#{data["items"]["averageItemLevel"]}` | `#{data["items"]["averageItemLevelEquipped"]}`
 #{data["items"]["head"]["itemLevel"]} #{data["items"]["head"]["name"]}: #{wh}#{data["items"]["head"]["id"]}>
 #{data["items"]["neck"]["itemLevel"]} #{data["items"]["neck"]["name"]}: #{wh}#{data["items"]["neck"]["id"]}>
 #{data["items"]["shoulder"]["itemLevel"]} #{data["items"]["shoulder"]["name"]}: #{wh}#{data["items"]["shoulder"]["id"]}>
@@ -56,7 +56,7 @@ Average Item Level: **#{data["items"]["averageItemLevel"]}**. Equipped Item Leve
             event.respond """
 **#{char.capitalize} - #{realm.capitalize} - #{region.upcase}**
 Armory: <http://eu.battle.net/wow/en/character/#{realm}/#{URI.escape(char)}/advanced>
-Average Item Level: **#{data["items"]["averageItemLevel"]}**. Equipped Item Level: **#{data["items"]["averageItemLevelEquipped"]}**.
+Item Level: `#{data["items"]["averageItemLevel"]}` | `#{data["items"]["averageItemLevelEquipped"]}`
 #{data["items"]["head"]["itemLevel"]} #{data["items"]["head"]["name"]}: #{wh}#{data["items"]["head"]["id"]}>
 #{data["items"]["neck"]["itemLevel"]} #{data["items"]["neck"]["name"]}: #{wh}#{data["items"]["neck"]["id"]}>
 #{data["items"]["shoulder"]["itemLevel"]} #{data["items"]["shoulder"]["name"]}: #{wh}#{data["items"]["shoulder"]["id"]}>
