@@ -6,6 +6,13 @@ module ArmoryBot
 
         puts '#{event.server.name} - TALENT CHECK IN AISLE 9'
 
+        cclass = {
+            1 => "Warrior", 2 => "Paladin", 3 => "Hunter",       
+            4 => "Rogue", 5 => "Priest", 6 => "Death Knight",
+            7 => "Shaman", 8 => "Mage", 9 => "Warlock",
+            10 => "Monk", 11 => "Druid"
+        }
+
         realm = realm.join('-')
         region = region.downcase
 
@@ -34,7 +41,7 @@ module ArmoryBot
         end
 
         if glyph[1] == nil
-          majglyph1 = "No Glyph Equippedt"
+          majglyph1 = "No Glyph Equipped"
         else
           majglyph1 = glyph[1]["name"]
         end
@@ -66,6 +73,8 @@ module ArmoryBot
         end
 
 
+
+
         talents = data["talents"].find { |r| r["selected"] == true }
 
         talent0 = talents["talents"].find { |r| r["tier"] == 0 }
@@ -89,24 +98,19 @@ module ArmoryBot
         talent6 = talents["talents"].find { |r| r["tier"] == 6 }
         talentid6 = talent6["spell"]["id"]
 
-        event.respond """**#{char.capitalize}--#{realm.capitalize}--#{region.upcase}**
-__***TALENTS***__
-*#{talent0["spell"]["name"]}* - #{wh}#{talentid0}>
-*#{talent1["spell"]["name"]}* - #{wh}#{talentid1}>
-*#{talent2["spell"]["name"]}* - #{wh}#{talentid2}>
-*#{talent3["spell"]["name"]}* - #{wh}#{talentid3}>
-*#{talent4["spell"]["name"]}* - #{wh}#{talentid4}>
-*#{talent5["spell"]["name"]}* - #{wh}#{talentid5}>
-*#{talent6["spell"]["name"]}* - #{wh}#{talentid6}>
-__***GLYPHS***__
-**Major**
-*#{majglyph0}*
-*#{majglyph1}*
-*#{majglyph2}*
-**Minor**
-*#{minglyph0}*
-*#{minglyph1}*
-*#{minglyph2}*
+        charclass = cclass[data["class"]]
+
+        event.respond """**#{char.capitalize} - #{realm.capitalize}(#{region.upcase}) | #{charclass} #{talents["spec"]["name"].capitalize}**
+Armory: <http://us.battle.net/wow/en/character/#{realm}/#{URI.escape(char)}/advanced>
+
+__TALENTS__
+`15` `#{talent0["spell"]["name"]}`
+`30` `#{talent1["spell"]["name"]}`
+`45` `#{talent2["spell"]["name"]}`
+`60` `#{talent3["spell"]["name"]}`
+`75` `#{talent4["spell"]["name"]}`
+`90` `#{talent5["spell"]["name"]}`
+`100` `#{talent6["spell"]["name"]}`
 """
       end
     end

@@ -40,95 +40,40 @@ module ArmoryBot
         mann = mychar["bosses"].find { |r| r["name"] == "Mannoroth" }
         archi = mychar["bosses"].find { |r| r["name"] == "Archimonde" }
         
-        if assault["mythicKills"] >= 1
-        event.respond """**#{char.capitalize} - #{realm.capitalize} - #{region.upcase} - Hellfire Citadel Progression**
-```ruby
--Hellfire Assault-
-Heroic: #{assault["heroicKills"]} | Mythic: #{assault["mythicKills"]}
--Iron Reaver-
-Heroic: #{iron["heroicKills"]} | Mythic: #{iron["mythicKills"]}
--Kormrok-
-Heroic: #{korm["heroicKills"]} | Mythic: #{korm["mythicKills"]}
--Hellfire High Council-
-Heroic: #{hellfire_council["heroicKills"]} | Mythic: #{hellfire_council["mythicKills"]}
--Kilrogg Deadeye-
-Heroic: #{killrogg["heroicKills"]} | Mythic: #{killrogg["mythicKills"]}
--Gorefiend-
-Heroic: #{gore["heroicKills"]} | Mythic: #{gore["mythicKills"]}
--Shadow Lord Iskar-
-Heroic: #{iskar["heroicKills"]} | Mythic: #{iskar["mythicKills"]}
--Socrethar the Eternal-
-Heroic: #{socrethar["heroicKills"]} | Mythic: #{socrethar["mythicKills"]}
--Tyrant Velhari-
-Heroic: #{velhari["heroicKills"]} | Mythic: #{velhari["mythicKills"]}
--Fel Lord Zakuun-
-Heroic: #{fellord["heroicKills"]} | Mythic: #{fellord["mythicKills"]}
--Xhulhorac-
-Heroic: #{xhul["heroicKills"]} | Mythic: #{xhul["mythicKills"]}
--Mannoroth-
-Heroic: #{mann["heroicKills"]} | Mythic: #{mann["mythicKills"]}
--Archimonde-
-Heroic: #{archi["heroicKills"]} | Mythic: #{archi["mythicKills"]}
+        if korm["mythicKills"] >= 1
+        event.respond """**#{char.capitalize} - #{realm.capitalize}(#{region.upcase}) | Mythic Progression**
+`#{assault["mythicKills"]}` | `Hellfire Assault`
+`#{iron["mythicKills"]}` | `Iron Reaver`
+`#{korm["mythicKills"]}` | `Kormrok`
+`#{hellfire_council["mythicKills"]}` | `Hellfire High Council`
+`#{killrogg["mythicKills"]}` | `Kilrogg Deadeye`
+`#{gore["mythicKills"]}` | `Gorefiend`
+`#{iskar["mythicKills"]}` | `Shadow Lord Iskar`
+`#{socrethar["mythicKills"]}` | `Socrethar the Eternal`
+`#{velhari["mythicKills"]}` | `Tyrant Velhari`
+`#{fellord["mythicKills"]}` | `Fel Lord Zakuun`
+`#{xhul["mythicKills"]}` | `Xhulhorac`
+`#{mann["mythicKills"]}` | `Mannoroth`
+`#{archi["mythicKills"]}` | `Archimonde`
 ```"""
-            elsif assault["heroicKills"] >= 1
-                        event.respond """**#{char.capitalize} - #{realm.capitalize} - #{region.upcase} - Hellfire Citadel Progression**
-```ruby
--Hellfire Assault-
-Normal: #{assault["normalKills"]} | Heroic: #{assault["heroicKills"]}
--Iron Reaver-
-Normal: #{iron["normalKills"]} | Heroic: #{iron["heroicKills"]}
--Kormrok-
-Normal: #{korm["normalKills"]} | Heroic: #{korm["heroicKills"]}
--Hellfire High Council-
-Normal: #{hellfire_council["normalKills"]} | Heroic: #{hellfire_council["heroicKills"]}
--Kilrogg Deadeye-
-Normal: #{killrogg["normalKills"]} | Heroic: #{killrogg["heroicKills"]}
--Gorefiend-
-Normal: #{gore["normalKills"]} | Heroic: #{gore["heroicKills"]}
--Shadow Lord Iskar-
-Normal: #{iskar["normalKills"]} | Heroic: #{iskar["heroicKills"]}
--Socrethar the Eternal-
-Normal: #{socrethar["normalKills"]} | Heroic: #{socrethar["heroicKills"]}
--Tyrant Velhari-
-Normal: #{velhari["normalKills"]} | Heroic: #{velhari["heroicKills"]}
--Fel Lord Zakuun-
-Normal: #{fellord["normalKills"]} | Heroic: #{fellord["heroicKills"]} 
--Xhulhorac-
-Normal: #{xhul["normalKills"]} | Heroic: #{xhul["heroicKills"]}
--Mannoroth-
-Normal: #{mann["normalKills"]} | Heroic: #{mann["heroicKills"]}
--Archimonde-
-Normal: #{archi["normalKills"]} | Heroic: #{archi["heroicKills"]}
+            elsif korm["heroicKills"] >= 1
+                        event.respond """**#{char.capitalize} - #{realm.capitalize}(#{region.upcase}) | Heroic Progression**
+`#{assault["heroicKills"]}` | `Hellfire Assault`
+`#{iron["heroicKills"]}` | `Iron Reaver`
+`#{korm["heroicKills"]}` | `Kormrok`
+`#{hellfire_council["heroicKills"]}` | `Hellfire High Council`
+`#{killrogg["heroicKills"]}` | `Kilrogg Deadeye`
+`#{gore["heroicKills"]}` | `Gorefiend`
+`#{iskar["heroicKills"]}` | `Shadow Lord Iskar`
+`#{socrethar["heroicKills"]}` | `Socrethar the Eternal`
+`#{velhari["heroicKills"]}` | `Tyrant Velhari`
+`#{fellord["heroicKills"]}` | `Fel Lord Zakuun`
+`#{xhul["heroicKills"]}` | `Xhulhorac`
+`#{mann["heroicKills"]}` | `Mannoroth`
+`#{archi["heroicKills"]}` | `Archimonde`
 ```"""
             else
-                        event.respond """**#{char.capitalize} - #{realm.capitalize} - #{region.upcase} - Hellfire Citadel Progression**
-```ruby
--Hellfire Assault-
-LFR: #{assault["lfrKills"]} | Normal: #{assault["normalKills"]}
--Iron Reaver-
-LFR: #{iron["lfrKills"]} | Normal: #{iron["normalKills"]}
--Kormrok-
-LFR: #{korm["lfrKills"]} | Normal: #{korm["normalKills"]}
--Hellfire High Council-
-LFR: #{hellfire_council["lfrKills"]} |Normal: #{hellfire_council["normalKills"]}
--Kilrogg Deadeye-
-LFR: #{killrogg["lfrKills"]} | Normal: #{killrogg["normalKills"]}
--Gorefiend-
-LFR: #{gore["lfrKills"]} | Normal: #{gore["normalKills"]}
--Shadow Lord Iskar-
-LFR: #{iskar["lfrKills"]} | Normal: #{iskar["normalKills"]}
--Socrethar the Eternal-
-LFR: #{socrethar["lfrKills"]} | Normal: #{socrethar["normalKills"]}
--Tyrant Velhari-
-LFR: #{velhari["lfrKills"]} | Normal: #{velhari["normalKills"]}
--Fel Lord Zakuun-
-LFR: #{fellord["lfrKills"]} | Normal: #{fellord["normalKills"]}
--Xhulhorac-
-LFR: #{xhul["lfrKills"]} | Normal: #{xhul["normalKills"]}
--Mannoroth-
-LFR: #{mann["lfrKills"]} | Normal: #{mann["normalKills"]}
--Archimonde-
-LFR: #{archi["lfrKills"]} | Normal: #{archi["normalKills"]}
+                        event.respond """**#{char.capitalize} - #{realm.capitalize}(#{region.upcase}) | Normal Progression**
 ```"""
 end
 

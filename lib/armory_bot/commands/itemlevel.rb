@@ -23,7 +23,10 @@ module ArmoryBot
 
         puts "#{event.server.name} - ilvl"
 
-        event.respond "#{char.capitalize} - #{realm.capitalize} - #{region.upcase} has an average ilvl of **#{rdata["items"]["averageItemLevel"]}.** Equipped: **#{rdata["items"]["averageItemLevelEquipped"]}.**"
+        event.respond """#{char.capitalize} - #{realm.capitalize}(#{region.upcase})
+Average: `#{rdata["items"]["averageItemLevel"]}`
+Equipped: `#{rdata["items"]["averageItemLevelEquipped"]}`
+"""
       
       end  
     end
