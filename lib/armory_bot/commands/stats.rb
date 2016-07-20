@@ -62,7 +62,6 @@ Strength: #{data["stats"]["str"]}   |   Stamina: #{data["stats"]["sta"]}
 Crit Rating: #{data["stats"]["critRating"]} |   Crit: #{data["stats"]["crit"].round(2)}%
 Haste Rating: #{data["stats"]["hasteRating"]}   |   Haste: #{data["stats"]["haste"].round(2)}%
 Mastery Rating: #{data["stats"]["masteryRating"]}   |   Mastery: #{data["stats"]["mastery"].round(2)}%
-Multistrike Rating: #{data["stats"]["multistrikeRating"]}   |   Multistrike: #{data["stats"]["multistrike"].round(2)}%
 Versatility Rating: #{data["stats"]["versatility"]} |   Versatility Damage Reduction: #{data["stats"]["versatilityDamageTakenBonus"].round(2)}%
 Armor: #{data["stats"]["armor"]}    |   Armor DR: NPC lvl 103: #{armordr103.round(2)}%  /  lvl 100: #{armordr100.round(2)}%
 Dodge: #{data["stats"]["dodge"].round(2)}%  |   Parry: #{data["stats"]["parry"].round(2)}%
@@ -75,7 +74,6 @@ Strength: #{data["stats"]["str"]}   |   Stamina: #{data["stats"]["sta"]}
 Crit Rating: #{data["stats"]["critRating"]} |   Crit: #{data["stats"]["crit"].round(2)}%
 Haste Rating: #{data["stats"]["hasteRating"]}   |   Haste: #{data["stats"]["haste"].round(2)}%
 Mastery Rating: #{data["stats"]["masteryRating"]}   |   Mastery: #{data["stats"]["mastery"].round(2)}%
-Multistrike Rating: #{data["stats"]["multistrikeRating"]}   |   Multistrike: #{data["stats"]["multistrike"].round(2)}%
 Versatility Rating: #{data["stats"]["versatility"]} |   Versatility Damage Reduction: #{data["stats"]["versatilityDamageTakenBonus"].round(2)}%
 Armor: #{data["stats"]["armor"]}    |   Armor DR: NPC lvl 103: #{armordr103.round(2)}%  /  lvl 100: #{armordr100.round(2)}%
 Dodge: #{data["stats"]["dodge"].round(2)}%  |   Parry: #{data["stats"]["parry"].round(2)}%  |   Block: #{data["stats"]["block"].round(2)}%
@@ -88,7 +86,6 @@ Agility: #{data["stats"]["agi"]}    |   Stamina: #{data["stats"]["sta"]}
 Crit Rating: #{data["stats"]["critRating"]} |   Crit: #{data["stats"]["crit"].round(2)}%
 Haste Rating: #{data["stats"]["hasteRating"]}   |   Haste: #{data["stats"]["haste"].round(2)}%
 Mastery Rating: #{data["stats"]["masteryRating"]}   |   Mastery: #{data["stats"]["mastery"].round(2)}%
-Multistrike Rating: #{data["stats"]["multistrikeRating"]}   |   Multistrike: #{data["stats"]["multistrike"].round(2)}%
 Versatility Rating: #{data["stats"]["versatility"]} |   Versatility Damage Reduction: #{data["stats"]["versatilityDamageTakenBonus"].round(2)}%
 Armor: #{data["stats"]["armor"]}    |   Armor DR: NPC lvl 103: #{armordr103.round(2)}%  /  lvl 100: #{armordr100.round(2)}%
 Dodge: #{data["stats"]["dodge"].round(2)}%  |   Parry: #{data["stats"]["parry"].round(2)}%
@@ -101,7 +98,6 @@ Intellect: #{data["stats"]["int"]}  |   Stamina: #{data["stats"]["sta"]}
 Crit Rating: #{data["stats"]["critRating"]} |   Crit: #{data["stats"]["crit"].round(2)}%
 Haste Rating: #{data["stats"]["hasteRating"]}   |   Haste: #{data["stats"]["haste"].round(2)}%
 Mastery Rating: #{data["stats"]["masteryRating"]}   |   Mastery: #{data["stats"]["mastery"].round(2)}%
-Multistrike Rating: #{data["stats"]["multistrikeRating"]}   |   Multistrike: #{data["stats"]["multistrike"].round(2)}%
 Versatility Rating: #{data["stats"]["versatility"]} |   Versatility Healing Increase: #{data["stats"]["versatilityHealingDoneBonus"].round(2)}%
 Spirit: #{data["stats"]["spr"]} |   Combat Regen: #{data["stats"]["mana5Combat"]} mp5
 ```"""
@@ -113,7 +109,6 @@ Strength: #{data["stats"]["str"]}   |   Stamina: #{data["stats"]["sta"]}
 Crit Rating: #{data["stats"]["critRating"]} |   Crit: #{data["stats"]["crit"].round(2)}%
 Haste Rating: #{data["stats"]["hasteRating"]}   |   Haste: #{data["stats"]["haste"].round(2)}%
 Mastery Rating: #{data["stats"]["masteryRating"]}   |   Mastery: #{data["stats"]["mastery"].round(2)}%
-Multistrike Rating: #{data["stats"]["multistrikeRating"]}   |   Multistrike: #{data["stats"]["multistrike"].round(2)}%
 Versatility Rating: #{data["stats"]["versatility"]} |   Versatility Damage Increase: #{data["stats"]["versatilityDamageDoneBonus"].round(2)}%
 ```"""   
     elsif cchar == "Hunter" or cchar == "Monk" or cchar == "Rogue" or spec == "Feral" or spec =="Enhancement"
@@ -124,7 +119,6 @@ Strength: #{data["stats"]["str"]}   |   Stamina: #{data["stats"]["sta"]}
 Crit Rating: #{data["stats"]["critRating"]} |   Crit: #{data["stats"]["crit"].round(2)}%
 Haste Rating: #{data["stats"]["hasteRating"]}   |   Haste: #{data["stats"]["haste"].round(2)}%
 Mastery Rating: #{data["stats"]["masteryRating"]}   |   Mastery: #{data["stats"]["mastery"].round(2)}%
-Multistrike Rating: #{data["stats"]["multistrikeRating"]}   |   Multistrike: #{data["stats"]["multistrike"].round(2)}%
 Versatility Rating: #{data["stats"]["versatility"]} |   Versatility Damage Increase: #{data["stats"]["versatilityDamageDoneBonus"].round(2)}%
 ```"""   
   elsif spec == "Shadow" or spec == "Balance" or cchar == "Mage" or spec == "Elemental" or cchar == "Warlock"
@@ -135,7 +129,6 @@ Intellect: #{data["stats"]["int"]}  | Stamina: #{data["stats"]["sta"]}
 Crit Rating: #{data["stats"]["critRating"]} |   Crit: #{data["stats"]["crit"].round(2)}%
 Haste Rating: #{data["stats"]["hasteRating"]}   |   Haste: #{data["stats"]["haste"].round(2)}%
 Mastery Rating: #{data["stats"]["masteryRating"]}   |   Mastery: #{data["stats"]["mastery"].round(2)}%
-Multistrike Rating: #{data["stats"]["multistrikeRating"]}   |   Multistrike: #{data["stats"]["multistrike"].round(2)}%
 Versatility Rating: #{data["stats"]["versatility"]} |   Versatility Damage Increase: #{data["stats"]["versatilityDamageDoneBonus"].round(2)}%
 ```"""   
     else
