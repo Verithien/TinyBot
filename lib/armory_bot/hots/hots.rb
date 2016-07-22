@@ -1,8 +1,8 @@
 module ArmoryBot
   module Commands
-    module MMR
+    module hots
       extend Discordrb::Commands::CommandContainer
-      command(:mmr, bucket: :hots, min_args: 2, rate_limit_message: 'Respawning: Wait %time% more seconds.') do |event, *account, region|
+      command(:hots, bucket: :hots, min_args: 2, rate_limit_message: 'Respawning: Wait %time% more seconds.') do |event, *account, region|
 
           region = region.upcase
 
@@ -169,18 +169,18 @@ module ArmoryBot
           if data1.length == 0
             event << "No matches found for this account"
           elsif data1[0] != nil && data1[1] != nil && data1[2] != nil
-            event.respond """**#{account[0]} | MMR**
+            event.respond """**#{account[0]} | Heroes MMR**
 Quick Match: `#{qmmmr}` | `#{quick_match["CurrentMMR"]}`
 Hero League: `#{hlmmr}` | `#{hero_league["CurrentMMR"]}`
 Team League: `#{tlmmr}` | `#{team_league["CurrentMMR"]}`
 """
           elsif data1[0] != nil && data1[1] != nil
-            event.respond """**#{account[0]} | MMR**
+            event.respond """**#{account[0]} | Heroes MMR**
 Quick Match: `#{qmmmr}` | `#{quick_match["CurrentMMR"]}`
 Hero League: `#{hlmmr}` | `#{quick_match["CurrentMMR"]}`
 """
           elsif data1[0] != nil
-          event.respond """**#{account[0]} | MMR**
+          event.respond """**#{account[0]} | Heroes MMR**
 Quick Match: `#{qmmmr}` | `#{quick_match["CurrentMMR"]}`
 """
           else
