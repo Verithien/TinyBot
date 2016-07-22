@@ -4,13 +4,14 @@ module ArmoryBot
       extend Discordrb::Commands::CommandContainer
       command(:mmr, bucket: :hots, min_args: 2, rate_limit_message: 'Respawning: Wait %time% more seconds.') do |event, *account, region|
 
+          puts "Command Entered"
+
           region = region.upcase
 
           region_num = {
             "US" => 1, "EU" => 2, "KR" => 3,       
             "CN" => 5
           }
-
 
           acc = account.first
           acc = acc.split('#')
@@ -19,9 +20,11 @@ module ArmoryBot
           data = HTTParty.get("https://api.hotslogs.com/Public/Players/#{region_num[region]}/#{acc}", :verify => false ).parsed_response
           data1 = data["LeaderboardRankings"]
 
-          quick_match = data["LeaderboardRankings"].find { |r| r["GameMode"] == "QuickMatch" }
-          hero_league = data["LeaderboardRankings"].find { |r| r["GameMode"] == "HeroLeague" }
-          team_league = data["LeaderboardRankings"].find { |r| r["GameMode"] == "TeamLeague" }
+          puts "#{data}"
+
+          quick_match = data1.find { |r| r["GameMode"] == "QuickMatch" }
+          hero_league = data1.find { |r| r["GameMode"] == "HeroLeague" }
+          team_league = data1.find { |r| r["GameMode"] == "TeamLeague" }
 
         if hero_league == nil && team_league == nil && quick_match == nil
           event << "No matchmaking information found for this Account"
@@ -167,6 +170,7 @@ module ArmoryBot
           end
         end
 
+          puts "Almost done"
 
           if data1[0] == nil
             event << "No matches found for this account"
@@ -191,6 +195,9 @@ Quick Match: #{qmmmr} - #{quick_match["CurrentMMR"]}
           else
           nil
         end 
+
+        puts "FINISHED!"
+        
       end
     end
   end
