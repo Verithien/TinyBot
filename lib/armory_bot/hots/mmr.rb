@@ -30,9 +30,9 @@ module ArmoryBot
           puts "#{hero_league}"
           puts "#{team_league}"
 
-        if hero_league == nil && team_league == nil && quick_match == nil
+        if hero_league.empty? && team_league.empty? && quick_match.empty?
           event << "No matchmaking information found for this Account"
-        elsif team_league == nil && hero_league == nil
+        elsif team_league.empty? && hero_league.empty?
           if quick_match["CurrentMMR"] >= 2918
             qmmmr = "Master"
           elsif quick_match["CurrentMMR"] >= 2422
@@ -46,7 +46,7 @@ module ArmoryBot
           else 
             qmmmr = "Bronze"
           end
-        elsif hero_league == nil && quick_match == nil
+        elsif hero_league.empty? && quick_match.empty?
           if team_league["CurrentMMR"] >= 3106
             tlmmr = "Master"
           elsif team_league["CurrentMMR"] >= 2626
@@ -60,7 +60,7 @@ module ArmoryBot
           else 
             tlmmr = "Bronze"
           end
-        elsif team_league == nil && quick_match == nil
+        elsif team_league.empty? && quick_match.empty?
           if hero_league["CurrentMMR"] >= 3095
             hlmmr = "Master"
           elsif hero_league["CurrentMMR"] >= 2537
@@ -74,7 +74,7 @@ module ArmoryBot
           else 
             hlmmr = "Bronze"
           end
-        elsif team_league == nil
+        elsif team_league.empty?
           if quick_match["CurrentMMR"] >= 2918
             qmmmr = "Master"
           elsif quick_match["CurrentMMR"] >= 2422
@@ -102,7 +102,7 @@ module ArmoryBot
           else 
             hlmmr = "Bronze"
           end
-        elsif hero_league == nil 
+        elsif hero_league.empty? 
           if quick_match["CurrentMMR"] >= 2918
             qmmmr = "Master"
           elsif quick_match["CurrentMMR"] >= 2422
@@ -174,8 +174,8 @@ module ArmoryBot
           end
         end
 
-          puts tlmmr + " " + hlmrr + " " + qmmmr
-          
+          puts "#{tlmmr} #{hlmrr} #{qmmmr}"
+
           puts "Almost done"
 
           if data1.length == 0
