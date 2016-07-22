@@ -169,18 +169,18 @@ module ArmoryBot
           if data1.length == 0
             event << "No matches found for this account"
           elsif data1[0] != nil && data1[1] != nil && data1[2] != nil
-            event.respond """#{account.to_s} - MMR
+            event.respond """**#{account[0]} | MMR**
 Quick Match: `#{qmmmr}` | `#{quick_match["CurrentMMR"]}`
 Hero League: `#{hlmmr}` | `#{hero_league["CurrentMMR"]}`
 Team League: `#{tlmmr}` | `#{team_league["CurrentMMR"]}`
 """
           elsif data1[0] != nil && data1[1] != nil
-            event.respond """#{account.to_s} - MMR
+            event.respond """**#{account[0]} | MMR**
 Quick Match: `#{qmmmr}` | `#{quick_match["CurrentMMR"]}`
 Hero League: `#{hlmmr}` | `#{quick_match["CurrentMMR"]}`
 """
           elsif data1[0] != nil
-          event.respond """#{account.to_s} - MMR
+          event.respond """**#{account[0]} | MMR**
 Quick Match: `#{qmmmr}` | `#{quick_match["CurrentMMR"]}`
 """
           else
