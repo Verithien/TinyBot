@@ -26,6 +26,10 @@ module ArmoryBot
           hero_league = data1.find { |r| r["GameMode"] == "HeroLeague" }
           team_league = data1.find { |r| r["GameMode"] == "TeamLeague" }
 
+          puts "#{quick_match}"
+          puts "#{hero_league}"
+          puts "#{team_league}"
+
         if hero_league == nil && team_league == nil && quick_match == nil
           event << "No matchmaking information found for this Account"
         elsif team_league == nil && hero_league == nil
@@ -170,6 +174,8 @@ module ArmoryBot
           end
         end
 
+          puts tlmmr + " " + hlmrr + " " + qmmmr
+          
           puts "Almost done"
 
           if data1.length == 0
