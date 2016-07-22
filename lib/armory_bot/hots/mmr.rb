@@ -172,16 +172,16 @@ module ArmoryBot
 
           puts "Almost done"
 
-          if data1[0] == nil
+          if data1.length == 0
             event << "No matches found for this account"
-          elsif data1[0] && data1[1] && data1[2] == "GameMode" 
+          elsif data1[0] == "GameMode" && data1[1] == "GameMode"  && data1[2] == "GameMode" 
             event.respond """#{account} - MMR
 ```Ruby
 Quick Match: #{qmmmr} - #{quick_match["CurrentMMR"]}
 Hero League: #{hlmmr} - #{hero_league["CurrentMMR"]}
 Team League: #{tlmmr} - #{team_league["CurrentMMR"]}
 ```"""
-          elsif data1[0] && data1[1] == "GameMode"
+          elsif data1[0] == "GameMode"  && data1[1] == "GameMode"
             event.respond """#{account} - MMR
 ```Ruby
 Quick Match: #{qmmmr} - #{quick_match["CurrentMMR"]}
@@ -197,7 +197,7 @@ Quick Match: #{qmmmr} - #{quick_match["CurrentMMR"]}
         end 
 
         puts "FINISHED!"
-        
+
       end
     end
   end
