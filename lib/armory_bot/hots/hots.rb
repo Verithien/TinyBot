@@ -1,6 +1,6 @@
 module ArmoryBot
   module Commands
-    module hots
+    module Hots
       extend Discordrb::Commands::CommandContainer
       command(:hots, bucket: :hots, min_args: 2, rate_limit_message: 'Respawning: Wait %time% more seconds.') do |event, *account, region|
 

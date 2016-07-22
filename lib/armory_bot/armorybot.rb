@@ -70,7 +70,7 @@ module ArmoryBot
 	bot.include! Commands::Zenyatta
 
 	#hots
-	bot.include! Commands::hots
+	bot.include! Commands::Hots
 
 
 
