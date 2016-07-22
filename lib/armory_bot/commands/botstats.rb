@@ -15,8 +15,7 @@ module ArmoryBot
         puts "Server Count: #{event.bot.servers.count}"
         #puts postData
 
-event.respond """
-```ruby
+event.respond """```ruby
 Armory Bot Stats
 
 Servers: #{servers}

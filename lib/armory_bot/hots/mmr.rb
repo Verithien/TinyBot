@@ -4,8 +4,6 @@ module ArmoryBot
       extend Discordrb::Commands::CommandContainer
       command(:mmr, bucket: :hots, min_args: 2, rate_limit_message: 'Respawning: Wait %time% more seconds.') do |event, *account, region|
 
-          puts "Command Entered"
-
           region = region.upcase
 
           region_num = {
@@ -20,15 +18,9 @@ module ArmoryBot
           data = HTTParty.get("https://api.hotslogs.com/Public/Players/#{region_num[region]}/#{acc}", :verify => false ).parsed_response
           data1 = data["LeaderboardRankings"]
 
-          puts "#{data}"
-
           quick_match = data1.find { |r| r["GameMode"] == "QuickMatch" }
           hero_league = data1.find { |r| r["GameMode"] == "HeroLeague" }
           team_league = data1.find { |r| r["GameMode"] == "TeamLeague" }
-
-          puts "#{quick_match}"
-          puts "#{hero_league}"
-          puts "#{team_league}"
 
         if hero_league.nil? && team_league.nil? && quick_match.nil?
           event << "No matchmaking information found for this Account"
@@ -174,30 +166,28 @@ module ArmoryBot
           end
         end
 
-          puts "Almost done"
-
           if data1.length == 0
             event << "No matches found for this account"
           elsif data1[0] != nil && data1[1] != nil && data1[2] != nil
-            event.respond """#{account} - MMR
-Quick Match: #{qmmmr} - #{quick_match["CurrentMMR"]}
-Hero League: #{hlmmr} - #{hero_league["CurrentMMR"]}
-Team League: #{tlmmr} - #{team_league["CurrentMMR"]}
+            event.respond """#{account.to_s} - MMR
+Quick Match: `#{qmmmr}` | `#{quick_match["CurrentMMR"]}`
+Hero League: `#{hlmmr}` | `#{hero_league["CurrentMMR"]}`
+Team League: `#{tlmmr}` | `#{team_league["CurrentMMR"]}`
 """
           elsif data1[0] != nil && data1[1] != nil
-            event.respond """#{account} - MMR
-Quick Match: #{qmmmr} - #{quick_match["CurrentMMR"]}
-Hero League: #{hlmmr} - #{quick_match["CurrentMMR"]}
+            event.respond """#{account.to_s} - MMR
+Quick Match: `#{qmmmr}` | `#{quick_match["CurrentMMR"]}`
+Hero League: `#{hlmmr}` | `#{quick_match["CurrentMMR"]}`
 """
           elsif data1[0] != nil
-          event.respond """#{account} - MMR
-Quick Match: #{qmmmr} - #{quick_match["CurrentMMR"]}
+          event.respond """#{account.to_s} - MMR
+Quick Match: `#{qmmmr}` | `#{quick_match["CurrentMMR"]}`
 """
           else
           nil
         end 
 
-        puts "FINISHED!"
+        puts "#{event.server.name} | HOTS MMR"
 
       end
     end
