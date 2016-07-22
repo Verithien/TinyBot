@@ -26,55 +26,7 @@ module ArmoryBot
         else
           event.respond "Sorry #{event.user.name}, please insert your region US or EU(?help for more info)"
         end
-
-        wh = "<http://www.wowhead.com/spell="
-        whs = "<http://www.wowhead.com/search?q="
-
-        glyphs = data["talents"].find { |r| r["selected"] == true }
-
-        glyph = glyphs["glyphs"]["major"]
-
-        if glyph[0] == nil
-          majglyph0 = "No Glyph Equipped"
-        else
-          majglyph0 = glyph[0]["name"]
-        end
-
-        if glyph[1] == nil
-          majglyph1 = "No Glyph Equipped"
-        else
-          majglyph1 = glyph[1]["name"]
-        end
-
-        if glyph[2] == nil
-          majglyph2 = "No Glyph Equipped"
-        else
-          majglyph2 = glyph[2]["name"]
-        end
-
-        glyphm = glyphs["glyphs"]["minor"]
-
-        if glyphm[0] == nil
-          minglyph0 = "No Glyph Equipped"
-        else
-          minglyph0 = glyphm[0]["name"]
-        end
-
-        if glyphm[1] == nil
-          minglyph1 = "No Glyph Equipped"
-        else
-          minglyph1 = glyphm[1]["name"]
-        end
         
-        if glyphm[2] == nil
-          minglyph2 = "No Glyph Equipped"
-        else
-          minglyph2 = glyphm[2]["name"]
-        end
-
-
-
-
         talents = data["talents"].find { |r| r["selected"] == true }
 
         talent0 = talents["talents"].find { |r| r["tier"] == 0 }
