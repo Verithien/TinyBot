@@ -174,8 +174,6 @@ module ArmoryBot
           end
         end
 
-          puts "#{tlmmr} #{hlmrr} #{qmmmr}"
-
           puts "Almost done"
 
           if data1.length == 0
