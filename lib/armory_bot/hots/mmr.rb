@@ -178,24 +178,21 @@ module ArmoryBot
 
           if data1.length == 0
             event << "No matches found for this account"
-          elsif data1[0] == "GameMode" && data1[1] == "GameMode"  && data1[2] == "GameMode" 
+          elsif data1[0].length == 4 && data1[1].length == 4 && data1[2].length == 4
             event.respond """#{account} - MMR
-```Ruby
 Quick Match: #{qmmmr} - #{quick_match["CurrentMMR"]}
 Hero League: #{hlmmr} - #{hero_league["CurrentMMR"]}
 Team League: #{tlmmr} - #{team_league["CurrentMMR"]}
-```"""
-          elsif data1[0] == "GameMode"  && data1[1] == "GameMode"
+"""
+          elsif data1[0].length == 4 && data1[1].length == 4
             event.respond """#{account} - MMR
-```Ruby
 Quick Match: #{qmmmr} - #{quick_match["CurrentMMR"]}
 Hero League: #{hlmmr} - #{quick_match["CurrentMMR"]}
-```"""
-          elsif data1[0] == "GameMode"
+"""
+          elsif data1[0].length == 4
           event.respond """#{account} - MMR
-```Ruby
 Quick Match: #{qmmmr} - #{quick_match["CurrentMMR"]}
-```"""
+"""
           else
           nil
         end 
