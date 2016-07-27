@@ -1,8 +1,8 @@
 module ArmoryBot
-	bot = Bot.new(token: 'MTY5OTgyNzQyMTI4MzYxNDgy.CfCjAg.SDlVm1DTYoQVWdaSqpCRpfHz3gM', 
+	bot = Discordrb::Commands::CommandBot.new(token: 'MTY5OTgyNzQyMTI4MzYxNDgy.CfCjAg.SDlVm1DTYoQVWdaSqpCRpfHz3gM', 
 				  application_id: '169952497690083328', 
 				  prefix: '?', 
-				  advanced_functionality: false)
+				  advanced_functionality: false, debug: true)
 
 	bot.bucket(:armory, limit: 6,
 						time_span: 60,
@@ -72,14 +72,11 @@ module ArmoryBot
 	#hots
 	bot.include! Commands::Hots
 
-
-
-
 	bot.run :async
 
 	bot.profile.username = 'Blizzard Bot'
 	bot.profile.avatar = File.new('/app/lib/armory_bot/wow_icon.jpg')
-	#bot.profile.avatar = File.new('C:\Users\Jesus\Desktop\armory_bot\lib\armory_bot')
+	#bot.profile.avatar = File.new('C:/Users/Jesus/Desktop/armory_bot/lib/armory_bot')
 	bot.sync
 
 end

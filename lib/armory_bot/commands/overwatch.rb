@@ -29,7 +29,7 @@ module ArmoryBot
           region1 = "us"
         elsif platform == "pc" && region =="eu"
           region1 = "eu"
-        elsif platform == "psn" || "xbl"
+        elsif platform == "psn" || platform == "xbl"
           region1 = "global"
         else
           nil
@@ -44,7 +44,7 @@ module ArmoryBot
 
         if platform == "pc"
           page = pc
-        elsif platform == "xbl" || "psn"
+        elsif platform == "xbl" || platform == "psn"
           page = console
         else
           nil
