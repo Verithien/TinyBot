@@ -30,8 +30,8 @@ module ArmoryBot
           nil
         end
 
-        data1 = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/quick-play/hero/McCree/", :verify => false ).parsed_response
-        data2 = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/competitive-play/hero/McCree/", :verify => false ).parsed_response
+        data1 = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/quick-play/hero/Mccree/", :verify => false ).parsed_response
+        data2 = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region}/#{acc}/competitive-play/hero/Mccree/", :verify => false ).parsed_response
 
         break unless mode == "qp" || mode == "cp"
 
