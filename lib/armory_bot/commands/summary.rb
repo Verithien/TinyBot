@@ -67,6 +67,11 @@ module ArmoryBot
 
           loot = loot_data["wowhead"]["item"]["name"]
 
+          if achievement["achievement"]["title"] == nil
+            achieves = "No Recent Achievement"
+          else
+            achieves = achievement["achievement"]["title"]
+          end
 
           charclass = cclass[data["class"]]
           charrace = crace[data["race"]]
@@ -81,7 +86,7 @@ Mounts: #{data3["mounts"]["numCollected"]}
 Battle Pets: #{data4["pets"]["numCollected"]}
 ---------------
 Recent Activity
-Achievement: \"#{achievement["achievement"]["title"]}\"
+Achievement: \"#{achieves}\"
 Boss Kill: \"#{kills[0]}\"
 Loot: \"#{loot}\"```"""
           else
@@ -94,7 +99,7 @@ Mounts: #{data3["mounts"]["numCollected"]}
 Battle Pets: #{data4["pets"]["numCollected"]}
 ---------------
 Recent Activity
-Achievement: \"#{achievement["achievement"]["title"]}\"
+Achievement: \"#{achievement["achieves}\"
 Boss Kill: \"#{kills[0]}\"
 Loot: \"#{loot}\"```"""
         end
