@@ -99,7 +99,7 @@ Mounts: #{data3["mounts"]["numCollected"]}
 Battle Pets: #{data4["pets"]["numCollected"]}
 ---------------
 Recent Activity
-Achievement: \"#{achievement["achieves}\"
+Achievement: \"#{achieves}\"
 Boss Kill: \"#{kills[0]}\"
 Loot: \"#{loot}\"```"""
         end
