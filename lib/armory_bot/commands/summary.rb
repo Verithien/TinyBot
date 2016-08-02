@@ -67,7 +67,7 @@ module ArmoryBot
 
           loot = loot_data["wowhead"]["item"]["name"]
 
-          if achievement["achievement"]["title"] == nil
+          if achievement == nil
             achieves = "No Recent Achievement"
           else
             achieves = achievement["achievement"]["title"]
