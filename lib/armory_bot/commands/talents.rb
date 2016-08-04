@@ -21,8 +21,10 @@ module ArmoryBot
 
         if region == "us"
           data = dataus
+          armory = "<http://us.battle.net/wow/en/character/#{realm}/#{URI.escape(char)}/advanced>"
         elsif region == "eu"
           data = dataeu
+          armory = "<http://eu.battle.net/wow/en/character/#{realm}/#{URI.escape(char)}/advanced>"
         else
           event.respond "Sorry #{event.user.name}, please insert your region US or EU(?help for more info)"
         end
@@ -53,7 +55,7 @@ module ArmoryBot
         charclass = cclass[data["class"]]
 
         event.respond """**#{char.capitalize} - #{realm.capitalize}(#{region.upcase}) | #{charclass} #{talents["spec"]["name"].capitalize}**
-Armory: <http://us.battle.net/wow/en/character/#{realm}/#{URI.escape(char)}/advanced>
+Armory: #{armory}
 
 `TALENTS`
 `15` `#{talent0["spell"]["name"]}`
