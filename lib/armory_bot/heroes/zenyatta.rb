@@ -36,10 +36,10 @@ module ArmoryBot
         break unless mode == "qp" || mode == "cp"
 
         if mode == nil || mode == "qp"
-          data = data1
+          data = data1["Hanzo"]
           type = "Quick Play"
         elsif mode == "cp"
-          data = data2
+          data = data2["Hanzo"]
           type = "Competitive Play"
         else
           nil
