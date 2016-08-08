@@ -6,8 +6,8 @@ module ArmoryBot
 
         puts '#{event.server.name} - CMD: help'
 
-        event << 'Check out ArmoryBot Docs'
-        event << '<http://bit.ly/1R3iaaX>'
+        event << 'Check out ArmoryBot Docs: <http://bit.ly/1R3iaaX>'
+        event << '`Paypal Donation:`http://bit.ly/1RTGoox | `Patreon:` https://www.patreon.com/blizzardbot'
         
       end
     end
