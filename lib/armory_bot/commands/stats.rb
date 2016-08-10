@@ -115,7 +115,7 @@ Versatility Rating: #{data["stats"]["versatility"]} |   Versatility Damage Incre
       event.respond """#{char.capitalize} - #{realm.capitalize} - #{region.upcase} - #{spec} #{cchar}
 ```Ruby
 Health: #{data["stats"]["health"]}
-Strength: #{data["stats"]["str"]}   |   Stamina: #{data["stats"]["sta"]}
+Agility: #{data["stats"]["agi"]}   |   Stamina: #{data["stats"]["sta"]}
 Crit Rating: #{data["stats"]["critRating"]} |   Crit: #{data["stats"]["crit"].round(2)}%
 Haste Rating: #{data["stats"]["hasteRating"]}   |   Haste: #{data["stats"]["haste"].round(2)}%
 Mastery Rating: #{data["stats"]["masteryRating"]}   |   Mastery: #{data["stats"]["mastery"].round(2)}%
