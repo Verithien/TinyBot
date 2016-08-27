@@ -251,8 +251,6 @@ module ArmoryBot
     puts "Pong! Time taken: #{Time.now - event.timestamp} seconds."
     puts "#{event.server.name} | Overwatch"
 
-  end
-
       end
     end
   end
