@@ -39,8 +39,16 @@ module ArmoryBot
       puts "https://owapi.net/api/v2/u/#{acc}/stats/#{modename}#{override}"
 
     stats1 = HTTParty.get("https://owapi.net/api/v2/u/#{acc}/heroes#{override}", :verify => false ).parsed_response
+
+    puts stats1
+
     stats2 = HTTParty.get("https://owapi.net/api/v2/u/#{acc}/stats/#{modename}#{override}", :verify => false ).parsed_response
+
+    puts stats2
+
     stats3 = HTTParty.get("https://api.lootbox.eu/#{plat}/#{region}/#{acc}/#{modename2}/heroes", :verify => false ).parsed_response
+
+    puts stats3
 
 
 
