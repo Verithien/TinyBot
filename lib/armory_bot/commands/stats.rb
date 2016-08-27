@@ -36,7 +36,7 @@ module ArmoryBot
                   "Z" => "Warrior", "b" => "Paladin", "Y" => "Hunter",       
                   "c" => "Rogue", "X" => "Priest", "d" => "Death Knight",
                   "W" => "Shaman", "e" => "Mage", "V" => "Warlock",
-                  "f" => "Monk", "U" => "Druid"
+                  "f" => "Monk", "U" => "Druid", "g" => "Demon Hunter"
                 }
 
         specs = data1["talents"].find { |r| r["selected"] == true }
@@ -78,7 +78,7 @@ Versatility Rating: #{data["stats"]["versatility"]} |   Versatility Damage Reduc
 Armor: #{data["stats"]["armor"]}    |   Armor DR: NPC lvl 103: #{armordr103.round(2)}%  /  lvl 100: #{armordr100.round(2)}%
 Dodge: #{data["stats"]["dodge"].round(2)}%  |   Parry: #{data["stats"]["parry"].round(2)}%  |   Block: #{data["stats"]["block"].round(2)}%
 ```"""
-    elsif spec == "Brewmaster" or spec == "Guardian"
+    elsif spec == "Brewmaster" || spec == "Guardian" || spec == "Vengeance"
       event.respond """#{char.capitalize} - #{realm.capitalize} - #{region.upcase} - #{spec} #{cchar}
 ```Ruby
 Health: #{data["stats"]["health"]}
@@ -90,7 +90,7 @@ Versatility Rating: #{data["stats"]["versatility"]} |   Versatility Damage Reduc
 Armor: #{data["stats"]["armor"]}    |   Armor DR: NPC lvl 103: #{armordr103.round(2)}%  /  lvl 100: #{armordr100.round(2)}%
 Dodge: #{data["stats"]["dodge"].round(2)}%  |   Parry: #{data["stats"]["parry"].round(2)}%
 ```"""
-  elsif spec == "Holy" or spec == "Discipline" or spec == "Mistweaver" or spec == "Restoration"
+  elsif spec == "Holy" || spec == "Discipline" || spec == "Mistweaver" || spec == "Restoration"
       event.respond """#{char.capitalize} - #{realm.capitalize} - #{region.upcase} - #{spec} #{cchar}
 ```Ruby
 Health: #{data["stats"]["health"]}
@@ -101,7 +101,7 @@ Mastery Rating: #{data["stats"]["masteryRating"]}   |   Mastery: #{data["stats"]
 Versatility Rating: #{data["stats"]["versatility"]} |   Versatility Healing Increase: #{data["stats"]["versatilityHealingDoneBonus"].round(2)}%
 Spirit: #{data["stats"]["spr"]} |   Combat Regen: #{data["stats"]["mana5Combat"]} mp5
 ```"""
-    elsif cchar == "Death Knight" or cchar == "Paladin" or cchar == "Warrior"
+    elsif cchar == "Death Knight" || cchar == "Paladin" || cchar == "Warrior"
       event.respond """#{char.capitalize} - #{realm.capitalize} - #{region.upcase} - #{spec} #{cchar}
 ```Ruby
 Health: #{data["stats"]["health"]}
@@ -111,7 +111,7 @@ Haste Rating: #{data["stats"]["hasteRating"]}   |   Haste: #{data["stats"]["hast
 Mastery Rating: #{data["stats"]["masteryRating"]}   |   Mastery: #{data["stats"]["mastery"].round(2)}%
 Versatility Rating: #{data["stats"]["versatility"]} |   Versatility Damage Increase: #{data["stats"]["versatilityDamageDoneBonus"].round(2)}%
 ```"""   
-    elsif cchar == "Hunter" or cchar == "Monk" or cchar == "Rogue" or spec == "Feral" or spec =="Enhancement"
+    elsif cchar == "Hunter" || cchar == "Monk" || cchar == "Rogue" || spec == "Feral" || spec =="Enhancement" || spec == "Havoc"
       event.respond """#{char.capitalize} - #{realm.capitalize} - #{region.upcase} - #{spec} #{cchar}
 ```Ruby
 Health: #{data["stats"]["health"]}
@@ -121,7 +121,7 @@ Haste Rating: #{data["stats"]["hasteRating"]}   |   Haste: #{data["stats"]["hast
 Mastery Rating: #{data["stats"]["masteryRating"]}   |   Mastery: #{data["stats"]["mastery"].round(2)}%
 Versatility Rating: #{data["stats"]["versatility"]} |   Versatility Damage Increase: #{data["stats"]["versatilityDamageDoneBonus"].round(2)}%
 ```"""   
-  elsif spec == "Shadow" or spec == "Balance" or cchar == "Mage" or spec == "Elemental" or cchar == "Warlock"
+  elsif spec == "Shadow" || spec == "Balance" || cchar == "Mage" || spec == "Elemental" || cchar == "Warlock"
       event.respond """#{char.capitalize} - #{realm.capitalize} - #{region.upcase} - #{spec} #{cchar}
 ```Ruby
 Health: #{data["stats"]["health"]}

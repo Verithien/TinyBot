@@ -2,140 +2,257 @@ module ArmoryBot
   module Commands
     module Overwatch
       extend Discordrb::Commands::CommandContainer
-        command(:overwatch, bucket: :overwatch, min_args: 3) do |event, *account, region, platform|
+        command(:overwatch, bucket: :overwatch, min_args: 3) do |event, *account, mode|
 
-        platform = platform.downcase
+        if account.last == "xbl"
+      override = "?platform=xbl"
+      region = "global"
+      plat = "xbl"
+    elsif account.last == "eu"
+      override = "?region=eu"
+      region = "eu"
+      plat = "pc"
+    elsif account.last == "psn"
+      override = "?platform=psn"
+      region = "global"
+      plat = "psn"
+    else
+      override = ""
+      region = "us"
+      plat = "pc"
+    end
 
-        mode = mode.downcase
+    #platform = platform.downcase
 
-        region = region.downcase
+    if mode == "cp"
+      modename = "competitive"
+      modename2 = "competitive-play"
+    else
+      modename = "general"
+      modename2 = "quick-play"
+    end
 
-        if platform == "pc"
-          acc = account.first
-          acc = acc.split('#')
-          acc = acc.join('-')
-        elsif platform == "xbl"
-            if account.count >= 2
-                acc = account.map!(&:capitalize)
-                acc = acc.join('%20')
-            else
-                acc = account.first
-            end
-        else
-          acc = account
-        end
+      acc = account.first
+      acc = acc.split('#')
+      acc = acc.join('-')
 
-        if platform == "pc" && region == "us"
-          region1 = "us"
-        elsif platform == "pc" && region =="eu"
-          region1 = "eu"
-        elsif platform == "psn" || platform == "xbl"
-          region1 = "global"
-        else
-          nil
-        end
+      puts "https://owapi.net/api/v2/u/#{acc}/stats/#{modename}#{override}"
 
-        pc = HTTParty.get("https://playoverwatch.com/en-us/career/#{platform}/#{region}/#{acc}", :verify => false ).parsed_response
-        console = HTTParty.get("https://playoverwatch.com/en-us/career/#{platform}/#{acc}", :verify => false ).parsed_response
-        stats1 = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region1}/#{acc}/quick-play/allHeroes/", :verify => false ).parsed_response
-        stats2 = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region1}/#{acc}/competitive-play/allHeroes/", :verify => false ).parsed_response
-        profile1 = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region1}/#{acc}/quick-play/profile", :verify => false).parsed_response
-        profile2 = HTTParty.get("https://api.lootbox.eu/#{platform}/#{region1}/#{acc}/competitive-play/profile", :verify => false).parsed_response
+    stats1 = HTTParty.get("https://owapi.net/api/v2/u/#{acc}/heroes#{override}", :verify => false ).parsed_response
+    stats2 = HTTParty.get("https://owapi.net/api/v2/u/#{acc}/stats/#{modename}#{override}", :verify => false ).parsed_response
+    stats3 = HTTParty.get("https://api.lootbox.eu/#{plat}/#{region}/#{acc}/#{modename2}/heroes", :verify => false ).parsed_response
 
-        if platform == "pc"
-          page = pc
-        elsif platform == "xbl" || platform == "psn"
-          page = console
-        else
-          nil
-        end
 
-        parse_page = Nokogiri::HTML(page)
 
-        hero_name = []
-        hero_stats = []
-        no_acc = []
+    stats4 = stats3.to_s
 
-        puts "#{event.server.name} - So far so good"
+    if stats2["overall_stats"]["prestige"] == 0
+      efflevel = "#{stats2["overall_stats"]["level"]}"
+    else
+      efflevel = "#{stats2["overall_stats"]["prestige"]}#{stats2["overall_stats"]["level"]}"
+    end
 
-        heroname = parse_page.css('.bg-crystal-dark').css('.content-box').css('.content-box').css('.row').css('.row').css('.progress-category').css('.progress-2').css('.title')
-        herostats = parse_page.css('.bg-crystal-dark').css('.content-box').css('.content-box').css('.row').css('.row').css('.progress-category').css('.progress-2').css('.description')
-        noacc = parse_page.css('.undefined').css('.page-wrapper').css('.row').css('.u-align-center')
-        averagestats = parse_page.css('.bg-crystal-dark').css('.content-box').css('.row').css('.row').css('.card-heading')
+    puts stats3[0]
+    statt = stats4.split("\"")
 
-        heroname.map do |a|
-          post_name = a.text
-          hero_name.push(post_name)
-        end
+    if statt[3] == "Soldier: 76"
+      hero1 = "soldier76"
+    elsif statt[3] == "D.Va"
+      hero1 = "dva"
+    elsif statt[3] == "Torbj&#xF6;rn"
+      hero1 = "torbjorn"
+    elsif statt[3] == "L&#xFA;cio"
+      hero1 = "lucio"
+    else
+      hero1 = statt[3]
+    end
 
-        herostats.map do |a|
-          post_name = a.text
-          hero_stats.push(post_name)
-        end
+    if statt[17] == "Soldier: 76"
+      hero2 = "soldier76"
+    elsif statt[17] == "D.Va"
+      hero2 = "dva"
+    elsif statt[17] == "Torbj&#xF6;rn"
+      hero2 = "torbjorn"
+    elsif statt[17] == "L&#xFA;cio"
+      hero2 = "lucio"
+    else
+      hero2 = statt[17]
+    end
 
-        herostats.map do |a|
-          post_name = a.text
-          hero_stats.push(post_name)
-        end
+    if statt[31] == "Soldier: 76"
+      hero3 = "soldier76"
+    elsif statt[31] == "D.Va"
+      hero3 = "dva"
+    elsif statt[31] == "Torbj&#xF6;rn"
+      hero3 = "torbjorn"
+    elsif statt[31] == "L&#xFA;cio"
+      hero3 = "lucio"
+    else
+      hero3 = statt[31]
+    end
 
-        noacc.map do |a|
-          post_name = a.text
-          no_acc.push(post_name)
-        end
+    if statt[45] == "Soldier: 76"
+      hero4 = "soldier76"
+    elsif statt[45] == "D.Va"
+      hero4 = "dva"
+    elsif statt[45] == "Torbj&#xF6;rn"
+      hero4 = "torbjorn"
+    elsif statt[45] == "L&#xFA;cio"
+      hero4 = "lucio"
+    else
+      hero4 =statt[45]
+    end
 
-        one = hero_name[21]
-        two = hero_name[22]
-        three = hero_name[23]
+    #data1 = stats1["heroes"]
 
-        win_one = hero_stats[21]
-        win_two = hero_stats[22]
-        win_three = hero_stats[23]
+    #data2 = data1.sort_by{ |k, v| v }.to_a
 
-        top_one = hero_name[0]
-        top_two = hero_name[1]
-        top_three = hero_name[2]
+    #hero1 = data2[21][0]
+    #hero2 = data2[20][0]
+    #hero3 = data2[19][0]
+    #hero4 = data2[18][0]
 
-        time_one = hero_stats[0]
-        time_two = hero_stats[1]
-        time_three = hero_stats[2]
+    image1 = MiniMagick::Image.open("/app/lib/assets/imgs/overall-average-#{mode}.png")
+    image2 = MiniMagick::Image.open("/app/lib/assets/full-icons/#{hero1}.png")
+    image4 = MiniMagick::Image.open("/app/lib/assets/full-icons/#{hero2}.png")
+    image5 = MiniMagick::Image.open("/app/lib/assets/full-icons/#{hero3}.png")
+    image6 = MiniMagick::Image.open("/app/lib/assets/full-icons/#{hero4}.png")
+    image3 = MiniMagick::Image.open("#{stats2["overall_stats"]["avatar"]}")
 
-        page_not_found = no_acc[0]
+    #account name
+    image1.combine_options do |cmd|
+      cmd.gravity 'northwest'
+      cmd.pointsize 30
+      cmd.font "/app/lib/assets/big_noodle_titling.ttf"
+      cmd.draw "text 70,12 '#{account.first}'"
+      cmd.fill 'white'
+    end
 
-        if platform == "pc"
-          name = acc
-        else
-          name = acc.split('%20')
-          name = name.join(' ')
-        end
+    #skill rating
+    if mode == "cp"
+      image1.combine_options do |cmd|
+        cmd.gravity 'center'
+        cmd.pointsize 30
+        cmd.font "/app/lib/assets/big_noodle_titling.ttf"
+        cmd.draw "text 252,-158 '#{stats2["overall_stats"]["comprank"]}'"
+        cmd.fill 'white'
+      end
 
-        if page_not_found == "Page Not Found"
-          event << "Sorry, either no account was found or your account is case sensitive"
-        elsif profile["statusCode"] == 500
-          event << "Sorry, you inputted everything correctly, just seems to be an error while retrieving your account. :( "
-        elsif profile["statusCode"] == 404
-          event << "Sorry, no account was found with that name."
-        else
-          event.respond"""#{event.user.mention}
-```ruby
-#{name.capitalize} - Level #{profile["data"]["level"]}
-Games Won: #{profile["data"]["games"]["wins"]} | Lost: #{profile["data"]["games"]["lost"]} | Win Percentage #{profile["data"]["games"]["win_percentage"]}%
-1: #{one} - #{win_one} | 1: #{top_one} - #{time_one}
-2: #{two} - #{win_two} | 2: #{top_two} - #{time_two}
-3: #{three} - #{win_three} | 3: #{top_three} - #{time_three}
--------------------------------
-Average Stats
-Eliminations: #{stats["Eliminations-Average"]}
-Damage Done: #{stats["DamageDone-Average"]}
-Deaths: #{stats["Deaths-Average"]}
-Final Blows: #{stats["FinalBlows-Average"]}
-Healing Done: #{stats["HealingDone-Average"]}
-Objective Kills: #{stats["ObjectiveKills-Average"]}
-Objective Time: #{stats["ObjectiveTime-Average"]}
-Solo Kills: #{stats["SoloKills-Average"]}
-```"""
+      #account level
+      image1.combine_options do |cmd|
+        cmd.gravity 'center'
+        cmd.pointsize 30
+        cmd.font "/app/lib/assets/big_noodle_titling.ttf"
+        cmd.draw "text 186,-158 '#{efflevel}'"
+        cmd.fill 'white'
+      end
+    else
+      image1.combine_options do |cmd|
+        cmd.gravity 'center'
+        cmd.pointsize 30
+        cmd.font "/app/lib/assets/big_noodle_titling.ttf"
+        cmd.draw "text 252,-158 '#{efflevel}'"
+        cmd.fill 'white'
+      end
+    end
 
-          
-        end
+
+    #Games Played
+    image1.combine_options do |cmd|
+      cmd.gravity 'center'
+      cmd.pointsize 36
+      cmd.font "/app/lib/assets/big_noodle_titling.ttf"
+      cmd.draw "text -218,-41 '#{stats2["overall_stats"]["games"]}'"
+      cmd.fill '#5A5A5A'
+    end
+
+    #Time Played
+    image1.combine_options do |cmd|
+      cmd.gravity 'center'
+      cmd.pointsize 36
+      cmd.font "/app/lib/assets/big_noodle_titling.ttf"
+      cmd.draw "text -71,-41 '#{stats2["game_stats"]["time_played"].to_i}hrs'"
+      cmd.fill '#5A5A5A'
+    end
+
+    #Win %
+    image1.combine_options do |cmd|
+      cmd.gravity 'center'
+      cmd.pointsize 36
+      cmd.font "/app/lib/assets/big_noodle_titling.ttf"
+      cmd.draw "text 72,-41 '#{stats2["overall_stats"]["win_rate"]}%'"
+      cmd.fill '#5A5A5A'
+    end
+
+    #Medals
+    image1.combine_options do |cmd|
+      cmd.gravity 'center'
+      cmd.pointsize 36
+      cmd.font "/app/lib/assets/big_noodle_titling.ttf"
+      cmd.draw "text 222,-41 '#{stats2["game_stats"]["medals"].to_i}'"
+      cmd.fill '#5A5A5A'
+    end
+
+    image3 = image3.combine_options do |i|
+      i.resize "48x48"
+    end
+
+    image2 = image2.combine_options do |i|
+      i.resize "80"
+    end
+
+    image4 = image4.combine_options do |i|
+      i.resize "80"
+    end
+
+    image5 = image5.combine_options do |i|
+      i.resize "80"
+    end
+
+    image6 = image6.combine_options do |i|
+      i.resize "80"
+    end
+
+    result1 = image1.composite(image3) do |c|
+      c.compose "Over"
+      c.geometry "+12+12"
+    end
+
+    result2 = result1.composite(image2) do |c|
+      c.compose "Over"
+      c.geometry "+88+268"
+    end
+
+    result3 = result2.composite(image4) do |c|
+      c.compose "Over"
+      c.geometry "+202+268"
+    end
+
+    result4 = result3.composite(image5) do |c|
+      c.compose "Over"
+      c.geometry "+317+268"
+    end
+
+    result = result4.composite(image6) do |c|
+      c.compose "Over"
+      c.geometry "+432+268"
+    end
+
+    result.write "/app/lib/assets/#{event.user.name}.png"
+
+    jesus = File.open("/app/lib/assets/#{event.user.name}.png")
+
+    event.respond "#{event.user.mention}"
+    event.channel.send_file(jesus)
+
+    File.delete("/app/lib/assets/#{event.user.name}.png")
+    nil
+
+    puts "Pong! Time taken: #{Time.now - event.timestamp} seconds."
+    puts "#{event.server.name} | Overwatch"
+
+  end
+
       end
     end
   end
