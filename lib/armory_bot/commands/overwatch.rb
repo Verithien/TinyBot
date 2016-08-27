@@ -2,7 +2,7 @@ module ArmoryBot
   module Commands
     module Overwatch
       extend Discordrb::Commands::CommandContainer
-        command(:overwatch, bucket: :overwatch, min_args: 3) do |event, *account, mode|
+        command(:overwatch, bucket: :overwatch, min_args: 2) do |event, *account, mode|
 
         if account.last == "xbl"
       override = "?platform=xbl"
