@@ -8,7 +8,9 @@ module ArmoryBot
 
         puts '#{event.server.name} - CMD: help'
 
-        event << 'Bot Website v1: http://bit.ly/2blbFZ2'
+        #event << 'Bot Website v1: http://bit.ly/2blbFZ2'
+
+        event << 'https://discord.gg/NPArPx7'
         
       end
     end
