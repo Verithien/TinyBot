@@ -36,9 +36,7 @@ module ArmoryBot
       acc = acc.split('#')
       acc = acc.join('-')
 
-      puts "https://owapi.net/api/v2/u/#{acc}/stats/#{modename}#{override}"
-
-    stats1 = HTTParty.get("https://owapi.net/api/v2/u/#{acc}/heroes#{override}", :verify => false ).parsed_response
+    stats1 = HTTParty.get("https://owapi.net/api/v2/u/#{acc}/heroes/#{modename}#{override}", :verify => false ).parsed_response
 
     puts stats1
 
