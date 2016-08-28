@@ -76,7 +76,7 @@ module ArmoryBot
 
 	bot.profile.username = 'Blizzard Bot'
 	bot.profile.avatar = File.new('/app/lib/armory_bot/wow_icon.jpg')
-	#bot.profile.avatar = File.new('C:/Users/Jesus/Desktop/armory_bot/lib/armory_bot')
+	#bot.profile.avatar = File.new('C:/Users/Jesus/Desktop/armory_bot/lib/armory_bot/wow_icon.jpg')
 	bot.sync
 
 end
