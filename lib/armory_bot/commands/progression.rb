@@ -40,7 +40,7 @@ module ArmoryBot
         mann = mychar["bosses"].find { |r| r["name"] == "Mannoroth" }
         archi = mychar["bosses"].find { |r| r["name"] == "Archimonde" }
         
-        if korm["mythicKills"] >= 1
+        if assault["mythicKills"] >= 1
         event.respond """**#{char.capitalize} - #{realm.capitalize}(#{region.upcase}) | Mythic Progression**
 `#{assault["mythicKills"]}` | `Nythendra`
 `#{iron["mythicKills"]}` | `Ilgynoth Heart of Corruption`
@@ -50,7 +50,7 @@ module ArmoryBot
 `#{gore["mythicKills"]}` | `Cenarius`
 `#{iskar["mythicKills"]}` | `Xavius`
 """
-            elsif korm["heroicKills"] >= 1
+            elsif assault["heroicKills"] >= 1
                         event.respond """**#{char.capitalize} - #{realm.capitalize}(#{region.upcase}) | Heroic Progression**
 `#{assault["heroicKills"]}` | `Nythendra`
 `#{iron["heroicKills"]}` | `Ilgynoth Heart of Corruption`
