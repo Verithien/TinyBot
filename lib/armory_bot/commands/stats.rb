@@ -99,7 +99,6 @@ Crit Rating: #{data["stats"]["critRating"]} |   Crit: #{data["stats"]["crit"].ro
 Haste Rating: #{data["stats"]["hasteRating"]}   |   Haste: #{data["stats"]["haste"].round(2)}%
 Mastery Rating: #{data["stats"]["masteryRating"]}   |   Mastery: #{data["stats"]["mastery"].round(2)}%
 Versatility Rating: #{data["stats"]["versatility"]} |   Versatility Healing Increase: #{data["stats"]["versatilityHealingDoneBonus"].round(2)}%
-Spirit: #{data["stats"]["spr"]} |   Combat Regen: #{data["stats"]["mana5Combat"]} mp5
 ```"""
     elsif cchar == "Death Knight" || cchar == "Paladin" || cchar == "Warrior"
       event.respond """#{char.capitalize} - #{realm.capitalize} - #{region.upcase} - #{spec} #{cchar}

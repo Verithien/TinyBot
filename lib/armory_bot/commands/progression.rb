@@ -25,14 +25,14 @@ module ArmoryBot
 
         puts "#{event.server.name} - Char Prog"
         
-        mychar = prog["progression"]["raids"].find { |r| r["name"] == "Hellfire Citadel" }
-        assault = mychar["bosses"].find { |r| r["name"] == "Hellfire Assault"}
-        iron = mychar["bosses"].find { |r| r["name"] == "Iron Reaver" }
-        korm = mychar["bosses"].find { |r| r["name"] == "Kormrok" }
-        hellfire_council = mychar["bosses"].find { |r| r["name"] == "Hellfire High Council" }
-        killrogg = mychar["bosses"].find { |r| r["name"] == "Kilrogg Deadeye" }
-        gore = mychar["bosses"].find { |r| r["name"] == "Gorefiend" }
-        iskar = mychar["bosses"].find { |r| r["name"] == "Shadow-Lord Iskar" }
+        mychar = prog["progression"]["raids"].find { |r| r["name"] == "The Emerald Nightmare" }
+        assault = mychar["bosses"].find { |r| r["name"] == "Nythendra"}
+        iron = mychar["bosses"].find { |r| r["name"] == "Il'gynoth, Heart of Corruption" }
+        korm = mychar["bosses"].find { |r| r["name"] == "Elerethe Renferal" }
+        hellfire_council = mychar["bosses"].find { |r| r["name"] == "Ursoc" }
+        killrogg = mychar["bosses"].find { |r| r["name"] == "Dragons of Nightmare" }
+        gore = mychar["bosses"].find { |r| r["name"] == "Cenarius" }
+        iskar = mychar["bosses"].find { |r| r["name"] == "Xavius" }
         socrethar = mychar["bosses"].find { |r| r["name"] == "Socrethar the Eternal" }
         velhari = mychar["bosses"].find { |r| r["name"] == "Tyrant Velhari" }
         fellord = mychar["bosses"].find { |r| r["name"] == "Fel Lord Zakuun" }
@@ -42,51 +42,33 @@ module ArmoryBot
         
         if korm["mythicKills"] >= 1
         event.respond """**#{char.capitalize} - #{realm.capitalize}(#{region.upcase}) | Mythic Progression**
-`#{assault["mythicKills"]}` | `Hellfire Assault`
-`#{iron["mythicKills"]}` | `Iron Reaver`
-`#{korm["mythicKills"]}` | `Kormrok`
-`#{hellfire_council["mythicKills"]}` | `Hellfire High Council`
-`#{killrogg["mythicKills"]}` | `Kilrogg Deadeye`
-`#{gore["mythicKills"]}` | `Gorefiend`
-`#{iskar["mythicKills"]}` | `Shadow Lord Iskar`
-`#{socrethar["mythicKills"]}` | `Socrethar the Eternal`
-`#{velhari["mythicKills"]}` | `Tyrant Velhari`
-`#{fellord["mythicKills"]}` | `Fel Lord Zakuun`
-`#{xhul["mythicKills"]}` | `Xhulhorac`
-`#{mann["mythicKills"]}` | `Mannoroth`
-`#{archi["mythicKills"]}` | `Archimonde`
+`#{assault["mythicKills"]}` | `Nythendra`
+`#{iron["mythicKills"]}` | `Ilgynoth Heart of Corruption`
+`#{korm["mythicKills"]}` | `Elerethe Renferal`
+`#{hellfire_council["mythicKills"]}` | `Ursoc`
+`#{killrogg["mythicKills"]}` | `Dragons of Nightmare`
+`#{gore["mythicKills"]}` | `Cenarius`
+`#{iskar["mythicKills"]}` | `Xavius`
 """
             elsif korm["heroicKills"] >= 1
                         event.respond """**#{char.capitalize} - #{realm.capitalize}(#{region.upcase}) | Heroic Progression**
-`#{assault["heroicKills"]}` | `Hellfire Assault`
-`#{iron["heroicKills"]}` | `Iron Reaver`
-`#{korm["heroicKills"]}` | `Kormrok`
-`#{hellfire_council["heroicKills"]}` | `Hellfire High Council`
-`#{killrogg["heroicKills"]}` | `Kilrogg Deadeye`
-`#{gore["heroicKills"]}` | `Gorefiend`
-`#{iskar["heroicKills"]}` | `Shadow Lord Iskar`
-`#{socrethar["heroicKills"]}` | `Socrethar the Eternal`
-`#{velhari["heroicKills"]}` | `Tyrant Velhari`
-`#{fellord["heroicKills"]}` | `Fel Lord Zakuun`
-`#{xhul["heroicKills"]}` | `Xhulhorac`
-`#{mann["heroicKills"]}` | `Mannoroth`
-`#{archi["heroicKills"]}` | `Archimonde`
+`#{assault["heroicKills"]}` | `Nythendra`
+`#{iron["heroicKills"]}` | `Ilgynoth Heart of Corruption`
+`#{korm["heroicKills"]}` | `Elerethe Renferal`
+`#{hellfire_council["heroicKills"]}` | `Ursoc`
+`#{killrogg["heroicKills"]}` | `Dragons of Nightmare`
+`#{gore["heroicKills"]}` | `Cenarius`
+`#{iskar["heroicKills"]}` | `Xavius`
 """
             else
                         event.respond """**#{char.capitalize} - #{realm.capitalize}(#{region.upcase}) | Normal Progression**
-`#{assault["normalKills"]}` | `Hellfire Assault`
-`#{iron["normalKills"]}` | `Iron Reaver`
-`#{korm["normalKills"]}` | `Kormrok`
-`#{hellfire_council["normalKills"]}` | `Hellfire High Council`
-`#{killrogg["normalKills"]}` | `Kilrogg Deadeye`
-`#{gore["normalKills"]}` | `Gorefiend`
-`#{iskar["normalKills"]}` | `Shadow Lord Iskar`
-`#{socrethar["normalKills"]}` | `Socrethar the Eternal`
-`#{velhari["normalKills"]}` | `Tyrant Velhari`
-`#{fellord["normalKills"]}` | `Fel Lord Zakuun`
-`#{xhul["normalKills"]}` | `Xhulhorac`
-`#{mann["normalKills"]}` | `Mannoroth`
-`#{archi["normalKills"]}` | `Archimonde`
+`#{assault["normalKills"]}` | `Nythendra`
+`#{iron["normalKills"]}` | `Ilgynoth Heart of Corruption`
+`#{korm["normalKills"]}` | `Elerethe Renferal`
+`#{hellfire_council["normalKills"]}` | `Ursoc`
+`#{killrogg["normalKills"]}` | `Dragons of Nightmare`
+`#{gore["normalKills"]}` | `Cenarius`
+`#{iskar["normalKills"]}` | `Xavius`
 """
 end
 
