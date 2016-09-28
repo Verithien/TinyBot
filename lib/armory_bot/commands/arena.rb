@@ -31,11 +31,6 @@ module ArmoryBot
     		arena3v3w = arena3v3["seasonWon"]
     		arena3v3l = arena3v3["seasonLost"]
 
-    		arena5v5 = arena["pvp"]["brackets"]["ARENA_BRACKET_5v5"]
-    		arena5v5r = arena5v5["rating"]
-    		arena5v5w = arena5v5["seasonWon"]
-    		arena5v5l = arena5v5["seasonLost"]
-
     		rbg = arena["pvp"]["brackets"]["ARENA_BRACKET_RBG"]
     		rbgr = rbg["rating"]
     		rbgw = rbg["seasonWon"]
@@ -48,7 +43,6 @@ module ArmoryBot
 Type | Rating - Wins - Loses
 2v2  | #{arena2v2r} - #{arena2v2w} - #{arena2v2l}
 3v3  | #{arena3v3r} - #{arena3v3w} - #{arena3v3l}
-5v5  | #{arena5v5r} - #{arena5v5w} - #{arena5v5l}
 RBG  | #{rbgr} - #{rbgw} - #{rbgl}
 ```"""
 
